@@ -1,0 +1,9 @@
+<h1>マイページ</h1>
+
+<ul>
+  <li>お名前</li><%= @customer.name %>
+  <li>メールアドレス</li><%= @customer.email %>
+  <li>電話番号</li><%= @customer.phone_number %>
+</ul>
+
+<%= link_to "編集", edit_customer_registration_path(@customer) %>

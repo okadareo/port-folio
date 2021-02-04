@@ -31,7 +31,3 @@ https://docs.google.com/spreadsheets/d/1q60cEvW7fn-65QT29w7lgM8vjXWKWi4_S2-J6Sfa
 - JSライブラリ：jQuery,Bootstrap
 - IDE：Cloud9
 
-## 使用素材
-使用素材の写真は現時点では決まっておりません。
-決まり次第、追加させて頂きます。
-
