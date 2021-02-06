@@ -1,6 +1,7 @@
 class CreateEstates < ActiveRecord::Migration[5.2]
   def change
     create_table :estates do |t|
+      t.integer :admin_id
       t.string :background_image_id
       t.string :name
       t.text :info

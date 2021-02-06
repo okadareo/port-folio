@@ -10,6 +10,7 @@
         <p>住所 <%= estate.address %></p>
         <p>間取り <%= estate.floor %></p>
         <p>賃料 ¥<%= estate.price.to_s(:delimited) %></p>
+        <p><%= link_to "編集", edit_admins_estate_path(estate) %>
       </div>
     </div>
   <% end %>

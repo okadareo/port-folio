@@ -3,11 +3,26 @@
 <div class="row">
   <% @estates.each do |estate| %>
   <div class="col-md-3">
-    <div class="card" >
-      <%= link_to attachment_image_tag(estate, :background_image, format: 'jpeg', size: "300x100"), estate_path(estate) %><br/>
-      <%= estate.name %><br/>
-      <%= estate.floor %><br/>
-      ¥<%= estate.price.to_s(:delimited) %><br/>
+    <div class="card">
+      <%= link_to attachment_image_tag(estate, :background_image, format: 'jpeg', size: "333x200"), estate_path(estate) %><br/>
+      <div class="card-body">
+        <%= estate.name %><br/>
+        <%= estate.floor %><br/>
+        ¥<%= estate.price.to_s(:delimited) %><br/>
+        <% if estate.favorited_by?(current_customer) %>
+          <p>
+            <%= link_to estate_favorites_path(estate), method: :delete do %>
+            ★<%= estate.favorites.count %>
+            <% end %>
+          </p>
+        <% else %>
+          <p>
+            <%= link_to estate_favorites_path(estate), method: :post do %>
+            ☆<%= estate.favorites.count %>
+            <% end %>
+          </p>
+        <% end %>
+      </div>
     </div>
   </div>
   <% end %>

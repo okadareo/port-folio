@@ -10,6 +10,23 @@
     </div>
   </div>
 </div>
+お気に入りした物件一覧
+<div class="container">
+  <div class="row">
+    <div class="col-11">
+      <div class="card">
+        <% if @favorite.present? %>
+          <% @favorite.each do |favorite_list| %>
+          <%= link_to attachment_image_tag(favorite_list, :background_image, format: 'jpeg', size: "100x100"), estate_path(favorite_list)  %>
+          <p>物件名 <%= favorite_list.name %></p>
+          <p>住所 <%= favorite_list.address %></p>
+          <p>間取り <%= favorite_list.floor %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 お問い合わせした物件一覧
 

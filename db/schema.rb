@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2021_02_04_054021) do
   end
 
   create_table "estates", force: :cascade do |t|
+    t.integer "admin_id"
     t.string "background_image_id"
     t.string "name"
     t.text "info"
@@ -51,14 +52,14 @@ ActiveRecord::Schema.define(version: 2021_02_04_054021) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "favorite_estates", force: :cascade do |t|
+  create_table "favorites", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "estate_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "research_estates", force: :cascade do |t|
+  create_table "researchs", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "estate_id"
     t.datetime "created_at", null: false

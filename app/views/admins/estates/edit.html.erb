@@ -1,0 +1,30 @@
+<%= render "admins/customers/header" %>
+
+<h1>物件編集画面</h1>
+<div class="row-3">
+  <%= form_with model: @estate, url:admins_estates_path, local: true do |f| %>
+    <div class="col-12">
+      <div class="card">
+        <h5><%= f.label :サムネイル画像 %></h5>
+        <%= f.attachment_field :background_image %><br/>
+        <h5><%= f.label :物件名 %></h5>
+        <%= f.text_field :name %><br/>
+        <h5><%= f.label :物件概要 %></h5>
+        <%= f.text_field :info, class: "form-control-sm", :size=>"100x100" %><br/>
+        <h5><%= f.label :物件住所 %></h5>
+        <%= f.text_field :address %><br/>
+        <h5><%= f.label :物件間取り %></h5>
+        <%= f.text_field :floor %><br/>
+        <h5><%= f.label :賃料 %></h5>
+        <%= f.text_field :price %><br/>
+        <h5><%= f.label :間取り図画像 %></h5>
+        <%= f.attachment_field :floor_image %><br/>
+        <h5><%= f.label :物件画像 %></h5>
+        <%= f.attachment_field :property_image %><br/>
+        <%= f.submit "保存", admins_estate_path %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= render "admins/customers/footer" %>

@@ -12,16 +12,17 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    resources :estates, only: [:new, :create, :index]
-    resources :customers, only: [:index, :update]
+    resources :estates, only: [:new, :create, :index, :edit, :update, :destroy]
+    resources :customers, only: [:index]
   end
 
   scope module: :customers do
     get 'estates/finish'
-    resources :estates, only: [:index, :show]
+    resources :estates, only: [:index, :show] do
+      resource :favorites, only: [:create, :destroy]
+    end
     resource :customers, only: [:show]
     root to: "estates#top"
-    # resource :favorite_estates, only: [:create, :destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
