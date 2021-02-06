@@ -1,2 +1,15 @@
-<h1>Customers::Estates#index</h1>
-<p>Find me in app/views/customers/estates/index.html.erb</p>
+<%= render "customers/customers/header" %>
+<div class="row">
+  <% @estates.each do |estate| %>
+    <div class="col-md-4">
+      <div class="card">
+        <%=link_to attachment_image_tag(estate, :background_image, format: 'jpeg', size: "460x200"), estate_path(estate) %><br/>
+        <%= estate.name %><br/>
+        <%= estate.floor %><br/>
+       ¥<%= estate.price.to_s(:delimited) %><br/>
+      </div>
+    </div>
+  <% end %>
+ </div>
+<%= paginate @estates %>
+<%= render "customers/customers/footer" %>

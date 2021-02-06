@@ -1,2 +1,32 @@
-<h1>Admins::Estates#index</h1>
-<p>Find me in app/views/admins/estates/index.html.erb</p>
+<%= render "admins/customers/header" %>
+
+<h2>入稿した物件一覧</h2>
+<div class="row">
+  <% @estates.each do |estate| %>
+    <div class="col-11">
+      <div class="card">
+        <%= attachment_image_tag estate, :background_image, format: 'jpeg', size: "100x100" %>
+        <p>物件名 <%= estate.name %></p>
+        <p>住所 <%= estate.address %></p>
+        <p>間取り <%= estate.floor %></p>
+        <p>賃料 ¥<%= estate.price.to_s(:delimited) %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<h2>ユーザー一覧</h2>
+<div class="row">
+  <% @customers.each do |customer| %>
+    <div class="col-11">
+      <div class="card">
+        <p>お名前 <%= customer.name %></p>
+        <p>メールアドレス <%= customer.email %></p>
+        <p>電話番号 <%= customer.phone_number %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%= link_to "物件入稿ページへ進む", new_admins_estate_path %>
+
+<%= render "admins/customers/footer" %>

@@ -63,7 +63,7 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to customers_path(@customer)
+      redirect_to customers_path
     end
   end
   

@@ -39,14 +39,14 @@ ActiveRecord::Schema.define(version: 2021_02_04_054021) do
   end
 
   create_table "estates", force: :cascade do |t|
-    t.string "background_image"
+    t.string "background_image_id"
     t.string "name"
     t.text "info"
     t.string "address"
     t.string "floor"
     t.integer "price"
-    t.string "floor_image"
-    t.string "property_image"
+    t.string "floor_image_id"
+    t.string "property_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

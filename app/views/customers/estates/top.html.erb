@@ -1,1 +1,15 @@
-<h1>トップページ</h1>
+<%= render "customers/customers/header" %>
+<h1>新着物件一覧</h1>
+<div class="row">
+  <% @estates.each do |estate| %>
+  <div class="col-md-3">
+    <div class="card" >
+      <%= link_to attachment_image_tag(estate, :background_image, format: 'jpeg', size: "300x100"), estate_path(estate) %><br/>
+      <%= estate.name %><br/>
+      <%= estate.floor %><br/>
+      ¥<%= estate.price.to_s(:delimited) %><br/>
+    </div>
+  </div>
+  <% end %>
+</div>
+<%= render "customers/customers/footer" %>

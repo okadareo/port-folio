@@ -1,9 +1,16 @@
+<%= render "customers/customers/header" %>
 <h1>マイページ</h1>
+<div class="row">
+  <div class="col-11">
+    <div class="card">
+      <p>お名前 <%= @customer.name %></p>
+      <p>メールアドレス <%= @customer.email %></p>
+      <p>電話番号 <%= @customer.phone_number %></p>
+      <%= link_to "編集", edit_customer_registration_path %>
+    </div>
+  </div>
+</div>
 
-<ul>
-  <li>お名前</li><%= @customer.name %>
-  <li>メールアドレス</li><%= @customer.email %>
-  <li>電話番号</li><%= @customer.phone_number %>
-</ul>
+お問い合わせした物件一覧
 
-<%= link_to "編集", edit_customer_registration_path(@customer) %>
+<%= render "customers/customers/footer" %>

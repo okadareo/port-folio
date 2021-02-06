@@ -1,2 +1,33 @@
-<h1>Admins::Estates#new</h1>
-<p>Find me in app/views/admins/estates/new.html.erb</p>
+<%= render "admins/customers/header" %>
+
+<h1>物件入稿画面</h1>
+<div class="row3">
+  <%= form_with model: @estate, url:admins_estates_path, local: true do |f| %>
+    <div class="col-12">
+      <div class="card">
+        <h5><%= f.label :サムネイル画像 %></h5>
+        <%= f.attachment_field :background_image %><br/>
+        <h5><%= f.label :物件名 %></h5>
+        <%= f.text_field :name, placeholder:"物件名" %><br/>
+        <h5><%= f.label :物件概要 %></h5>
+        <%= f.text_field :info, class: "form-control-sm", :size=>"100x100", placeholder: "物件概要" %><br/>
+        <h5><%= f.label :物件住所 %></h5>
+        <%= f.text_field :address, placeholder: "物件住所" %><br/>
+        <h5><%= f.label :物件間取り %></h5>
+        <%= f.text_field :floor, placeholder: "物件間取り" %><br/>
+        <h5><%= f.label :賃料 %></h5>
+        <%= f.text_field :price, placeholder: "賃料" %><br/>
+        <h5><%= f.label :間取り図画像 %></h5>
+        <%= f.attachment_field :floor_image %><br/>
+        <h5><%= f.label :物件画像 %></h5>
+        <%= f.attachment_field :property_image %><br/>
+        <%= f.submit "入稿する" %>
+      </div>
+    </div>
+  <% end %>
+</div
+<%= link_to "一覧ページへ進む", admins_estates_path %>
+
+<%= render "admins/customers/footer" %>
+
+

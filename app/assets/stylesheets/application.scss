@@ -14,5 +14,7 @@
  *= require_self
  */
 
-body {
-  background-image: image-url("IMG_2976-1200x900.jpg");}
+
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
