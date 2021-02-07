@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get 'estates/finish'
     resources :estates, only: [:index, :show] do
       resource :favorites, only: [:create, :destroy]
+      resources :researches, only: [:new, :create]
     end
     resource :customers, only: [:show]
     root to: "estates#top"

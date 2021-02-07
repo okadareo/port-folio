@@ -1,0 +1,28 @@
+<%= render "customers/customers/header" %>
+
+<h1>お問い合わせ</h1>
+
+<%= form_with model: @research, url: estate_researches_path, local: true do |f| %>
+  <p><%= f.label :タイトル %></p>
+<%= f.text_field :title, :size=> "100x100", :placeholder => "タイトルを入れてください。" %>
+  <p><%= f.label :本文 %></p>
+<%= f.text_area :body, :size=>"100x10", :placeholder => "コメントをご入力ください。" %>
+  <p><%= f.submit "お問合せ" %></p>
+<% end %>
+
+
+
+
+<p>お問合せするにはログインが必要です。<br/>
+会員登録済みの方はログインへ→</p>
+
+<div class="login right">
+  <button type="button" class="btn btn-secondary"><%= link_to "ログイン", new_customer_session_path %></button>
+</div>
+<p>お問合せするには会員登録が必要です。<br/>
+会員登録をする方は会員登録へ→</p>
+<div class="registration">
+  <button type="button" class="btn btn-secondary"><%= link_to "会員登録", new_customer_registration_path %></button>
+</div>
+
+<%= render "customers/customers/footer" %>

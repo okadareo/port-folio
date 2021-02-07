@@ -80,9 +80,11 @@ ActiveRecord::Schema.define(version: 2021_02_07_082055) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "researchs", force: :cascade do |t|
+  create_table "researches", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "estate_id"
+    t.string "title"
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

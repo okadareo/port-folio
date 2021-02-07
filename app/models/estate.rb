@@ -19,6 +19,7 @@ class Estate < ApplicationRecord
 
   belongs_to :admin, optional: true
   has_many :favorites, dependent: :destroy
+  has_many :researches, dependent: :destroy
 
   def favorited_by?(customer)
     favorites.where(customer_id: customer.id).exists?

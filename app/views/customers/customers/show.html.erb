@@ -10,7 +10,7 @@
     </div>
   </div>
 </div>
-お気に入りした物件一覧
+<p>お気に入りした物件一覧</p>
 <div class="container">
   <div class="row">
     <div class="col-11">
@@ -21,6 +21,19 @@
           <p>物件名 <%= favorite_list.name %></p>
           <p>住所 <%= favorite_list.address %></p>
           <p>間取り <%= favorite_list.floor %></p>
+            <% if favorite_list.favorited_by?(current_customer) %>
+            <p>
+            <%= link_to estate_favorites_path(favorite_list), method: :delete do %>
+              ★<%= favorite_list.favorites.count %>
+            <% end %>
+            </p>
+            <% else %>
+            <p>
+            <%= link_to estate_favorites_path(favorite_list), method: :post do %>
+              ☆<%= favorite_list.favorites.count %>
+            <% end %>
+            </p>
+            <% end %>
           <% end %>
         <% end %>
       </div>
@@ -28,6 +41,20 @@
   </div>
 </div>
 
-お問い合わせした物件一覧
+<p>お問い合わせした物件一覧</p>
+<div class="container">
+  <div class="row">
+    <div class="col-11">
+      <div class="card">
+        <% @research.each do |research_list| %>
+        <%= link_to attachment_image_tag(research_list, :background_image, format: 'jpeg', size: "100x100"), estate_path(research_list) %>
+        <p>物件名 <%= research_list.name %></p>
+        <p>住所 <%= research_list.address %></p>
+        <p>間取り <%= research_list.floor %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= render "customers/customers/footer" %>
