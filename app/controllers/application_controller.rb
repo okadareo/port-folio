@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
     when Customer
-      estates_path
+      request.referer
     when Admin
       new_admins_estate_path
     end

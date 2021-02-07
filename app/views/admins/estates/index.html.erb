@@ -11,10 +11,12 @@
         <p>間取り <%= estate.floor %></p>
         <p>賃料 ¥<%= estate.price.to_s(:delimited) %></p>
         <p><%= link_to "編集", edit_admins_estate_path(estate) %>
+        <p><%= link_to "削除", admins_estate_path(estate), method: :delete %></p>
       </div>
     </div>
   <% end %>
 </div>
+<%= paginate @estates %>
 
 <h2>ユーザー一覧</h2>
 <div class="row">
@@ -28,6 +30,7 @@
     </div>
   <% end %>
 </div>
+<%= paginate @customers %>
 <%= link_to "物件入稿ページへ進む", new_admins_estate_path %>
 
 <%= render "admins/customers/footer" %>

@@ -28,6 +28,20 @@ Admin.create!(
     floor: "3LDK",
     price: "100000",
     floor_image: open("app/assets/images/1.jpeg"),
-    property_image: open("app/assets/images/1.jpeg")
+    property_image_a: open("app/assets/images/1.jpeg"),
+    property_image_b: open("app/assets/images/1.jpeg"),
+    property_image_c: open("app/assets/images/1.jpeg"),
+    property_image_d: open("app/assets/images/1.jpeg"),
+    property_image_e: open("app/assets/images/1.jpeg"),
+    property_image_f: open("app/assets/images/1.jpeg"),
+    property_image_g: open("app/assets/images/1.jpeg"),
+    property_image_h: open("app/assets/images/1.jpeg"),
+    property_image_i: open("app/assets/images/1.jpeg"),
+    property_image_j: open("app/assets/images/1.jpeg"),
+    property_image_k: open("app/assets/images/1.jpeg"),
+    property_image_l: open("app/assets/images/1.jpeg"),
+    property_image_m: open("app/assets/images/1.jpeg"),
+    property_image_n: open("app/assets/images/1.jpeg"),
+    property_image_o: open("app/assets/images/1.jpeg"),
   )
 end
