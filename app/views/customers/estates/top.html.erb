@@ -1,5 +1,187 @@
 <%= render "customers/customers/header" %>
 <%= render "layouts/search" %>
+<%#= render "customers/estates/article" %>
 <h1>新着物件一覧</h1>
-<%= render "customers/estates/article" %>
+
+<div class="container my-3">
+<div id="example-2" class="carousel slide" data-ride="carousel" style="width:400px">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="col-md-4" style="float:left">
+          <div class="card mb-2">
+            <img class="card-img-top">
+              <%= link_to attachment_image_tag(@estates.first, :background_image, format: 'jpeg', size: "333x200"), estate_path(@estates.first) %>
+            </img>
+            <div class="card-body">
+              <h4 class="card-title"><%= @estates.first.name %> <%= @estates.first.room_number %>号室</h4>
+              <p>住所：<%= @estates.first.address %></p>
+              <p>間取り：<%= @estates.first.floor %></p>
+              <p>賃料：¥<%= @estates.first.price.to_s(:delimited) %></p>
+              <% if @estates.first.favorited_by?(current_customer) %>
+                <p>お気に入り：
+                  <%= link_to estate_favorites_path(@estates.first), method: :delete do %>
+                  ★<%= @estates.first.favorites.count %>
+                  <% end %>
+                </p>
+              <% else %>
+                <p>お気に入り：
+                  <%= link_to estate_favorites_path(@estates.first), method: :post do %>
+                  ☆<%= @estates.first.favorites.count %>
+                  <% end %>
+                </p>
+              <% end %>
+              <p>投稿日時：<%= @estates.first.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" style="float:left">
+          <div class="card mb-2">
+            <img class="card-img-top">
+              <%= link_to attachment_image_tag(@estates.second, :background_image, format: 'jpeg', size: "333x200"), estate_path(@estates.second) %>
+            </img>
+            <div class="card-body">
+              <h4 class="card-title"><%= @estates.second.name %> <%= @estates.second.room_number %>号室</h4>
+              <p>住所：<%= @estates.second.address %></p>
+              <p>間取り：<%= @estates.second.floor %></p>
+              <p>賃料：¥<%= @estates.second.price.to_s(:delimited) %></p>
+              <% if @estates.second.favorited_by?(current_customer) %>
+                <p>お気に入り：
+                  <%= link_to estate_favorites_path(@estates.second), method: :delete do %>
+                  ★<%= @estates.second.favorites.count %>
+                  <% end %>
+                </p>
+              <% else %>
+                <p>お気に入り：
+                  <%= link_to estate_favorites_path(@estates.second), method: :post do %>
+                  ☆<%= @estates.second.favorites.count %>
+                  <% end %>
+                </p>
+              <% end %>
+              <p>投稿日時：<%= @estates.second.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" style="float:left">
+          <div class="card mb-2">
+            <img class="card-img-top">
+              <%= link_to attachment_image_tag(@estates.third, :background_image, format: 'jpeg', size: "333x200"), estate_path(@estates.third) %>
+            </img>
+            <div class="card-body">
+              <h4 class="card-title"><%= @estates.third.name %> <%= @estates.third.room_number %>号室</h4>
+              <p>住所：<%= @estates.third.address %></p>
+              <p>間取り：<%= @estates.third.floor %></p>
+              <p>賃料：¥<%= @estates.third.price.to_s(:delimited) %></p>
+              <% if @estates.third.favorited_by?(current_customer) %>
+                <p>お気に入り：
+                  <%= link_to estate_favorites_path(@estates.third), method: :delete do %>
+                  ★<%= @estates.third.favorites.count %>
+                  <% end %>
+                </p>
+              <% else %>
+                <p>お気に入り：
+                  <%= link_to estate_favorites_path(@estates.third), method: :post do %>
+                  ☆<%= @estates.third.favorites.count %>
+                  <% end %>
+                </p>
+              <% end %>
+              <p>投稿日時：<%= @estates.third.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="carousel-item">
+      <div class="col-md-4" style="float:left">
+          <div class="card mb-2">
+            <img class="card-img-top">
+              <%= link_to attachment_image_tag(@estates.fourth, :background_image, format: 'jpeg', size: "333x200"), estate_path(@estates.fourth) %>
+            </img>
+            <div class="card-body">
+              <h4 class="card-title"><%= @estates.fourth.name %> <%= @estates.fourth.room_number %>号室</h4>
+              <p>住所：<%= @estates.fourth.address %></p>
+              <p>間取り：<%= @estates.fourth.floor %></p>
+              <p>賃料：¥<%= @estates.fourth.price.to_s(:delimited) %></p>
+              <% if @estates.fourth.favorited_by?(current_customer) %>
+                <p>お気に入り：
+                  <%= link_to estate_favorites_path(@estates.fourth), method: :delete do %>
+                  ★<%= @estates.fourth.favorites.count %>
+                  <% end %>
+                </p>
+              <% else %>
+                <p>お気に入り：
+                  <%= link_to estate_favorites_path(@estates.fourth), method: :post do %>
+                  ☆<%= @estates.fourth.favorites.count %>
+                  <% end %>
+                </p>
+              <% end %>
+              <p>投稿日時：<%= @estates.fourth.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" style="float:left">
+          <div class="card mb-2">
+            <img class="card-img-top">
+              <%= link_to attachment_image_tag(@estates.fifth, :background_image, format: 'jpeg', size: "333x200"), estate_path(@estates.fifth) %>
+            </img>
+            <div class="card-body">
+              <h4 class="card-title"><%= @estates.fifth.name %> <%= @estates.fifth.room_number %>号室</h4>
+              <p>住所：<%= @estates.fifth.address %></p>
+              <p>間取り：<%= @estates.fifth.floor %></p>
+              <p>賃料：¥<%= @estates.fifth.price.to_s(:delimited) %></p>
+              <% if @estates.fifth.favorited_by?(current_customer) %>
+                <p>お気に入り：
+                  <%= link_to estate_favorites_path(@estates.fifth), method: :delete do %>
+                  ★<%= @estates.fifth.favorites.count %>
+                  <% end %>
+                </p>
+              <% else %>
+                <p>お気に入り：
+                  <%= link_to estate_favorites_path(@estates.fifth), method: :post do %>
+                  ☆<%= @estates.fifth.favorites.count %>
+                  <% end %>
+                </p>
+              <% end %>
+              <p>投稿日時：<%= @estates.fifth.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" style="float:left">
+          <div class="card mb-2">
+            <img class="card-img-top">
+              <%= link_to attachment_image_tag(@estates.sixth, :background_image, format: 'jpeg', size: "333x200"), estate_path(@estates.sixth) %>
+            </img>
+            <div class="card-body">
+              <h4 class="card-title"><%= @estates.sixth.name %> <%= @estates.sixth.room_number %>号室</h4>
+              <p>住所：<%= @estates.sixth.address %></p>
+              <p>間取り：<%= @estates.sixth.floor %></p>
+              <p>賃料：¥<%= @estates.sixth.price.to_s(:delimited) %></p>
+              <% if @estates.sixth.favorited_by?(current_customer) %>
+                <p>お気に入り：
+                  <%= link_to estate_favorites_path(@estates.sixth), method: :delete do %>
+                  ★<%= @estates.sixth.favorites.count %>
+                  <% end %>
+                </p>
+              <% else %>
+                <p>お気に入り：
+                  <%= link_to estate_favorites_path(@estates.sixth), method: :post do %>
+                  ☆<%= @estates.sixth.favorites.count %>
+                  <% end %>
+                </p>
+              <% end %>
+              <p>投稿日時：<%= @estates.sixth.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+            </div>
+          </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#example-2" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#example-2" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+</div>
+
 <%= render "customers/customers/footer" %>

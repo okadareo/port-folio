@@ -1,5 +1,4 @@
 <%= search_form_for @q do |f| %>
-<%= f.label "住所" %>
 <%= f.select :address_start,
 [["東京都千代田区"],
 ["東京都中央区"],
@@ -23,11 +22,12 @@
 ["東京都練馬区"],
 ["東京都足立区"],
 ["東京都葛飾区"],
-["東京都江戸川区"]], {include_blank: "住所"} %>
+["東京都江戸川区"]], {include_blank: "物件住所"} %>
 
-<%= f.search_field :name_eq %><br>
-<%= f.label "賃料" %>
-<%= f.search_field :price_gteq %>　〜
-<%= f.search_field :price_lteq %>
+<%= f.select :floor_eq,
+[["1R"],["1K"],["1DK"],["1LDL"],["2K"],["2DK"],["2LDK"],["3DK"],["3LDK"],["4DK"],["4LDK"],["5DK"],["5LDK"]], {include_blank: "間取り"} %><br>
+<%= f.search_field :price_gteq, :placeholder => "賃料下限", value: '' %> 〜
+<%= f.search_field :price_lteq, :placeholder => "賃料上限", value: '' %>
+
 <%= f.submit "検索" %>
 <% end %>

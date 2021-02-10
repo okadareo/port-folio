@@ -59,18 +59,18 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  
+
   def update
     @customer = current_customer
     if @customer.update(customer_params)
       redirect_to customers_path
     end
   end
-  
+
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
-  
+
   private
 
   def customer_params

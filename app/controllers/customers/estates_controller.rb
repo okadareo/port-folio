@@ -1,14 +1,10 @@
 class Customers::EstatesController < ApplicationController
 
   def top
-    # @estates = Estate.order(created_at: :desc).limit(6)
-    @q = Estate.ransack(params[:q])
-    @estates = @q.result
+    @estates = Estate.all.order(created_at: :desc).limit(6)
   end
   def index
-    # @estates = Estate.all.page(params[:page]).per(12)
-    @q = Estate.ransack(params[:q])
-    @estates = @q.result
+    @estates = Estate.all.page(params[:page]).per(12)
   end
 
   def show
@@ -17,4 +13,5 @@ class Customers::EstatesController < ApplicationController
 
   def finish
   end
+
 end

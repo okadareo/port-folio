@@ -3,8 +3,10 @@
   <div class="col-md-3">
     <div class="card">
       <%= link_to attachment_image_tag(estate, :background_image, format: 'jpeg', size: "333x200"), estate_path(estate) %><br/>
+      <div class="card-title">
+        <%= estate.name %> <%= estate.room_number %>号室
+      </div>
       <div class="card-body">
-        <p>物件名：<%= estate.name %> <%= estate.room_number %>号室</p>
         <p>住所：<%= estate.address %></p>
         <p>間取り：<%= estate.floor %></p>
         <p>賃料：¥<%= estate.price.to_s(:delimited) %></p>

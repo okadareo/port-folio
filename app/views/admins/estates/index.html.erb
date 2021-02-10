@@ -30,7 +30,7 @@
         </div>
       </div>
     <% end %>
-  <%#= paginate @customers %>
+  <%= paginate @customers %>
   </div>
 </div>
 
@@ -52,7 +52,6 @@
     <% end %>
   </div>
 </div>
-<%#= paginate @customers %>
-<%= link_to "物件入稿ページへ進む", new_admins_estate_path %>
+<%= paginate @customers %>
 
 <%= render "admins/customers/footer" %>
