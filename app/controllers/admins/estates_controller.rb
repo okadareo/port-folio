@@ -12,6 +12,7 @@ class Admins::EstatesController < ApplicationController
 
   def index
     @estates = Estate.all.page(params[:page]).per(10)
+    #@estates = Estate.all.includes(:researches) この書き方でも可能
     @customers = Customer.all.page(params[:page]).per(10)
   end
 
@@ -52,6 +53,6 @@ class Admins::EstatesController < ApplicationController
       :property_image_m,
       :property_image_n,
       :property_image_o,
-      :name, :info, :address, :floor, :price)
+      :name, :room_number, :info, :address, :floor, :price)
   end
 end

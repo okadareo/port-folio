@@ -1,0 +1,29 @@
+<div class="row">
+  <% @estates.each do |estate| %>
+  <div class="col-md-3">
+    <div class="card">
+      <%= link_to attachment_image_tag(estate, :background_image, format: 'jpeg', size: "333x200"), estate_path(estate) %><br/>
+      <div class="card-body">
+        <p>物件名：<%= estate.name %> <%= estate.room_number %>号室</p>
+        <p>住所：<%= estate.address %></p>
+        <p>間取り：<%= estate.floor %></p>
+        <p>賃料：¥<%= estate.price.to_s(:delimited) %></p>
+        <% if estate.favorited_by?(current_customer) %>
+          <p>お気に入り：
+            <%= link_to estate_favorites_path(estate), method: :delete do %>
+            ★<%= estate.favorites.count %>
+            <% end %>
+          </p>
+        <% else %>
+          <p>お気に入り：
+            <%= link_to estate_favorites_path(estate), method: :post do %>
+            ☆<%= estate.favorites.count %>
+            <% end %>
+          </p>
+        <% end %>
+        <p>投稿日時：<%= estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

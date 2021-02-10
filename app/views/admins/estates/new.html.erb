@@ -1,56 +1,40 @@
 <%= render "admins/customers/header" %>
 
-<h1>　物件入稿画面　</h1>
-<div class="row3">
-  <%= form_with model: @estate, url:admins_estates_path, local: true do |f| %>
-    <div class="col-12">
-      <div class="card">
-        <h5><%= f.label :サムネイル画像 %></h5>
-        <%= f.attachment_field :background_image %><br/>
-        <h5><%= f.label :物件名 %></h5>
-        <%= f.text_field :name, placeholder:"物件名" %><br/>
-        <h5><%= f.label :物件概要 %></h5>
-        <%= f.text_field :info, :size=>"100x100", placeholder: "物件概要" %><br/>
-        <h5><%= f.label :物件住所 %></h5>
-        <%= f.text_field :address, placeholder: "物件住所" %><br/>
-        <h5><%= f.label :物件間取り %></h5>
-        <%= f.text_field :floor, placeholder: "物件間取り" %><br/>
-        <h5><%= f.label :賃料 %></h5>
-        <%= f.text_field :price, placeholder: "賃料" %><br/>
-        <h5><%= f.label :間取り図画像 %></h5>
-        <%= f.attachment_field :floor_image %><br/>
-        <h5><%= f.label :物件画像１ %></h5>
-        <%= f.attachment_field :property_image_a %><br/>
-        <h5><%= f.label :物件画像２ %></h5>
-        <%= f.attachment_field :property_image_b %><br/>
-        <h5><%= f.label :物件画像３ %></h5>
-        <%= f.attachment_field :property_image_c %><br/>
-        <h5><%= f.label :物件画像４ %></h5>
-        <%= f.attachment_field :property_image_d %><br/>
-        <h5><%= f.label :物件画像５ %></h5>
-        <%= f.attachment_field :property_image_e %><br/>
-        <h5><%= f.label :物件画像６ %></h5>
-        <%= f.attachment_field :property_image_f %><br/>
-        <h5><%= f.label :物件画像７ %></h5>
-        <%= f.attachment_field :property_image_g %><br/>
-        <h5><%= f.label :物件画像８ %></h5>
-        <%= f.attachment_field :property_image_h %><br/>
-        <h5><%= f.label :物件画像９%></h5>
-        <%= f.attachment_field :property_image_j %><br/>
-        <h5><%= f.label :物件画像１０ %></h5>
-        <%= f.attachment_field :property_image_k %><br/>
-        <h5><%= f.label :物件画像１１ %></h5>
-        <%= f.attachment_field :property_image_l %><br/>
-        <h5><%= f.label :物件画像１２ %></h5>
-        <%= f.attachment_field :property_image_m %><br/>
-        <h5><%= f.label :物件画像１３ %></h5>
-        <%= f.attachment_field :property_image_n %><br/>
-        <h5><%= f.label :物件画像１４ %></h5>
-        <%= f.attachment_field :property_image_o %><br/>
-        <%= f.submit "入稿する" %>
+<h1>物件入稿画面</h1>
+<div class="container">
+  <div class="row3">
+    <%= form_with model: @estate, url:admins_estates_path, local: true do |f| %>
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h5><%= f.label :背景画像 %>　<%= f.attachment_field :background_image %></h5>
+            <h5><%= f.label :物件名 %>　<%= f.text_field :name, placeholder:"物件名", :size=>"93" %></h5>
+            <h5><%= f.label :部屋番号 %>　<%= f.number_field :room_number, placeholder:"部屋番号" %></h5>
+            <h5><%= f.label :物件概要 %>　<%= f.text_area :info, :size=>"100x10", placeholder: "物件概要" %></h5>
+            <h5><%= f.label :住所 %>　<%= f.text_field :address, placeholder: "住所", :size=>"95" %></h5>
+            <h5><%= f.label :間取り %>　<%= f.text_field :floor, placeholder: "間取り" %></h5>
+            <h5><%= f.label :賃料 %>　<%= f.number_field :price, placeholder: "賃料" %></h5>
+            <h5><%= f.label :間取り図画像 %>　<%= f.attachment_field :floor_image %></h5>
+            <h5><%= f.label :物件画像１ %>　<%= f.attachment_field :property_image_a %></h5>
+            <h5><%= f.label :物件画像２ %>　<%= f.attachment_field :property_image_b %></h5>
+            <h5><%= f.label :物件画像３ %>　<%= f.attachment_field :property_image_c %></h5>
+            <h5><%= f.label :物件画像４ %>　<%= f.attachment_field :property_image_d %></h5>
+            <h5><%= f.label :物件画像５ %>　<%= f.attachment_field :property_image_e %></h5>
+            <h5><%= f.label :物件画像６ %>　<%= f.attachment_field :property_image_f %></h5>
+            <h5><%= f.label :物件画像７ %>　<%= f.attachment_field :property_image_g %></h5>
+            <h5><%= f.label :物件画像８ %>　<%= f.attachment_field :property_image_h %></h5>
+            <h5><%= f.label :物件画像９ %>　<%= f.attachment_field :property_image_j %></h5>
+            <h5><%= f.label :物件画像１０ %>　<%= f.attachment_field :property_image_k %></h5>
+            <h5><%= f.label :物件画像１１ %>　<%= f.attachment_field :property_image_l %></h5>
+            <h5><%= f.label :物件画像１２ %>　<%= f.attachment_field :property_image_m %></h5>
+            <h5><%= f.label :物件画像１３ %>　<%= f.attachment_field :property_image_n %></h5>
+            <h5><%= f.label :物件画像１４ %>　<%= f.attachment_field :property_image_o %></h5>
+            <%= f.submit "入稿する" %>
+          </div>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 <%= link_to "一覧ページへ進む", admins_estates_path %>
 

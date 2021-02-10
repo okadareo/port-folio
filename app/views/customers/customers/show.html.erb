@@ -1,57 +1,74 @@
 <%= render "customers/customers/header" %>
-<h1>マイページ</h1>
-<div class="row">
-  <div class="col-11">
-    <div class="card">
-      <p>お名前 <%= @customer.name %></p>
-      <p>メールアドレス <%= @customer.email %></p>
-      <p>電話番号 <%= @customer.phone_number %></p>
-      <%= link_to "編集", edit_customer_registration_path %>
-    </div>
-  </div>
-</div>
-<p>お気に入りした物件一覧</p>
+<h1><%= current_customer.name %>さんのマイページ</h1>
 <div class="container">
   <div class="row">
     <div class="col-11">
       <div class="card">
-        <% if @favorite.present? %>
-          <% @favorite.each do |favorite_list| %>
-          <%= link_to attachment_image_tag(favorite_list, :background_image, format: 'jpeg', size: "100x100"), estate_path(favorite_list)  %>
-          <p>物件名 <%= favorite_list.name %></p>
-          <p>住所 <%= favorite_list.address %></p>
-          <p>間取り <%= favorite_list.floor %></p>
-            <% if favorite_list.favorited_by?(current_customer) %>
-            <p>
-            <%= link_to estate_favorites_path(favorite_list), method: :delete do %>
-              ★<%= favorite_list.favorites.count %>
-            <% end %>
-            </p>
+        <div class="card-body">
+        <h5>お名前：<%= @customer.name %></h5>
+        <h5>メールアドレス：<%= @customer.email %></h5>
+        <h5>電話番号：<%= @customer.phone_number %></h5>
+        <%= link_to "編集", edit_customer_registration_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h3>お気に入り物件一覧</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-11">
+      <div class="card">
+        <div class="card-body">
+        <% if @favorites.present? %>
+          <% @favorites.each do |favorite| %>
+          <%= link_to attachment_image_tag(favorite.estate, :background_image, format: 'jpeg', size: "100x100"), estate_path(favorite)  %>
+          <h5>物件名：<%= favorite.estate.name %></h5>
+          <h5>物件名：<%= favorite.estate.room_number %>号室</h5>
+          <h5>物件住所：<%= favorite.estate.address %></h5>
+          <h5>間取り：<%= favorite.estate.floor %></h5>
+            <% if favorite.estate.favorited_by?(current_customer) %>
+            <h5>お気に入り数：
+              <%= link_to estate_favorites_path(favorite.estate), method: :delete do %>
+              ★<%= favorite.estate.favorites.count %>
+              <% end %>
+            </h5>
             <% else %>
-            <p>
-            <%= link_to estate_favorites_path(favorite_list), method: :post do %>
-              ☆<%= favorite_list.favorites.count %>
+            <h5>お気に入り数：
+              <%= link_to estate_favorites_path(favorite.estate), method: :post do %>
+              ☆<%= favorite.estate.favorites.count %>
+            　<% end %>
+            </h5>
             <% end %>
-            </p>
-            <% end %>
+            <h5>お気に入りした日時：<%= favorite.created_at.strftime('%Y年%m月%d日 %H時%M分') %></h5>
           <% end %>
         <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<p>お問い合わせした物件一覧</p>
+
+<h3>お問い合わせ物件一覧</h3>
 <div class="container">
   <div class="row">
     <div class="col-11">
       <div class="card">
-        <% @research.each do |research_list| %>
-        <%= link_to attachment_image_tag(research_list, :background_image, format: 'jpeg', size: "100x100"), estate_path(research_list) %>
-        <p>物件名 <%= research_list.name %></p>
-        <p>住所 <%= research_list.address %></p>
-        <p>間取り <%= research_list.floor %></p>
+        <div class="card-body">
+        <% if @researches.present? %>
+          <% @researches.each do |research| %>
+          <%= link_to attachment_image_tag(research.estate, :background_image, format: 'jpeg', size: "100x100"), estate_path(research) %>
+          <h5>物件名：<%= research.estate.name %></h5>
+          <h5>部屋番号：<%= research.estate.room_number %>号室</h5>
+          <h5>物件住所：<%= research.estate.address %></h5>
+          <h5>間取り：<%= research.estate.floor %></h5>
+          <h5>お問い合わせタイトル：<%= research.title %></h5>
+          <h5>お問い合わせ本文：<%= research.body %></h5>
+          <h5>お問い合わせした日時：<%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></h5>
+          <% end %>
         <% end %>
+        </div>
       </div>
     </div>
   </div>
