@@ -17,3 +17,37 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.search {
+  background-color: #18003E;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 5px 60px;
+}
+
+.search:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.new {
+  background-color: #EB9FEF;
+  margin-top: 100px;
+}
+
+footer {
+  background-color: #18003E;
+}
+
+.navbar-brand:hover {
+  opacity: 0.5;
+}
+
+.card-img-top:hover {
+  opacity: 0.5;
+}
+
+.footer-link {
+  font-size: 20px;
+}

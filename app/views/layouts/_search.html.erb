@@ -25,9 +25,11 @@
 ["東京都江戸川区"]], {include_blank: "物件住所"} %>
 
 <%= f.select :floor_eq,
-[["1R"],["1K"],["1DK"],["1LDL"],["2K"],["2DK"],["2LDK"],["3DK"],["3LDK"],["4DK"],["4LDK"],["5DK"],["5LDK"]], {include_blank: "間取り"} %><br>
-<%= f.search_field :price_gteq, :placeholder => "賃料下限", value: '' %> 〜
-<%= f.search_field :price_lteq, :placeholder => "賃料上限", value: '' %>
+[["1R"],["1K"],["1DK"],["1LDK"],["2K"],["2DK"],["2LDK"],["3DK"],["3LDK"],
+["4DK"],["4LDK"],["5DK"],["5LDK"]], {include_blank: "間取り"} %>
+
+<%= f.number_field :price_gteq, :placeholder => "賃料下限(半角数字)" %> 〜
+<%= f.number_field :price_lteq, :placeholder => "賃料上限(半角数字)" %>
 
 <%= f.submit "検索" %>
 <% end %>
