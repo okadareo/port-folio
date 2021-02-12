@@ -31,13 +31,16 @@
   transform: scale(1.1, 1.1);
 }
 
-.new {
-  background-color: #EB9FEF;
-  margin-top: 100px;
+.searches {
+  background-color: #18003E;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 1px 30px;
 }
 
-footer {
-  background-color: #18003E;
+.searches:hover {
+  transform: scale(1.1, 1.1);
 }
 
 .navbar-brand:hover {
@@ -48,6 +51,33 @@ footer {
   opacity: 0.5;
 }
 
-.footer-link {
+.type-shine {
+  font-size: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item {
+  text-align: right;
+}
+
+.top.col-4:hover {
+  opacity: 0.5;
+}
+
+.navbar-light .navbar-toggler {
+    border-color: rgba(0,0,0,0);
+}
+
+.navbar-dark .navbar-toggler {
+    border-color: rgba(0,0,0,0);
+}
+
+.edit {
+  background-color: #18003E;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
   font-size: 20px;
+  padding: 5px 40px;
 }

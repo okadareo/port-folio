@@ -1,7 +1,6 @@
 class Customers::EstatesController < ApplicationController
 
   def top
-    # @estates = Estate.all.order(created_at: :desc).limit(6)
     @q = Estate.order(created_at: :desc).limit(6).ransack(params[:q])
     @estates = @q.result(distinct: true)
   end

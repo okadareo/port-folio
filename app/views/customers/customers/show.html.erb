@@ -1,56 +1,88 @@
 <%= render "customers/customers/header" %>
-<h1><%= current_customer.name %>さんのマイページ</h1>
+<div class="text-center pt-5 pb-5" style="font-size: 30px; font-weight: bold;">マイページ</div>
 <div class="container">
-  <div class="row">
-    <div class="col-11">
-      <div class="card">
-        <div class="card-body">
-        <h5>お名前：<%= @customer.name %></h5>
-        <h5>メールアドレス：<%= @customer.email %></h5>
-        <h5>電話番号：<%= @customer.phone_number %></h5>
-        <%= link_to "編集", edit_customer_registration_path %>
+  <div class="card shadow">
+    <div class="row pt-5">
+      <div class="col-3 text-center pt-1" style="font-weight: bold; font-size: 25px;">お名前</div>
+      <div class="col-7">
+        <div class="card" style="font-size: 25px;">
+          <%= @customer.name %>
         </div>
       </div>
     </div>
-  </div>
+    <div class="row pt-4">
+      <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">メールアドレス</div>
+      <div class="col-7">
+        <div class="card" style="font-size: 25px;">
+          <%= @customer.email %>
+        </div>
+      </div>
+    </div>
+    <div class="row pt-4 pb-5">
+      <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">電話番号</div>
+      <div class="col-7">
+        <div class="card" style="font-size: 25px;">
+          <%= @customer.phone_number %>
+        </div>
+      </div>
+      <div class="col pt-2">
+        <%= link_to "編集", edit_customer_registration_path, class: "edit btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+      </div>
+      </div>
+    </div>
+　</div>
 </div>
-<h3>お気に入り物件一覧</h3>
+
+
+<div class="text-center pt-5 pb-5" style="font-size: 30px; font-weight: bold;">お気に入り物件一覧</div>
 <div class="container">
-  <div class="row">
-    <div class="col-11">
-      <div class="card">
-        <div class="card-body">
-        <% if @favorites.present? %>
-          <% @favorites.each do |favorite| %>
-          <%= link_to attachment_image_tag(favorite.estate, :background_image, format: 'jpeg', size: "100x100"), estate_path(favorite)  %>
-          <h5>物件名：<%= favorite.estate.name %></h5>
-          <h5>物件名：<%= favorite.estate.room_number %>号室</h5>
-          <h5>物件住所：<%= favorite.estate.address %></h5>
-          <h5>間取り：<%= favorite.estate.floor %></h5>
-            <% if favorite.estate.favorited_by?(current_customer) %>
-            <h5>お気に入り数：
-              <%= link_to estate_favorites_path(favorite.estate), method: :delete do %>
-              ★<%= favorite.estate.favorites.count %>
-              <% end %>
-            </h5>
-            <% else %>
-            <h5>お気に入り数：
-              <%= link_to estate_favorites_path(favorite.estate), method: :post do %>
-              ☆<%= favorite.estate.favorites.count %>
-            　<% end %>
-            </h5>
-            <% end %>
-            <h5>お気に入りした日時：<%= favorite.created_at.strftime('%Y年%m月%d日 %H時%M分') %></h5>
+  <% if @favorites.present? %>
+    <% @favorites.each do |favorite| %>
+      <div class="card shadow mb-4 pb-5">
+        <div class="row">
+          <div class="col">
+            <%= link_to attachment_image_tag(favorite.estate, :background_image, format: 'jpeg', size: "300x300"), estate_path(favorite) %>
+          </div>
+          <div class="col">
+            <h5>物件名</h5>
+          </div>
+          <div class="col">
+            <%= favorite.estate.name %> <%= favorite.estate.room_number %>号室
+          </div>
+          <div class="col">
+            <h5>物件住所</h5>
+          </div>
+          <div class="col">
+            <%= favorite.estate.address %>
+          </div>
+          <div class="col">
+            <h5>間取り</h5>
+          </div>
+          <div class="col">
+            <%= favorite.estate.floor %>
+          </div>
+        </div>
+        <% if favorite.estate.favorited_by?(current_customer) %>
+        <h5>お気に入り数：
+          <%= link_to estate_favorites_path(favorite.estate), method: :delete do %>
+          ★<%= favorite.estate.favorites.count %>
           <% end %>
+        </h5>
+        <% else %>
+        <h5>お気に入り数：
+          <%= link_to estate_favorites_path(favorite.estate), method: :post do %>
+          ☆<%= favorite.estate.favorites.count %>
+        　<% end %>
+        </h5>
         <% end %>
-        </div>
+        <h5>お気に入りした日時：<%= favorite.created_at.strftime('%Y年%m月%d日 %H時%M分') %></h5>
       </div>
-    </div>
-  </div>
+    <% end %>
+  <% end %>
 </div>
 
 
-<h3>お問い合わせ物件一覧</h3>
+<div class="text-center pt-5 pb-5" style="font-size: 40px;">お問い合せ物件一覧</div>
 <div class="container">
   <div class="row">
     <div class="col-11">
