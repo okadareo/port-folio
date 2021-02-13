@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_144745) do
+ActiveRecord::Schema.define(version: 2021_02_13_055030) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 2021_02_09_144745) do
     t.string "floor"
     t.integer "price"
     t.string "floor_image_id"
-    t.string "property_image_a_id"
     t.string "property_image_b_id"
     t.string "property_image_c_id"
     t.string "property_image_d_id"
@@ -59,12 +58,10 @@ ActiveRecord::Schema.define(version: 2021_02_09_144745) do
     t.string "property_image_j_id"
     t.string "property_image_k_id"
     t.string "property_image_l_id"
-    t.string "property_image_m_id"
-    t.string "property_image_n_id"
-    t.string "property_image_o_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "room_number"
+    t.string "property_image_a_id"
   end
 
   create_table "favorites", force: :cascade do |t|

@@ -1,4 +1,5 @@
 <header class="shadow-sm">
+  <!--sticky-top-->
   <nav class="navbar navbar-expand-xs navbar-light">
     <a class="navbar-brand p-0" href="/"><%= image_tag('logo1.jpg') %></a>
     <%= render "layouts/search" %>
@@ -6,23 +7,36 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav">
       <% if customer_signed_in? %>
-      <li class="nav-item">
-        <%= link_to "マイページ", customers_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
-      </li>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "トップ", root_path, data: {"turbolinks" => false}, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "物件一覧", estates_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "マイページ", customers_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+      <% elsif %>
+        <li class="nav-item">
+          <%= link_to "サインアップ", new_customer_registration_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログイン", new_customer_session_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
       <% else %>
-      <li class="nav-item">
-        <%= link_to "サインアップ", new_customer_registration_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "ログイン", new_customer_session_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
-      </li>
-      <% end %>
+        <li class="nav-item">
+          <%= link_to "トップ", root_path, data: {"turbolinks" => false}, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "物件一覧", estates_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
       </ul>
+      <% end %>
     </div>
   </nav>
 </header>

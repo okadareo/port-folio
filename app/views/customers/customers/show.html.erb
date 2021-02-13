@@ -28,9 +28,8 @@
       <div class="col pt-2">
         <%= link_to "編集", edit_customer_registration_path, class: "edit btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
       </div>
-      </div>
     </div>
-　</div>
+  </div>
 </div>
 
 
@@ -38,55 +37,84 @@
 <div class="container">
   <% if @favorites.present? %>
     <% @favorites.each do |favorite| %>
-      <div class="card shadow mb-4 pb-5">
-        <div class="row">
-          <div class="col">
-            <%= link_to attachment_image_tag(favorite.estate, :background_image, format: 'jpeg', size: "300x300"), estate_path(favorite) %>
-          </div>
-          <div class="col">
-            <h5>物件名</h5>
-          </div>
-          <div class="col">
-            <%= favorite.estate.name %> <%= favorite.estate.room_number %>号室
-          </div>
-          <div class="col">
-            <h5>物件住所</h5>
-          </div>
-          <div class="col">
-            <%= favorite.estate.address %>
-          </div>
-          <div class="col">
-            <h5>間取り</h5>
-          </div>
-          <div class="col">
-            <%= favorite.estate.floor %>
-          </div>
-        </div>
-        <% if favorite.estate.favorited_by?(current_customer) %>
-        <h5>お気に入り数：
-          <%= link_to estate_favorites_path(favorite.estate), method: :delete do %>
-          ★<%= favorite.estate.favorites.count %>
-          <% end %>
-        </h5>
-        <% else %>
-        <h5>お気に入り数：
-          <%= link_to estate_favorites_path(favorite.estate), method: :post do %>
-          ☆<%= favorite.estate.favorites.count %>
-        　<% end %>
-        </h5>
-        <% end %>
-        <h5>お気に入りした日時：<%= favorite.created_at.strftime('%Y年%m月%d日 %H時%M分') %></h5>
-      </div>
+      <table class="card shadow">
+        <t>
+          <td><%= link_to attachment_image_tag(favorite.estate, :background_image, format: 'jpeg', size: "300x300"), estate_path(favorite) %></td>
+          <td>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>物件名</td>
+                  <td><%= favorite.estate.name %> <%= favorite.estate.room_number %>号室</td>
+                </tr>
+                <tr>
+                  <td>住所</td>
+                  <td><%= favorite.estate.address %></td>
+                </tr>
+                <tr>
+                  <td>間取り</td>
+                <td><%= favorite.estate.floor %></td>
+                </tr>
+                <tr>
+                  <td>
+                  <% if favorite.estate.favorited_by?(current_customer) %>
+                    お気に入り数
+                    <%= link_to estate_favorites_path(favorite.estate), method: :delete do %>
+                    ★<%= favorite.estate.favorites.count %></h5>
+                    <% end %>
+                  <% else %>
+                    お気に入り数
+                    <%= link_to estate_favorites_path(favorite.estate), method: :post do %>
+                    ☆<%= favorite.estate.favorites.count %></h5>
+                  　<% end %>
+                  <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>お気に入りした日時</td>
+                  <td><%= favorite.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </td>
+      </table>
     <% end %>
   <% end %>
 </div>
 
 
+
+<table border="1" cellpadding="10" width="700">
+  <tr>
+    <td bgcolor="#C0E0D0"><img src="./osu.gif" width="100"></td>
+    <td>
+      <table cellpadding="10" bgcolor="#A0C0B0">
+        <tr>
+          <td>
+            <font color="#F8FFFF">
+              画像はこのように貼ります。
+              tableタグで表示を行う場合はこのようにします。
+
+              背景色をセル（枠）単位で変えたいときはこうします。
+              ただし、背景の色は、   このページを参考にして下さい。
+              色の設定は、ホームページの作成において非常に重要なファクター となります。
+            </font>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+
+
+
 <div class="text-center pt-5 pb-5" style="font-size: 40px;">お問い合せ物件一覧</div>
 <div class="container">
   <div class="row">
-    <div class="col-11">
-      <div class="card">
+    <div class="col">
+      <div class="card shadow">
         <div class="card-body">
         <% if @researches.present? %>
           <% @researches.each do |research| %>
@@ -106,4 +134,4 @@
   </div>
 </div>
 
-<%= render "customers/customers/footer" %>
+<%#= render "customers/customers/footer" %>

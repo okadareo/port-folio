@@ -6,41 +6,25 @@
 
   <div class="container">
     <div class="row pb-4">
-      <div class="col-4 text-right">
-        <%= f.label :お名前 %>
-      </div>
-      <div class="col-7">
-        <%= f.text_field :name, autofocus: true, placeholder:"お名前", :size => "50" %>
-      </div>
+      <div class="col-4 text-right"><%= f.label :お名前 %></div>
+      <div class="col-7"><%= f.text_field :name, autofocus: true, placeholder:"お名前", :size => "50" %></div>
     </div>
     <div class="row pb-4">
-      <div class="col-4 text-right">
-        <%= f.label :メールアドレス %>
-      </div>
-      <div class="col-7">
-        <%= f.email_field :email, placeholder:"メールアドレス", :size => "50" %>
-      </div>
+      <div class="col-4 text-right"><%= f.label :メールアドレス %></div>
+      <div class="col-7"><%= f.email_field :email, placeholder:"メールアドレス", :size => "50" %></div>
     </div>
     <div class="row pb-4">
-      <div class="col-4 text-right">
-        <%= f.label :電話番号 %>
-      </div>
-      <div class="col-7">
-        <%= f.text_field :phone_number, placeholder:"電話番号", :size => "50" %>
-      </div>
+      <div class="col-4 text-right"><%= f.label :電話番号 %></div>
+      <div class="col-7"><%= f.text_field :phone_number, placeholder:"電話番号", :size => "50" %></div>
     </div>
     <div class="row pb-4">
-      <div class="col-4 text-right">
-        <%= f.label :パスワード %>
-      </div>
+      <div class="col-4 text-right"><%= f.label :パスワード %></div>
       <div class="col-7">
         <%= f.password_field :password, autocomplete: "new-password", placeholder:"パスワード", :size => "50" %>
       </div>
     </div>
     <div class="row" style="padding-bottom: 70px;">
-      <div class="col-4 text-right">
-        <%= f.label :"パスワード(確認)" %>
-      </div>
+      <div class="col-4 text-right"><%= f.label :"パスワード(確認)" %></div>
       <div class="col-7">
         <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"パスワード（確認）", :size => "50" %>
       </div>

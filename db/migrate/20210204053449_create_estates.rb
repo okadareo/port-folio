@@ -21,10 +21,6 @@ class CreateEstates < ActiveRecord::Migration[5.2]
       t.string :property_image_j_id
       t.string :property_image_k_id
       t.string :property_image_l_id
-      t.string :property_image_m_id
-      t.string :property_image_n_id
-      t.string :property_image_o_id
-
       t.timestamps
     end
   end

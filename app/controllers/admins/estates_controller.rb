@@ -50,9 +50,6 @@ class Admins::EstatesController < ApplicationController
       :property_image_j,
       :property_image_k,
       :property_image_l,
-      :property_image_m,
-      :property_image_n,
-      :property_image_o,
       :name, :room_number, :info, :address, :floor, :price)
   end
 end

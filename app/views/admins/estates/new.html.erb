@@ -1,41 +1,85 @@
 <%= render "admins/customers/header" %>
 
-<h1>物件入稿画面</h1>
-<div class="container">
-  <div class="row3">
-    <%= form_with model: @estate, url:admins_estates_path, local: true do |f| %>
-      <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            <h5><%= f.label :背景画像 %>　<%= f.attachment_field :background_image %></h5>
-            <h5><%= f.label :物件名 %>　<%= f.text_field :name, placeholder:"物件名", :size=>"93" %></h5>
-            <h5><%= f.label :部屋番号 %>　<%= f.number_field :room_number, placeholder:"部屋番号" %></h5>
-            <h5><%= f.label :物件概要 %>　<%= f.text_area :info, :size=>"100x10", placeholder: "物件概要" %></h5>
-            <h5><%= f.label :住所 %>　<%= f.text_field :address, placeholder: "住所", :size=>"95" %></h5>
-            <h5><%= f.label :間取り %>　<%= f.text_field :floor, placeholder: "間取り" %></h5>
-            <h5><%= f.label :賃料 %>　<%= f.number_field :price, placeholder: "賃料" %></h5>
-            <h5><%= f.label :間取り図画像 %>　<%= f.attachment_field :floor_image %></h5>
-            <h5><%= f.label :物件画像１ %>　<%= f.attachment_field :property_image_a %></h5>
-            <h5><%= f.label :物件画像２ %>　<%= f.attachment_field :property_image_b %></h5>
-            <h5><%= f.label :物件画像３ %>　<%= f.attachment_field :property_image_c %></h5>
-            <h5><%= f.label :物件画像４ %>　<%= f.attachment_field :property_image_d %></h5>
-            <h5><%= f.label :物件画像５ %>　<%= f.attachment_field :property_image_e %></h5>
-            <h5><%= f.label :物件画像６ %>　<%= f.attachment_field :property_image_f %></h5>
-            <h5><%= f.label :物件画像７ %>　<%= f.attachment_field :property_image_g %></h5>
-            <h5><%= f.label :物件画像８ %>　<%= f.attachment_field :property_image_h %></h5>
-            <h5><%= f.label :物件画像９ %>　<%= f.attachment_field :property_image_j %></h5>
-            <h5><%= f.label :物件画像１０ %>　<%= f.attachment_field :property_image_k %></h5>
-            <h5><%= f.label :物件画像１１ %>　<%= f.attachment_field :property_image_l %></h5>
-            <h5><%= f.label :物件画像１２ %>　<%= f.attachment_field :property_image_m %></h5>
-            <h5><%= f.label :物件画像１３ %>　<%= f.attachment_field :property_image_n %></h5>
-            <h5><%= f.label :物件画像１４ %>　<%= f.attachment_field :property_image_o %></h5>
-            <%= f.submit "入稿する" %>
-          </div>
-        </div>
+<div class="text-center pt-5 pb-5" style="font-size: 30px; font-weight: bold;">物件入稿画面</div>
+<%= form_with model: @estate, url:admins_estates_path, local: true do |f| %>
+  <div class="container">
+    <div class="card shadow" style="margin: 0 0 150px 0;">
+      <div class="row pt-4 pb-4">
+        <div class="col-2 text-center"><%= f.label :物件名 %></div>
+        <div class="col-5"><%= f.text_field :name, placeholder:"techroom", :size=>"50" %></div>
+        <div class="col-2 text-center"><%= f.label :部屋番号 %></div>
+        <div class="col-1"><%= f.number_field :room_number, placeholder:"304" %></div>
       </div>
-    <% end %>
+      <div class="row pb-4">
+        <div class="col-2 text-center"><%= f.label :賃料 %></div>
+        <div class="col-2"><%= f.number_field :price, placeholder: "90000" %></div>
+        <div class="col-2 text-center"><%= f.label :間取り %></div>
+        <div class="col-2"><%= f.text_field :floor, placeholder: "2LDK" %></div>
+      </div>
+      <div class="row pb-4">
+        <div class="col-2 text-center"><%= f.label :物件概要 %></div>
+        <div class="col">
+          <%= f.text_area :info, placeholder:
+          "このお家の魅力は、何と言っても広々としたリビングです。LDKの広さは20帖もございます。
+大きなテレビも置けますし、大きなテーブルも置けます。
+また、●●町で南向きのお家です。「日当り」は、お金をかけても手に入れられませんので、物件選びの際は日当りも重視したいところです。
+あなたが「新居に置きたいな」と思っておられるテレビや家具が、実際に配置出来るかどうか
+この週末お天気が良ければ、このお家の日当りを見に一緒に現地へ参りましょう。
+日当り重視のあなたに、ご満足頂けると思いますよ。",
+          :size=>"102x10" %></div>
+      </div>
+      <div class="row pb-4">
+        <div class="col-2 text-center"><%= f.label :住所 %></div>
+        <div class="col"><%= f.text_field :address, placeholder: "東京都新宿区〇〇〇〇〇〇", :size=>"103" %></div>
+      </div>
+      <div class="row pb-4">
+        <div class="col text-center"><%= f.label :背景画像 %></div>
+        <div class="col text-center"><%= f.attachment_field :background_image %></div>
+        <div class="col text-center"><%= f.label :間取り図画像 %></div>
+        <div class="col text-center"><%= f.attachment_field :floor_image %></div>
+      </div>
+      <div class="row pb-4">
+        <div class="col text-center"><%= f.label :物件画像１ %></div>
+        <div class="col text-center"><%= f.attachment_field :property_image_a %></div>
+        <div class="col text-center"><%= f.label :物件画像２ %></div>
+        <div class="col text-center"><%= f.attachment_field :property_image_b %></div>
+      </div>
+      <div class="row pb-4">
+        <div class="col text-center"><%= f.label :物件画像３ %></div>
+        <div class="col text-center"><%= f.attachment_field :property_image_c %></div>
+        <div class="col text-center"><%= f.label :物件画像４ %></div>
+        <div class="col text-center"><%= f.attachment_field :property_image_d %></div>
+      </div>
+      <div class="row pb-4">
+        <div class="col text-center"><%= f.label :物件画像５ %></div>
+        <div class="col text-center"><%= f.attachment_field :property_image_e %></div>
+        <div class="col text-center"><%= f.label :物件画像６ %></div>
+        <div class="col text-center"><%= f.attachment_field :property_image_f %></div>
+      </div>
+      <div class="row pb-4">
+        <div class="col text-center"><%= f.label :物件画像７ %></div>
+        <div class="col text-center"><%= f.attachment_field :property_image_g %></div>
+        <div class="col text-center"><%= f.label :物件画像８ %></div>
+        <div class="col text-center"><%= f.attachment_field :property_image_h %></div>
+      </div>
+      <div class="row pb-4">
+        <div class="col text-center"><%= f.label :物件画像９ %></div>
+        <div class="col text-center"><%= f.attachment_field :property_image_i %></div>
+        <div class="col text-center"><%= f.label :物件画像１０ %></div>
+        <div class="col text-center"><%= f.attachment_field :property_image_j %></div>
+      </div>
+      <div class="row">
+        <div class="col text-center"><%= f.label :物件画像１１ %></div>
+        <div class="col text-center"><%= f.attachment_field :property_image_k %></div>
+        <div class="col text-center"><%= f.label :物件画像１２ %></div>
+        <div class="col text-center"><%= f.attachment_field :property_image_l %></div>
+      </div>
+      <div class="row justify-content-center" style="padding: 60px 0;">
+        <%= f.submit "入稿する", class: "search" %>
+      </div>
+    </div>
   </div>
-</div>
+<% end %>
 
 <%= render "admins/customers/footer" %>
 

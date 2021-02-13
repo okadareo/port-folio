@@ -22,9 +22,10 @@ Admin.create!(
   Estate.create(
     admin_id: '1',
     background_image: open("app/assets/images/1.jpeg"),
-    name: "バルク・ド・ハギ 305号室",
+    name: "バルク・ド・ハギ",
+    room_number: "204",
     info: "エレベーター・オートロック付きのファミリー物件。北側には大きな公園があり、周辺に飲食店も多数あります！部屋の設備もバス・トイレ別、浴室乾燥機、温水洗浄便座、室内洗濯機置場と充実しています。",
-    address: "高知県高知市岡田町3-1",
+    address: "東京都新宿区岡田町3-1",
     floor: "3LDK",
     price: "100000",
     floor_image: open("app/assets/images/1.jpeg"),
@@ -40,8 +41,5 @@ Admin.create!(
     property_image_j: open("app/assets/images/1.jpeg"),
     property_image_k: open("app/assets/images/1.jpeg"),
     property_image_l: open("app/assets/images/1.jpeg"),
-    property_image_m: open("app/assets/images/1.jpeg"),
-    property_image_n: open("app/assets/images/1.jpeg"),
-    property_image_o: open("app/assets/images/1.jpeg"),
   )
 end

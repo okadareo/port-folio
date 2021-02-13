@@ -1,33 +1,44 @@
-<nav class="navbar justify-content-end navbar-expand-xs navbar-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav">
-    <% if customer_signed_in? %>
-    <li class="nav-item">
-      <%= link_to "マイページ", customers_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
-    </li>
-    <% else %>
-    <li class="nav-item">
-      <%= link_to "サインアップ", new_customer_registration_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "ログイン", new_customer_session_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
-    </li>
-    <% end %>
-    </ul>
-  </div>
-</nav>
-<div class="container">
-  <div class="row justify-content-center" >
-<div class="top col-4">
-  <%= link_to image_tag("logo1.jpg"), root_path %>
-</div>
-</div>
+<header class="header" style="position: sticky; position: -webkit-sticky; top: 0;">
+  <nav class="navbar justify-content-end navbar-expand-xs navbar-light">
+    <button class="navbar-toggler pl-5" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+      <% if customer_signed_in? %>
+      <li class="nav-item">
+        <%= link_to "トップ", root_path, data: {"turbolinks" => false}, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "物件一覧", estates_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "マイページ", customers_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <%= link_to "トップ", root_path, data: {"turbolinks" => false}, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "物件一覧", estates_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "サインアップ", new_customer_registration_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "ログイン", new_customer_session_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+      </li>
+      <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="row top justify-content-center">
+  <%= link_to image_tag("logo1.jpg"), root_path, class: "image-top" %>
 </div>
 
 <%= search_form_for @q do |f| %>
@@ -74,13 +85,12 @@
   </div>
 <% end %>
 
-<div class="pb-5" style="margin-top: 100px; background-color: #EB9FEF;">
+<div class="new" style="margin-top: 100px; padding-bottom: 200px; background-color: #EB9FEF;">
   <div class="row justify-content-center p-5" style="color: white; font-weight: bold;">
     <div class="text" style="font-size: 60px;">
       <div class>N e w</div>
     </div>
   </div>
-
   <div class="container mb-5">
     <div id="example-3" class="carousel slide" data-ride="carousel" style="width:100%">
       <div class="carousel-inner text-center">
