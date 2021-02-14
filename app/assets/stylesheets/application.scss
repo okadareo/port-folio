@@ -64,6 +64,7 @@
 
 .nav-item {
   text-align: right;
+  list-style: none;
 }
 
 .image-top:hover {
@@ -85,4 +86,12 @@
   font-weight: bold;
   font-size: 20px;
   padding: 5px 40px;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.btn:hover {
+  opacity: 0.5;
 }

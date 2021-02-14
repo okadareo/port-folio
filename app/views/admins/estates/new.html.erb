@@ -1,19 +1,23 @@
 <%= render "admins/customers/header" %>
 
-<div class="text-center pt-5 pb-5" style="font-size: 30px; font-weight: bold;">物件入稿画面</div>
+<div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">物件入稿画面</div>
 <%= form_with model: @estate, url:admins_estates_path, local: true do |f| %>
   <div class="container">
-    <div class="card shadow" style="margin: 0 0 150px 0;">
+    <div class="card shadow" style="margin: 0 0 120px 0;">
       <div class="row pt-4 pb-4">
         <div class="col-2 text-center"><%= f.label :物件名 %></div>
         <div class="col-5"><%= f.text_field :name, placeholder:"techroom", :size=>"50" %></div>
-        <div class="col-2 text-center"><%= f.label :部屋番号 %></div>
+        <div class="col-2 text-center pt-1"><%= f.label :部屋番号 %></div>
         <div class="col-1"><%= f.number_field :room_number, placeholder:"304" %></div>
+      </div>
+      <div class="row pb-4">
+        <div class="col-2 text-center"><%= f.label :住所 %></div>
+        <div class="col"><%= f.text_field :address, placeholder: "東京都新宿区〇〇〇〇〇〇", :size=>"103" %></div>
       </div>
       <div class="row pb-4">
         <div class="col-2 text-center"><%= f.label :賃料 %></div>
         <div class="col-2"><%= f.number_field :price, placeholder: "90000" %></div>
-        <div class="col-2 text-center"><%= f.label :間取り %></div>
+        <div class="col-2 text-center pt-1"><%= f.label :間取り %></div>
         <div class="col-2"><%= f.text_field :floor, placeholder: "2LDK" %></div>
       </div>
       <div class="row pb-4">
@@ -27,10 +31,6 @@
 この週末お天気が良ければ、このお家の日当りを見に一緒に現地へ参りましょう。
 日当り重視のあなたに、ご満足頂けると思いますよ。",
           :size=>"102x10" %></div>
-      </div>
-      <div class="row pb-4">
-        <div class="col-2 text-center"><%= f.label :住所 %></div>
-        <div class="col"><%= f.text_field :address, placeholder: "東京都新宿区〇〇〇〇〇〇", :size=>"103" %></div>
       </div>
       <div class="row pb-4">
         <div class="col text-center"><%= f.label :背景画像 %></div>

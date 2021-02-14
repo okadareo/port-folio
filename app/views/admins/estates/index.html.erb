@@ -1,38 +1,84 @@
 <%= render "admins/customers/header" %>
 
-<div class="text-center pt-5 pb-5" style="font-size: 30px; font-weight: bold;">入稿物件一覧</div>
+<div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">入稿物件一覧</div>
 <div class="container">
-  <div class="row">
-    <% @estates.each do |estate| %>
-      <div class="col-11">
-        <div class="card">
-          <div class="card-body">
-            <%= attachment_image_tag estate, :background_image, format: 'jpeg', size: "100x100" %>
-            <h5>物件名：<%= estate.name %> <%= estate.room_number %>号室</h5>
-            <h5>住所：<%= estate.address %></h5>
-            <h5>間取り：<%= estate.floor %></h5>
-            <h5>賃料：¥<%= estate.price.to_s(:delimited) %></h5>
-            <h5>投稿日時：<%= estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></h5>
-            <h5>更新日時：<%= estate.updated_at.strftime('%Y年%m月%d日 %H時%M分') %></h5>
-            <h5><%= link_to "編集", edit_admins_estate_path(estate) %></h5>
-            <h5><%= link_to "削除", admins_estate_path(estate), method: :delete %></h5>
-
-            <h3>お問い合わせ一覧</h3>
-            <% estate.researches.each do |research| %>
-            <h5>ユーザー名：<%= research.customer.name %></h5>
-            <h5>メールアドレス：<%= research.customer.email %></h5>
-            <h5>電話番号：<%= research.customer.phone_number %></h5>
-            <h5>お問い合わせタイトル：<%= research.title %></h5>
-            <h5>お問合わせ本文：<%= research.body %></h5>
-            <h5>お問い合わせ日時：<%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></h5>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  <%= paginate @customers %>
-  </div>
+  <% @estates.each do |estate| %>
+    <table class="card shadow" style="margin-bottom: 30px;">
+      <tr>
+        <td><%= attachment_image_tag estate, :background_image, format: 'jpeg', size: "300x300" %></td>
+        <td>
+          <table class="table table-striped" style="margin-left: 60px;">
+            <tr>
+              <td>物件名</td>
+              <td><%= estate.name %>　<%= estate.room_number %>号室</td>
+            </tr>
+            <tr>
+              <td>住所</td>
+              <td><%= estate.address %></td>
+            </tr>
+            <tr>
+              <td>賃料</td>
+            　<td>¥<%= estate.price.to_s(:delimited) %></td>
+            </tr>
+            <tr>
+              <td>間取り</td>
+            　<td><%= estate.floor %></td>
+            </tr>
+            <tr>
+              <td>投稿日時</td>
+            　<td><%= estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+            </tr>
+            <tr>
+              <td>更新日時</td>
+              <td><%= estate.updated_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+              <td><%= link_to "編集", edit_admins_estate_path(estate), class: "edit btn-sm btn-outline-secondary", :style=>" margin-left: 15px; text-decoration: none;" %></td>
+              <td><%= link_to "削除", admins_estate_path(estate), method: :delete, class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;" %></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr class="text-center">
+        <td>お問い合わせ一覧</td>
+      </tr>
+      <% estate.researches.each do |research| %>
+        <tr class="td" style="width: 100%; margin-bottom: 30px; padding: 400px;">
+          <td>
+          <table class="card">
+            <tr>
+              <td>ユーザ名</td>
+              <td class="card"><%= research.customer.name %></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td class="card"><%= research.customer.email %></td>
+            </tr>
+            <tr>
+              <td>電話番号</td>
+              <td class="card"><%= research.customer.phone_number %></td>
+            </tr>
+            <tr>
+              <td>お問い合わせタイトル</td>
+              <td class="card"><%= research.title %></td>
+            </tr>
+            <tr>
+              <td>お問い合わせ本文</td>
+              <td class="card"><%= research.body %></td>
+            </tr>
+            <tr>
+              <td>お問い合わせ日時</td>
+              <td class="card"><%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+            </tr>
+          </table>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+  <%= paginate @estates %>
 </div>
+
+
+
 
 <div class="text-center pt-5 pb-5" style="font-size: 30px; font-weight: bold;">カスタマーズ</div>
 <div class="container" style="margin-bottom: 100px;">

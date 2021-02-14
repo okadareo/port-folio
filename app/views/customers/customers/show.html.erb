@@ -1,5 +1,6 @@
 <%= render "customers/customers/header" %>
-<div class="text-center pt-5 pb-5" style="font-size: 30px; font-weight: bold;">マイページ</div>
+
+<div class="text-center" style="padding: 150px 0 30px 0; font-size: 30px; font-weight: bold;">マイページ</div>
 <div class="container">
   <div class="card shadow">
     <div class="row pt-5">
@@ -26,112 +27,129 @@
         </div>
       </div>
       <div class="col pt-2">
-        <%= link_to "編集", edit_customer_registration_path, class: "edit btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        <%= link_to "編集", edit_customer_registration_path, class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;" %>
       </div>
     </div>
   </div>
 </div>
-
 
 <div class="text-center pt-5 pb-5" style="font-size: 30px; font-weight: bold;">お気に入り物件一覧</div>
 <div class="container">
   <% if @favorites.present? %>
     <% @favorites.each do |favorite| %>
-      <table class="card shadow">
-        <t>
-          <td><%= link_to attachment_image_tag(favorite.estate, :background_image, format: 'jpeg', size: "300x300"), estate_path(favorite) %></td>
+      <table class="card shadow" style="margin-bottom: 30px;">
+        <td>
+          <td><%= link_to attachment_image_tag(favorite.estate, :background_image, format: 'jpeg', size: "300x300"), estate_path(favorite), {class: "image-top"} %></td>
           <td>
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td>物件名</td>
-                  <td><%= favorite.estate.name %> <%= favorite.estate.room_number %>号室</td>
-                </tr>
-                <tr>
-                  <td>住所</td>
-                  <td><%= favorite.estate.address %></td>
-                </tr>
-                <tr>
-                  <td>間取り</td>
-                <td><%= favorite.estate.floor %></td>
-                </tr>
-                <tr>
-                  <td>
+            <table class="table table-striped" style="margin-left: 110px;">
+              <tr>
+                <td>物件名</td>
+                <td><%= favorite.estate.name %>　<%= favorite.estate.room_number %>号室</td>
+              </tr>
+              <tr>
+                <td>住所</td>
+                <td><%= favorite.estate.address %></td>
+              </tr>
+              <tr>
+                <td>賃料</td>
+              　<td>¥<%= favorite.estate.price.to_s(:delimited) %></td>
+              </tr>
+              <tr>
+                <td>間取り</td>
+              　<td><%= favorite.estate.floor %></td>
+              </tr>
+              <tr>
+                <td>お気に入り数</td>
+                <td>
                   <% if favorite.estate.favorited_by?(current_customer) %>
-                    お気に入り数
                     <%= link_to estate_favorites_path(favorite.estate), method: :delete do %>
                     ★<%= favorite.estate.favorites.count %></h5>
                     <% end %>
                   <% else %>
-                    お気に入り数
                     <%= link_to estate_favorites_path(favorite.estate), method: :post do %>
                     ☆<%= favorite.estate.favorites.count %></h5>
-                  　<% end %>
+                　　<% end %>
                   <% end %>
-                  </td>
-                </tr>
-                <tr>
-                  <td>お気に入りした日時</td>
-                  <td><%= favorite.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
-                </tr>
-              </tbody>
+                </td>
+              </tr>
+              <tr>
+                <td>お気に入りした日時</td>
+                <td><%= favorite.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+              </tr>
             </table>
           </td>
         </td>
       </table>
     <% end %>
+  <% else %>
+    <div class="text-center">いいねされた物件はありません。</div>
   <% end %>
 </div>
 
 
-
-<table border="1" cellpadding="10" width="700">
-  <tr>
-    <td bgcolor="#C0E0D0"><img src="./osu.gif" width="100"></td>
-    <td>
-      <table cellpadding="10" bgcolor="#A0C0B0">
+<div class="text-center pt-5 pb-5" style="font-size: 30px; font-weight: bold;">お問い合わせ物件一覧</div>
+<div class="container">
+  <% if @researches.present? %>
+    <% @researches.each do |research| %>
+      <table class="card shadow" style="margin-bottom: 100px;">
         <tr>
+          <td><%= link_to attachment_image_tag(research.estate, :background_image, format: 'jpeg', size: "300x300"), estate_path(research), {class: "image-top"} %></td>
           <td>
-            <font color="#F8FFFF">
-              画像はこのように貼ります。
-              tableタグで表示を行う場合はこのようにします。
-
-              背景色をセル（枠）単位で変えたいときはこうします。
-              ただし、背景の色は、   このページを参考にして下さい。
-              色の設定は、ホームページの作成において非常に重要なファクター となります。
-            </font>
+            <table class="table table-striped" style="margin-left: 110px;">
+              <tr>
+                <td>物件名</td>
+                <td><%= research.estate.name %>　<%= research.estate.room_number %>号室</td>
+              </tr>
+              <tr>
+                <td>住所</td>
+                <td><%= research.estate.address %></td>
+              </tr>
+              <tr>
+                <td>賃料</td>
+              　<td>¥<%= research.estate.price.to_s(:delimited) %></td>
+              </tr>
+              <tr>
+                <td>間取り</td>
+              　<td><%= research.estate.floor %></td>
+              </tr>
+              <tr>
+                <td>お気に入り数</td>
+                <td>
+                  <% if research.estate.favorited_by?(current_customer) %>
+                    <%= link_to estate_favorites_path(research.estate), method: :delete do %>
+                    ★<%= research.estate.favorites.count %></h5>
+                    <% end %>
+                  <% else %>
+                    <%= link_to estate_favorites_path(research.estate), method: :post do %>
+                    ☆<%= research.estate.favorites.count %></h5>
+                　　<% end %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td>お気に入りした日時</td>
+                <td><%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+              </tr>
+            </table>
           </td>
         </tr>
+        <tr>
+          <td class="title text-center" style="padding-bottom: 35px; font-weight: bold;">お問い合わせタイトル</td>
+          <td class="card" style="width: 100%; height: 80px; margin: 50px 0 30px 110px;"><%= research.title %></td>
+        </tr>
+        <tr>
+          <td class="body text-center" style="padding-bottom: 300px; font-weight: bold;">お問い合わせ本文</td>
+          <td class="card" style="width: 100%; height: 300px; margin: 0 0 30px 110px;"><%= research.body %></td>
+        </tr>
+        <tr>
+          <td class="created text-center" style="padding-bottom: 30px; font-weight: bold;">お問い合わせした日時</td>
+          <td class="card" style="width: 100%; margin: 0 0 30px 110px;"><%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+        </tr>
       </table>
-    </td>
-  </tr>
-</table>
-
-
-
-
-<div class="text-center pt-5 pb-5" style="font-size: 40px;">お問い合せ物件一覧</div>
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="card shadow">
-        <div class="card-body">
-        <% if @researches.present? %>
-          <% @researches.each do |research| %>
-          <%= link_to attachment_image_tag(research.estate, :background_image, format: 'jpeg', size: "100x100"), estate_path(research) %>
-          <h5>物件名：<%= research.estate.name %></h5>
-          <h5>部屋番号：<%= research.estate.room_number %>号室</h5>
-          <h5>物件住所：<%= research.estate.address %></h5>
-          <h5>間取り：<%= research.estate.floor %></h5>
-          <h5>お問い合わせタイトル：<%= research.title %></h5>
-          <h5>お問い合わせ本文：<%= research.body %></h5>
-          <h5>お問い合わせした日時：<%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></h5>
-          <% end %>
-        <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+    <% end %>
+  <% else %>
+    <div class="text-center">お問い合わせされた物件はありません。</div>
+  <% end %>
 </div>
 
-<%#= render "customers/customers/footer" %>
+<%= render "customers/customers/footer" %>

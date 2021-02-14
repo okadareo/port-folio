@@ -1,8 +1,9 @@
-<header class="shadow-sm">
-  <!--sticky-top-->
+<header class="sticky-top shadow-sm">
   <nav class="navbar navbar-expand-xs navbar-light">
     <a class="navbar-brand p-0" href="/"><%= image_tag('logo1.jpg') %></a>
+
     <%= render "layouts/search" %>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,19 +22,18 @@
         <li class="nav-item">
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
         </li>
-      <% elsif %>
-        <li class="nav-item">
-          <%= link_to "サインアップ", new_customer_registration_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "ログイン", new_customer_session_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
-        </li>
       <% else %>
         <li class="nav-item">
           <%= link_to "トップ", root_path, data: {"turbolinks" => false}, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
         </li>
         <li class="nav-item">
           <%= link_to "物件一覧", estates_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログイン", new_customer_session_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "サインアップ", new_customer_registration_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
         </li>
       </ul>
       <% end %>
