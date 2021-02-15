@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    resources :estates, only: [:new, :create, :index, :edit, :update, :destroy]
+    resources :estates, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :customers, only: [:index]
   end
 

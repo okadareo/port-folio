@@ -19,22 +19,19 @@
               <%= estate.address %>
             </div>
           </div><br>
-
           <div>間取り　<%= estate.floor %></div><br>
           <div>賃料　¥<%= estate.price.to_s(:delimited) %></div><br>
+          <div>お気に入り
           <% if estate.favorited_by?(current_customer) %>
-            <div>お気に入り
-              <%= link_to estate_favorites_path(estate), method: :delete do %>
-              ★<%= estate.favorites.count %>
-              <% end %>
-            </div>
+            <%= link_to estate_favorites_path(estate), method: :delete do %>
+            ★<%= estate.favorites.count %>
+            <% end %>
           <% else %>
-            <div>お気に入り
-              <%= link_to estate_favorites_path(estate), method: :post do %>
-              ☆<%= estate.favorites.count %>
-              <% end %>
-            </div>
-          <% end %><br>
+            <%= link_to estate_favorites_path(estate), method: :post do %>
+            ☆<%= estate.favorites.count %>
+            <% end %>
+          <% end %>
+          </div><br>
           <div>投稿日時：<%= estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></div><br>
         </div>
       </div>

@@ -16,6 +16,11 @@ class Admins::EstatesController < ApplicationController
     @customers = Customer.all.page(params[:page]).per(10)
   end
 
+  def show
+    @estates = Estate.find(params[:id])
+    @researches = Research.where(estate_id: params[:id])
+  end
+
   def edit
     @estate = Estate.find(params[:id])
   end

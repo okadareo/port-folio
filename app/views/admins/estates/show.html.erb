@@ -1,0 +1,38 @@
+<%= render "admins/customers/header" %>
+
+<div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">
+   <%= @estates.name %>　<%= @estates.room_number %>号室のお問い合せ一覧
+</div>
+
+<div class="container">
+  <% if @researches.present? %>
+    <% @researches.reverse.each do |research| %>
+      <div class="card shadow" style="margin-bottom: 30px; height:600px;">
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="card col-3" >
+            <div class="card-header text-left"><%= research.customer.name %></div>
+            <div class="card-body">
+              <div class="card-text">
+                <div><%= research.customer.email %></div><br>
+                <div><%= research.customer.phone_number %></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-7">
+            <div>お問い合わせタイトル</div>
+            <div class="card"><%= research.title %></div><br>
+            <div>お問い合わせ本文</div>
+            <div class="card"><%= research.body %></div><br>
+            <div>お問い合わせ日時</div>
+            <div class="card"><%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="text-center pt-5">お問い合わせはありません。</div>
+  <% end %>
+</div>
+
+<%= render "admins/customers/footer" %>

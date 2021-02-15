@@ -38,7 +38,7 @@
   <% if @favorites.present? %>
     <% @favorites.each do |favorite| %>
       <table class="card shadow" style="margin-bottom: 30px;">
-        <td>
+        <tr>
           <td><%= link_to attachment_image_tag(favorite.estate, :background_image, format: 'jpeg', size: "300x300"), estate_path(favorite), {class: "image-top"} %></td>
           <td>
             <table class="table table-striped" style="margin-left: 110px;">
@@ -78,20 +78,20 @@
               </tr>
             </table>
           </td>
-        </td>
+        </tr>
       </table>
     <% end %>
   <% else %>
-    <div class="text-center">いいねされた物件はありません。</div>
+    <div class="text-center" style="padding: 30px 0 50px 0;">いいねされた物件はありません。</div>
   <% end %>
 </div>
 
 
-<div class="text-center pt-5 pb-5" style="font-size: 30px; font-weight: bold;">お問い合わせ物件一覧</div>
+<div class="text-center" style="padding: 30px 0 80px 0; font-size: 30px; font-weight: bold;">お問い合わせ物件一覧</div>
 <div class="container">
   <% if @researches.present? %>
     <% @researches.each do |research| %>
-      <table class="card shadow" style="margin-bottom: 100px;">
+      <table class="card shadow" style="margin-bottom: 30px;">
         <tr>
           <td><%= link_to attachment_image_tag(research.estate, :background_image, format: 'jpeg', size: "300x300"), estate_path(research), {class: "image-top"} %></td>
           <td>
@@ -111,24 +111,6 @@
               <tr>
                 <td>間取り</td>
               　<td><%= research.estate.floor %></td>
-              </tr>
-              <tr>
-                <td>お気に入り数</td>
-                <td>
-                  <% if research.estate.favorited_by?(current_customer) %>
-                    <%= link_to estate_favorites_path(research.estate), method: :delete do %>
-                    ★<%= research.estate.favorites.count %></h5>
-                    <% end %>
-                  <% else %>
-                    <%= link_to estate_favorites_path(research.estate), method: :post do %>
-                    ☆<%= research.estate.favorites.count %></h5>
-                　　<% end %>
-                  <% end %>
-                </td>
-              </tr>
-              <tr>
-                <td>お気に入りした日時</td>
-                <td><%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
               </tr>
             </table>
           </td>
