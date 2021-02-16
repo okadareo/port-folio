@@ -1,0 +1,40 @@
+<%= render "admins/customers/header" %>
+
+<div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">カスタマー一覧</div>
+<div class="container" style="margin-bottom: 100px;">
+  <% if @customers.present? %>
+    <% @customers.each do |customer| %>
+      <div class="card shadow">
+        <div class="row pt-5">
+          <div class="col-3 text-center pt-1" style="font-weight: bold; font-size: 25px;">お名前</div>
+          <div class="col-7">
+            <div class="card" style="font-size: 25px;">
+              <%= customer.name %>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-4">
+          <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">メールアドレス</div>
+          <div class="col-7">
+            <div class="card" style="font-size: 25px;">
+              <%= customer.email %>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-4 pb-5">
+          <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">電話番号</div>
+          <div class="col-7">
+            <div class="card" style="font-size: 25px;">
+              <%= customer.phone_number %>
+            </div>
+          </div>
+        </div>
+    　</div>
+　  <% end %>
+　<% else %>
+　  <div class="text-center pt-5">カスタマーはおりません。</div>
+　<% end %>
+　<%= paginate @customers %>
+</div>
+
+<%= render "admins/customers/footer" %>

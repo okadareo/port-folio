@@ -4,87 +4,61 @@
 <div class="container">
   <% if @estates.present? %>
     <% @estates.each do |estate| %>
-      <table class="card shadow" style="margin-bottom: 30px;">
-        <tr>
-          <td><%= attachment_image_tag estate, :background_image, format: 'jpeg', size: "300x300" %></td>
-          <td>
-            <table class="table table-striped" style="margin-left: 60px;">
+      <div class="card shadow" style="margin-bottom: 30px;">
+        <div class="row">
+          <div class="col-md-3 col-sm-12">
+            <%= attachment_image_tag estate, :background_image, format: 'jpeg', size: "285x362" %>
+          </div>
+          <div class="col-md-9 col-sm-12">
+            <table class="table table-striped">
               <tr>
-                <td>物件名</td>
-                <td><%= estate.name %>　<%= estate.room_number %>号室</td>
+                <th>物件名</th>
+                <td class="name"><%= estate.name %>　<%= estate.room_number %>号室</td>
+                <td></td>
               </tr>
               <tr>
-                <td>住所</td>
-                <td><%= estate.address %></td>
+                <th>住所</th>
+                <td class="address"><%= estate.address %></td>
+                <td></td>
               </tr>
               <tr>
-                <td>賃料</td>
-              　<td>¥<%= estate.price.to_s(:delimited) %></td>
+                <th>賃料</th>
+                <td>¥<%= estate.price.to_s(:delimited) %></td>
+                <td></td>
               </tr>
               <tr>
-                <td>間取り</td>
-              　<td><%= estate.floor %></td>
+                <th>間取り</th>
+                <td><%= estate.floor %></td>
+                <td></td>
               </tr>
               <tr>
-                <td>投稿日時</td>
-              　<td><%= estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+                <th>投稿日時</th>
+                <td><%= estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+                <td></td>
               </tr>
               <tr>
-                <td>更新日時</td>
+                <th>更新日時</th>
                 <td><%= estate.updated_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+                <td><%= link_to "編集", edit_admins_estate_path(estate), class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;" %></td>
               </tr>
               <tr>
-                <td>お問い合わせ件数</td>
-                <td><%= link_to estate.researches.count, admins_estate_path(estate) %></td>
-                <td><%= link_to "編集", edit_admins_estate_path(estate), class: "edit btn-sm btn-outline-secondary", :style=>" margin-left: 15px; text-decoration: none;" %></td>
+                <th>お問い合わせ件数</th>
+                <td class="researches" style="font-size: 22px;"><%= link_to admins_estate_path(estate) do %>
+                  <i class="fas fa-house-user"></i>
+                  <% end %>
+                  <%= estate.researches.count %>
+                </td>
                 <td><%= link_to "削除", admins_estate_path(estate), method: :delete, class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;" %></td>
               </tr>
             </table>
-          </td>
-        </tr>
-      </table>
+          </div>
+        </div>
+      </div>
     <% end %>
   <% else %>
     <div class="text-center pt-5">入稿物件はありません。</div>
   <% end %>
   <%= paginate @estates %>
-</div>
-
-<div class="text-center pt-5 pb-5" style="font-size: 30px; font-weight: bold;">カスタマー一覧</div>
-<div class="container" style="margin-bottom: 100px;">
-  <% if @customers.present? %>
-    <% @customers.each do |customer| %>
-      <div class="card shadow">
-        <div class="row pt-5">
-          <div class="col-3 text-center pt-1" style="font-weight: bold; font-size: 25px;">お名前</div>
-          <div class="col-7">
-            <div class="card" style="font-size: 25px;">
-              <%= customer.name %>
-            </div>
-          </div>
-        </div>
-        <div class="row pt-4">
-          <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">メールアドレス</div>
-          <div class="col-7">
-            <div class="card" style="font-size: 25px;">
-              <%= customer.email %>
-            </div>
-          </div>
-        </div>
-        <div class="row pt-4 pb-5">
-          <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">電話番号</div>
-          <div class="col-7">
-            <div class="card" style="font-size: 25px;">
-              <%= customer.phone_number %>
-            </div>
-          </div>
-        </div>
-    　</div>
-　  <% end %>
-　<% else %>
-　  <div class="text-center pt-5">カスタマはおりません。</div>
-　<% end %>
-　<%= paginate @customers %>
 </div>
 
 <%= render "admins/customers/footer" %>

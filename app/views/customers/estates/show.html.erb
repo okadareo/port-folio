@@ -12,23 +12,19 @@
         </div>
       </div>
       <div class="row justify-content-start">
-        <div class="col-2 address">
-          住所
-        </div>
-        <div class="estate col-10 address">
-          <%= @estate.address %>
-        </div>
+        <div class="col-2 address">住所</div>
+        <div class="estate col-10 address"><%= @estate.address %></div>
       </div><br>
       <div>間取り　<%= @estate.floor %></div><br>
       <div>賃料　¥<%= @estate.price.to_s(:delimited) %></div><br>
       <div>お気に入り
       <% if @estate.favorited_by?(current_customer) %>
-        <%= link_to estate_favorites_path(@estate), method: :delete do %>
-        ★<%= @estate.favorites.count %>
+        <%= link_to estate_favorites_path(@estate), method: :delete, style: "font-size:22px" do %>
+        <i class="fas fa-building"></i><%= @estate.favorites.count %>
         <% end %>
       <% else %>
-        <%= link_to estate_favorites_path(@estate), method: :post do %>
-        ☆<%= @estate.favorites.count %>
+        <%= link_to estate_favorites_path(@estate), method: :post, style: "font-size:22px" do %>
+        <i class="far fa-building"></i><%= @estate.favorites.count %>
         <% end %>
       <% end %>
       </div><br>

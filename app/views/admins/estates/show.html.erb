@@ -1,31 +1,42 @@
 <%= render "admins/customers/header" %>
 
 <div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">
-   <%= @estates.name %>　<%= @estates.room_number %>号室のお問い合せ一覧
+   <%= @estates.name %>　<%= @estates.room_number %>号室のお問い合わせ一覧
 </div>
 
 <div class="container">
   <% if @researches.present? %>
     <% @researches.reverse.each do |research| %>
-      <div class="card shadow" style="margin-bottom: 30px; height:600px;">
-        <div class="row">
-          <div class="col-1"></div>
-          <div class="card col-3" >
-            <div class="card-header text-left"><%= research.customer.name %></div>
-            <div class="card-body">
-              <div class="card-text">
-                <div><%= research.customer.email %></div><br>
+      <div class="card shadow" style="margin-bottom: 50px; height: auto;">
+        <div class="row pt-4 pb-4">
+          <div class="col-2 mr-4 text-right" style="font-weight: bold;">カスタマー情報</div>
+          <div class="card col-9">
+            <div class="row">
+              <div class="col-3">
+                <div class="name" style="font-weight: bold; ">名前</div>
+                <div><%= research.customer.name %></div>
+              </div>
+              <div class="col-6">
+                <div class="email" style="font-weight: bold; ">メールアドレス</div>
+                <div><%= research.customer.email %></div>
+              </div>
+              <div class="col-3">
+                <div class="phone" style="font-weight: bold; ">電話番号</div>
                 <div><%= research.customer.phone_number %></div>
               </div>
             </div>
           </div>
-          <div class="col-7">
-            <div>お問い合わせタイトル</div>
-            <div class="card"><%= research.title %></div><br>
-            <div>お問い合わせ本文</div>
-            <div class="card"><%= research.body %></div><br>
-            <div>お問い合わせ日時</div>
-            <div class="card"><%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></div>
+        </div>
+        <div class="row pb-4">
+          <div class="col-2 mr-4 text-right" style="font-weight: bold;">お問い合わせ内容</div>
+          <div class="card col-9">
+            <div><%= research.title %></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2 mr-4"></div>
+          <div class="card col-9 mb-4">
+            <div><%= research.body %></div>
           </div>
         </div>
       </div>

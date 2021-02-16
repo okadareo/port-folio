@@ -10,26 +10,11 @@
         </div>
         <div class="card-body" style="padding: 10px 0 0 10px;">
           <div class="row justify-content-start">
-            <div class="col-2 address">
-              住所
-            </div>
-            <div class="col-10 address">
-              <%= estates.first.address %>
-            </div>
+            <div class="col-2 address">住所</div>
+            <div class="col-10 address"><%= estates.first.address %></div>
           </div><br>
           <div>間取り　<%= estates.first.floor %></div><br>
           <div>賃料　¥<%= estates.first.price.to_s(:delimited) %></div><br>
-          <div>お気に入り
-          <% if estates.first.favorited_by?(current_customer) %>
-            <%= link_to estate_favorites_path(estates.first), method: :delete do %>
-            ★<%= estates.first.favorites.count %>
-            <% end %>
-          <% else %>
-            <%= link_to estate_favorites_path(estates.first), method: :post do %>
-            ☆<%= estates.first.favorites.count %>
-            <% end %>
-          <% end %>
-          </div><br>
           <div>投稿日時　<%= estates.first.created_at.strftime('%Y年%m月%d日 %H時%M分') %></div><br>
         </div>
       </div>
@@ -45,26 +30,11 @@
         </div>
         <div class="card-body" style="padding: 10px 0 0 10px;">
           <div class="row justify-content-start">
-            <div class="col-2 address">
-              住所
-            </div>
-            <div class="col-10 address">
-              <%= estates.second.address %>
-            </div>
+            <div class="col-2 address">住所</div>
+            <div class="col-10 address"><%= estates.second.address %></div>
           </div><br>
           <div>間取り　<%= estates.second.floor %></div><br>
           <div>賃料　¥<%= estates.second.price.to_s(:delimited) %></div><br>
-          <div>お気に入り
-          <% if estates.second.favorited_by?(current_customer) %>
-            <%= link_to estate_favorites_path(estates.second), method: :delete do %>
-            ★<%= estates.second.favorites.count %>
-            <% end %>
-          <% else %>
-            <%= link_to estate_favorites_path(estates.second), method: :post do %>
-            ☆<%= estates.second.favorites.count %>
-            <% end %>
-          <% end %>
-          </div><br>
           <div>投稿日時　<%= estates.second.created_at.strftime('%Y年%m月%d日 %H時%M分') %></div><br>
         </div>
       </div>
@@ -80,26 +50,11 @@
         </div>
         <div class="card-body" style="padding: 10px 0 0 10px;">
           <div class="row justify-content-start">
-            <div class="col-2 address">
-              住所
-            </div>
-            <div class="col-10 address">
-              <%= estates.third.address %>
-            </div>
+            <div class="col-2 address">住所</div>
+            <div class="col-10 address"><%= estates.third.address %></div>
           </div><br>
           <div>間取り　<%= estates.third.floor %></div><br>
           <div>賃料　¥<%= estates.third.price.to_s(:delimited) %></div><br>
-          <div>お気に入り
-          <% if estates.third.favorited_by?(current_customer) %>
-            <%= link_to estate_favorites_path(estates.third), method: :delete do %>
-            ★<%= estates.third.favorites.count %>
-            <% end %>
-          <% else %>
-            <%= link_to estate_favorites_path(estates.third), method: :post do %>
-            ☆<%= estates.third.favorites.count %>
-            <% end %>
-          <% end %>
-          </div><br>
           <div>投稿日時　<%= estates.third.created_at.strftime('%Y年%m月%d日 %H時%M分') %></div><br>
         </div>
       </div>
@@ -119,26 +74,11 @@
         </div>
         <div class="card-body" style="padding: 10px 0 0 10px;">
           <div class="row justify-content-start">
-            <div class="col-2 address">
-              住所
-            </div>
-            <div class="col-10 address">
-              <%= estates.fourth.address %>
-            </div>
+            <div class="col-2 address">住所</div>
+            <div class="col-10 address"><%= estates.fourth.address %></div>
           </div><br>
           <div>間取り　<%= estates.fourth.floor %></div><br>
           <div>賃料　¥<%= estates.fourth.price.to_s(:delimited) %></div><br>
-          <div>お気に入り
-          <% if estates.fourth.favorited_by?(current_customer) %>
-            <%= link_to estate_favorites_path(estates.fourth), method: :delete do %>
-            ★<%= estates.fourth.favorites.count %>
-            <% end %>
-          <% else %>
-            <%= link_to estate_favorites_path(estates.fourth), method: :post do %>
-            ☆<%= estates.fourth.favorites.count %>
-            <% end %>
-          <% end %>
-          </div><br>
           <div>投稿日時　<%= estates.fourth.created_at.strftime('%Y年%m月%d日 %H時%M分') %></div><br>
         </div>
       </div>
@@ -154,33 +94,18 @@
         </div>
         <div class="card-body" style="padding: 10px 0 0 10px;">
           <div class="row justify-content-start">
-            <div class="col-2 address">
-              住所
-            </div>
-            <div class="col-10 address">
-              <%= estates.fifth.address %>
-            </div>
+            <div class="col-2 address">住所</div>
+            <div class="col-10 address"><%= estates.fifth.address %></div>
           </div><br>
           <div>間取り　<%= estates.fifth.floor %></div><br>
           <div>賃料　¥<%= estates.fifth.price.to_s(:delimited) %></div><br>
-          <div>お気に入り
-          <% if estates.fifth.favorited_by?(current_customer) %>
-            <%= link_to estate_favorites_path(estates.fifth), method: :delete do %>
-            ★<%= estates.fifth.favorites.count %>
-            <% end %>
-          <% else %>
-            <%= link_to estate_favorites_path(estates.fifth), method: :post do %>
-            ☆<%= estates.fifth.favorites.count %>
-            <% end %>
-          <% end %>
-          </div><br>
           <div>投稿日時　<%= estates.fifth.created_at.strftime('%Y年%m月%d日 %H時%M分') %></div><br>
         </div>
       </div>
     </div>
 
     <div class="col-4">
-      <div class="card mb-4" style="height:550px;">
+      <div class="card" style="height:550px;">
         <div class="card-img-top">
           <%= link_to attachment_image_tag(estates.last, :background_image, format: 'jpeg', size: "348x200"), estate_path(estates.last) %>
         </div>
@@ -189,27 +114,12 @@
         </div>
         <div class="card-body" style="padding: 10px 0 0 10px;">
           <div class="row justify-content-start">
-            <div class="col-2 address">
-              住所
-            </div>
-            <div class="col-10 address">
-              <%= estates.last.address %>
-            </div>
+            <div class="col-2 address">住所</div>
+            <div class="col-10 address"><%= estates.last.address %></div>
           </div><br>
           <div>間取り　<%= estates.last.floor %></div><br>
           <div>賃料　¥<%= estates.last.price.to_s(:delimited) %></div><br>
-          <div>お気に入り
-          <% if estates.last.favorited_by?(current_customer) %>
-            <%= link_to estate_favorites_path(estates.last), method: :delete do %>
-            ★<%= estates.last.favorites.count %>
-            <% end %>
-          <% else %>
-            <%= link_to estate_favorites_path(estates.last), method: :post do %>
-            ☆<%= estates.last.favorites.count %>
-            <% end %>
-          <% end %>
-          </div><br>
-          <div>投稿日時　<%= estates.last.created_at.strftime('%Y年%m月%d日 %H時%M分') %></div><br>
+          <small class="text-muted">投稿日時　<%= estates.last.created_at.strftime('%Y年%m月%d日 %H時%M分') %></small>
         </div>
       </div>
     </div>

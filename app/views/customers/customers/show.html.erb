@@ -16,7 +16,7 @@
       <div class="col-7">
         <div class="card" style="font-size: 25px;">
           <%= @customer.email %>
-        </div>
+          </div>
       </div>
     </div>
     <div class="row pt-4 pb-5">
@@ -62,13 +62,9 @@
                 <td>お気に入り数</td>
                 <td>
                   <% if favorite.estate.favorited_by?(current_customer) %>
-                    <%= link_to estate_favorites_path(favorite.estate), method: :delete do %>
-                    ★<%= favorite.estate.favorites.count %></h5>
+                    <%= link_to estate_favorites_path(favorite.estate), method: :delete, style: "font-size:22px" do %>
+                    <i class="fas fa-building"></i><%= favorite.estate.favorites.count %>
                     <% end %>
-                  <% else %>
-                    <%= link_to estate_favorites_path(favorite.estate), method: :post do %>
-                    ☆<%= favorite.estate.favorites.count %></h5>
-                　　<% end %>
                   <% end %>
                 </td>
               </tr>

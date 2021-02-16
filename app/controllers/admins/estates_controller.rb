@@ -13,7 +13,6 @@ class Admins::EstatesController < ApplicationController
   def index
     @estates = Estate.all.page(params[:page]).per(10)
     #@estates = Estate.all.includes(:researches) この書き方でも可能
-    @customers = Customer.all.page(params[:page]).per(10)
   end
 
   def show
