@@ -81,11 +81,11 @@
 }
 
 .navbar-light .navbar-toggler {
-    border-color: rgba(0,0,0,0);
+  border-color: rgba(0,0,0,0);
 }
 
 .navbar-dark .navbar-toggler {
-    border-color: rgba(0,0,0,0);
+  border-color: rgba(0,0,0,0);
 }
 
 .edit {
@@ -103,4 +103,16 @@ footer {
 
 .btn:hover {
   opacity: 0.5;
+}
+
+.name {
+  word-break: break-all;
+  overflow-wrap: break-word;
+  width: 50%;
+}
+
+.address {
+  word-break: break-all;
+  overflow-wrap: break-word;
+  width: 50%;
 }

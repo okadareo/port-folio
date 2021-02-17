@@ -29,11 +29,11 @@
     [["1R"],["1K"],["1DK"],["1LDK"],["2K"],["2DK"],["2LDK"],["3DK"],["3LDK"],
     ["4DK"],["4LDK"],["5DK"],["5LDK"]], {include_blank: "間取り"} %>
 
-    <%= f.number_field :price_gteq, :placeholder => "賃料下限(半角数字)" %> 〜
-    <%= f.number_field :price_lteq, :placeholder => "賃料上限(半角数字)" %>
+    <%= f.search_field :price_gteq.to_s, :placeholder => "賃料下限(半角数字)" %> 〜
+    <%= f.search_field :price_lteq.to_s, :placeholder => "賃料上限(半角数字)" %>
 </div>
 <div class="search_field justify-content-center">
-  <%= f.search_field :name_or_info_or_address_or_floor_cont, :placeholder => "フリーワード", :size => "46x5" %>
+  <%= f.search_field :name_or_info_or_address_or_floor_cont, :placeholder => "フリーワード", :size => "46" %>
 </div>
 <div class="submit">
   <%= f.submit "検索", class: "searches" %>

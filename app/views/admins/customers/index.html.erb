@@ -7,7 +7,7 @@
       <div class="card shadow">
         <div class="row pt-5">
           <div class="col-3 text-center pt-1" style="font-weight: bold; font-size: 25px;">お名前</div>
-          <div class="col-7">
+          <div class="col-8">
             <div class="card" style="font-size: 25px;">
               <%= customer.name %>
             </div>
@@ -15,17 +15,39 @@
         </div>
         <div class="row pt-4">
           <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">メールアドレス</div>
-          <div class="col-7">
+          <div class="col-8">
             <div class="card" style="font-size: 25px;">
               <%= customer.email %>
             </div>
           </div>
         </div>
-        <div class="row pt-4 pb-5">
+        <div class="row pt-4">
           <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">電話番号</div>
-          <div class="col-7">
+          <div class="col-8">
             <div class="card" style="font-size: 25px;">
               <%= customer.phone_number %>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-4">
+          <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">お問い合わせ件数</div>
+          <div class="col-8">
+            <div class="researches" style="font-size: 22px;">
+              <%= link_to admins_customer_researches_path(customer) do %>
+                <i class="fas fa-house-user"></i>
+              <% end %>
+              <%= customer.researches.count %>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-4 pb-4">
+          <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">お気に入り件数</div>
+          <div class="col-8">
+            <div class="researches" style="font-size: 22px;">
+              <%= link_to admins_customer_favorites_path(customer) do %>
+                <i class="fas fa-house-user"></i>
+              <% end %>
+              <%= customer.favorites.count %>
             </div>
           </div>
         </div>

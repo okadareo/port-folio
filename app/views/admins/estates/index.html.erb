@@ -1,20 +1,20 @@
 <%= render "admins/customers/header" %>
 
 <div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">入稿物件一覧</div>
-<div class="container">
+<div class="container" style="margin-bottom: 50px;">
   <% if @estates.present? %>
     <% @estates.each do |estate| %>
       <div class="card shadow" style="margin-bottom: 30px;">
         <div class="row">
           <div class="col-md-3 col-sm-12">
-            <%= attachment_image_tag estate, :background_image, format: 'jpeg', size: "285x362" %>
+            <%= attachment_image_tag estate, :background_image, format: 'jpeg', size: "285x358" %>
           </div>
           <div class="col-md-9 col-sm-12">
             <table class="table table-striped">
               <tr>
-                <th>物件名</th>
+                <th class="th" style="width: 20%;">物件名</th>
                 <td class="name"><%= estate.name %>　<%= estate.room_number %>号室</td>
-                <td></td>
+                <td class="td" style="width: 18%;"></td>
               </tr>
               <tr>
                 <th>住所</th>
@@ -43,8 +43,9 @@
               </tr>
               <tr>
                 <th>お問い合わせ件数</th>
-                <td class="researches" style="font-size: 22px;"><%= link_to admins_estate_path(estate) do %>
-                  <i class="fas fa-house-user"></i>
+                <td class="researches" style="font-size: 22px;">
+                  <%= link_to admins_estate_path(estate) do %>
+                    <i class="fas fa-house-user"></i>
                   <% end %>
                   <%= estate.researches.count %>
                 </td>

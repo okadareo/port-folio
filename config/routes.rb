@@ -13,7 +13,10 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :estates, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-    resources :customers, only: [:index]
+    resources :customers, only: [:index, :show] do
+      resources :researches, only: [:index]
+      resources :favorites, only:[:index]
+    end
   end
 
   scope module: :customers do
