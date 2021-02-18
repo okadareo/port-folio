@@ -8,7 +8,7 @@
         <div class="col-2 text-center"><%= f.label :物件名 %></div>
         <div class="col-5"><%= f.text_field :name, placeholder:"techroom", :size=>"50" %></div>
         <div class="col-2 text-center pt-1"><%= f.label :部屋番号 %></div>
-        <div class="col-1"><%= f.number_field :room_number, placeholder:"304" %></div>
+        <div class="col-1"><%= f.text_field :room_number.to_s, placeholder:"304" %></div>
       </div>
       <div class="row pb-4">
         <div class="col-2 text-center"><%= f.label :住所 %></div>
@@ -16,7 +16,7 @@
       </div>
       <div class="row pb-4">
         <div class="col-2 text-center"><%= f.label :賃料 %></div>
-        <div class="col-2"><%= f.number_field :price, placeholder: "90000" %></div>
+        <div class="col-2"><%= f.text_field :price.to_s, placeholder: "90000" %></div>
         <div class="col-2 text-center pt-1"><%= f.label :間取り %></div>
         <div class="col-2"><%= f.text_field :floor, placeholder: "2LDK" %></div>
       </div>

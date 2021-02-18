@@ -4,7 +4,7 @@
   <%= @customer.name %>さんのお気に入り物件一覧
 </div>
 
-<div class="container" style="margin-bottom: 50px;">
+<div class="container" style="margin-bottom: 20px;">
   <% if @favorites.present? %>
     <% @favorites.reverse.each do |favorite| %>
       <div class="card shadow" style="margin-bottom: 30px;">

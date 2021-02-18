@@ -5,7 +5,7 @@ class Customers::EstatesController < ApplicationController
     @estates = @q.result(distinct: true)
   end
   def index
-    @q = Estate.page(params[:page]).per(12).ransack(params[:q])
+    @q = Estate.order(created_at: :desc).page(params[:page]).per(12).ransack(params[:q])
     @estates = @q.result(distinct: true)
   end
 

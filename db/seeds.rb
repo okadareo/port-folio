@@ -42,4 +42,5 @@ Admin.create!(
     property_image_k: open("app/assets/images/1.jpeg"),
     property_image_l: open("app/assets/images/1.jpeg"),
   )
+  sleep(1)
 end

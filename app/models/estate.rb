@@ -13,9 +13,6 @@ class Estate < ApplicationRecord
   attachment :property_image_j
   attachment :property_image_k
   attachment :property_image_l
-  attachment :property_image_m
-  attachment :property_image_n
-  attachment :property_image_o
 
   belongs_to :admin, optional: true
   has_many :favorites, dependent: :destroy

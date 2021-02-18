@@ -11,7 +11,7 @@ class Admins::EstatesController < ApplicationController
   end
 
   def index
-    @estates = Estate.all.page(params[:page]).per(10)
+    @estates = Estate.all.order(created_at: :desc).page(params[:page]).per(10)
     #@estates = Estate.all.includes(:researches) この書き方でも可能
   end
 
