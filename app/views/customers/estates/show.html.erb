@@ -18,15 +18,9 @@
       <div>間取り　<%= @estate.floor %></div><br>
       <div>賃料　¥<%= @estate.price.to_s(:delimited) %></div><br>
       <div>
-      <% if @estate.favorited_by?(current_customer) %>
-        <%= link_to estate_favorites_path(@estate), method: :delete, style: "font-size:22px" do %>
-        <i class="fas fa-building"></i><%= @estate.favorites.count %>
-        <% end %>
-      <% else %>
-        <%= link_to estate_favorites_path(@estate), method: :post, style: "font-size:22px" do %>
-        <i class="far fa-building"></i><%= @estate.favorites.count %>
-        <% end %>
-      <% end %>
+      
+      <%= render "customers/favorites/favorite", estate: @estate %>
+      
       </div><br>
       <p>投稿日時　<%= @estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
     </div>

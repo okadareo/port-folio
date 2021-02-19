@@ -42,49 +42,49 @@
 </div>
 
 <%= search_form_for @q do |f| %>
-  <div class="d-flex justify-content-center" style="padding: 80px 162px 0 0;">
-    <div style="padding: 0 22px 0 10px;"><%= f.select :address_start,
-    [["東京都千代田区"],
-    ["東京都中央区"],
-    ["東京都港区"],
-    ["東京都新宿区"],
-    ["東京都文京区"],
-    ["東京都台東区"],
-    ["東京都墨田区"],
-    ["東京都江東区"],
-    ["東京都品川区"],
-    ["東京都目黒区"],
-    ["東京都大田区"],
-    ["東京都世田谷区"],
-    ["東京都渋谷区"],
-    ["東京都中野区"],
-    ["東京都杉並区"],
-    ["東京都豊島区"],
-    ["東京都北区"],
-    ["東京都荒川区"],
-    ["東京都板橋区"],
-    ["東京都練馬区"],
-    ["東京都足立区"],
-    ["東京都葛飾区"],
-    ["東京都江戸川区"]], {include_blank: "物件住所"} %>
+  <div class="d-flex justify-content-center" style="padding-top: 50px;">
+    <div class="search_field" style="padding-bottom: 10px;">
+      <%= f.select :address_start,
+      [["東京都千代田区"],
+      ["東京都中央区"],
+      ["東京都港区"],
+      ["東京都新宿区"],
+      ["東京都文京区"],
+      ["東京都台東区"],
+      ["東京都墨田区"],
+      ["東京都江東区"],
+      ["東京都品川区"],
+      ["東京都目黒区"],
+      ["東京都大田区"],
+      ["東京都世田谷区"],
+      ["東京都渋谷区"],
+      ["東京都中野区"],
+      ["東京都杉並区"],
+      ["東京都豊島区"],
+      ["東京都北区"],
+      ["東京都荒川区"],
+      ["東京都板橋区"],
+      ["東京都練馬区"],
+      ["東京都足立区"],
+      ["東京都葛飾区"],
+      ["東京都江戸川区"]], {include_blank: "物件住所"} %>
+
+      <%= f.select :floor_eq,
+      [["1R"],["1K"],["1DK"],["1LDK"],["2K"],["2DK"],["2LDK"],["3DK"],["3LDK"],
+      ["4DK"],["4LDK"],["5DK"],["5LDK"]], {include_blank: "間取り"} %>
+
+      <%= f.number_field :price_gteq, :placeholder => "賃料 (半角数字)", style: "border-width: thin; margin-left: 1px; height: 22px; border-radius: 2px;" %> 〜
+      <%= f.number_field :price_lteq, :placeholder => "賃料 (半角数字)", style: "border-width: thin; height: 22px; border-radius: 2px;" %>
     </div>
-
-  <%= f.select :floor_eq,
-  [["1R"],["1K"],["1DK"],["1LDK"],["2K"],["2DK"],["2LDK"],["3DK"],["3LDK"],["4DK"],["4LDK"],["5DK"],["5LDK"]], {include_blank: "間取り"} %>
   </div>
-
-  <div class="d-flex justify-content-center pt-3">
-    <div style="padding-right: 15px;"><%= f.search_field :price_gteq.to_s, class: "form-control-sm", :placeholder => "賃料下限(半角数字)" %></div> 〜
-    <div style="padding-left: 15px;"><%= f.search_field :price_lteq.to_s, class: "form-control-sm", :placeholder => "賃料上限(半角数字)" %></div>
+  <div class="search_field d-flex" style="justify-content: center; padding-top: 5px;">
+    <%= f.search_field :name_or_info_or_address_or_floor_cont, :placeholder => "フリーワード", style: "border-width: thin; height: 22px; border-radius: 2px; padding-right: 5px;", :size => "53" %>
   </div>
-  <div class="d-flex justify-content-center pt-3">
-    <%= f.search_field :name_or_info_or_address_or_floor_cont, :placeholder => "フリーワード", :size => "46" %>
-  </div>
-
-  <div class="d-flex justify-content-center" style="padding-top: 80px;">
+  <div class="d-flex justify-content-center" style="padding-top: 50px;">
     <%= f.submit "検索", class: "search" %>
   </div>
 <% end %>
+
 
 <div class="new" style="margin-top: 100px; padding-bottom: 100px; background-color: #EB9FEF;">
   <div class="row justify-content-center p-5" style="color: white; font-weight: bold;">

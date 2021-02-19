@@ -151,3 +151,21 @@ footer {
   height: 24px;
   padding-top: 330px;
 }
+
+#q_address_start {
+  width: 94px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#q_price_gteq {
+  width: 120px;
+}
+
+#q_price_lteq {
+  width: 120px;
+}

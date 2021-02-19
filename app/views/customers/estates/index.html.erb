@@ -1,5 +1,5 @@
 <%= render "customers/customers/header" %>
-<div class="container" style="padding-top: 180px; margin-bottom: 20px;">
+<div class="container" style="padding-top: 130px; margin-bottom: 20px;">
   <div class="row">
     <% @estates.each do |estate| %>
       <div class="col-4">
@@ -16,15 +16,9 @@
             </div><br>
             <div>賃料：¥<%= estate.price.to_s(:delimited) %>　間取り：<%= estate.floor %></div><br>
             <div>
-            <% if estate.favorited_by?(current_customer) %>
-              <%= link_to estate_favorites_path(estate), method: :delete, style: "font-size: 22px;" do %>
-              <i class="fas fa-building"></i><%= estate.favorites.count %>
-              <% end %>
-            <% else %>
-              <%= link_to estate_favorites_path(estate), method: :post, style: "font-size: 22px;" do %>
-              <i class="far fa-building"></i><%= estate.favorites.count %>
-              <% end %>
-            <% end %>
+
+            <%= render "customers/favorites/favorite", estate: estate %>
+
             </div>
           </div>
           <div class="card-footer" style="padding-left: 8px;">
