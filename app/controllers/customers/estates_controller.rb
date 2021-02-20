@@ -4,7 +4,10 @@ class Customers::EstatesController < ApplicationController
     @q = Estate.order(created_at: :desc).limit(6).ransack(params[:q])
     @estates = @q.result(distinct: true)
   end
+
   def index
+    # logger.debug(params_q=params[:q])
+    # logger.debug(params_q['name_or_info_or_address_or_floor_cont'])
     @q = Estate.order(created_at: :desc).page(params[:page]).per(12).ransack(params[:q])
     @estates = @q.result(distinct: true)
   end

@@ -9,7 +9,7 @@ class Customers::ResearchesController < ApplicationController
     @research = Research.new(research_params)
     @research.estate_id = @estate.id
     @research.customer_id = current_customer.id
-    if @research.save!
+    if @research.save
       redirect_to estates_finish_path
     end
   end

@@ -33,7 +33,8 @@
     <%= f.number_field :price_lteq, :placeholder => "賃料 (半角数字)", style: "border-width: thin; height: 22px; border-radius: 2px;" %>
   </div>
   <div class="search_field">
-    <%= f.search_field :name_or_info_or_address_or_floor_cont, :placeholder => "フリーワード", style: "border-width: thin; height: 22px; border-radius: 2px; padding-right: 5px;", :size => "53" %>
+    <%= f.search_field :name_or_info_or_address_or_floor_cont,
+    :placeholder => "フリーワード　(検索例)浴室乾燥機　オートロック", style: "outline-offset: 0;  border-width: thin; height: 22px; border-radius: 2px; padding-right: 5px; outline-offset: 0;", :size => "58" %>
     <%= f.submit "検索", class: "searches", style: "margin-left: 20px;" %>
   </div>
 <% end %>

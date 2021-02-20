@@ -17,11 +17,11 @@
       </div><br>
       <div>間取り　<%= @estate.floor %></div><br>
       <div>賃料　¥<%= @estate.price.to_s(:delimited) %></div><br>
-      <div>
-      
-      <%= render "customers/favorites/favorite", estate: @estate %>
-      
+
+      <div class="favorite_<%= @estate.id %>">
+        <%= render "customers/favorites/favorite", estate: @estate %>
       </div><br>
+
       <p>投稿日時　<%= @estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
     </div>
     <div class="col-1"></div>

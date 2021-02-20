@@ -5,14 +5,13 @@ class Admins::EstatesController < ApplicationController
 
   def create
     @estate = Estate.new(estate_params)
-    if @estate.save!
+    if @estate.save
       redirect_to admins_estates_path
     end
   end
 
   def index
     @estates = Estate.all.order(created_at: :desc).page(params[:page]).per(10)
-    #@estates = Estate.all.includes(:researches) この書き方でも可能
   end
 
   def show
