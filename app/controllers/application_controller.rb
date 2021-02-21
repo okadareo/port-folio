@@ -27,16 +27,15 @@ class ApplicationController < ActionController::Base
   end
 
   def search_product
-    words = params[:q].delete(:name_or_info_or_address_or_floor_cont) if params[:q].present?
-    if words.present?
+    keywords = params[:q].delete(:keyword) if params[:q].present?
+    if keywords.present?
       params[:q][:groupings] = []
-      words.split(/[ 　]/).each_with_index do |words, i|
-        params[:q][:groupings][i] = { name_or_info_or_address_or_floor_cont: words }
+      keywords.split(/[ 　]/).each_with_index do |keyword, i|
+        params[:q][:groupings][i] = { name_or_info_or_address_or_floor_cont: keyword }
       end
     end
-    # logger.debug(params_q=params[:q])
-    # logger.debug(params_q['name_or_info_or_address_or_floor_cont'])
     @q = Estate.ransack(params[:q])
     @estates = @q.result
+    @keywords = keywords
   end
 end

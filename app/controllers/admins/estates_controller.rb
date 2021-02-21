@@ -16,7 +16,7 @@ class Admins::EstatesController < ApplicationController
 
   def show
     @estates = Estate.find(params[:id])
-    @researches = Research.where(estate_id: params[:id]).page(params[:page]).per(10)
+    @researches = Research.where(estate_id: params[:id]).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def edit

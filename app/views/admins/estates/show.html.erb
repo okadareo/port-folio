@@ -6,10 +6,10 @@
 
 <div class="container" style="margin-bottom: 20px;">
   <% if @researches.present? %>
-    <% @researches.reverse.each do |research| %>
+    <% @researches.each_with_index do |research, i| %>
       <div class="card shadow" style="margin-bottom: 40px; height: auto;">
         <div class="row pt-4 pb-4">
-          <div class="col-2 mr-4 text-right" style="font-weight: bold;">カスタマー情報</div>
+          <div class="col-2 mr-4 text-center" style="font-weight: bold;">カスタマー情報</div>
           <div class="card col-9" style="border-width: 1px">
             <div class="row">
               <div class="col-3">
@@ -27,22 +27,27 @@
             </div>
           </div>
         </div>
-         <div class="row pb-4">
-          <div class="col-2 mr-4 text-right" style="font-weight: bold;">お問い合わせ日時</div>
-          <div class="card col-9">
-            <div><%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></div>
+        <button class="btn btn-outline-primary" data-toggle="collapse" data-target="#key_<%= i %>" aria-expand="false" aria-controls="key_<%= i %>">
+          <div class="col-2">お問い合わせ内容</div>
+        </button>
+        <div class="collapse" id="key_<%= i %>">
+          <div class="row pb-4 pt-4">
+            <div class="col-2 mr-4 text-center" style="font-weight: bold;">タイトル</div>
+            <div class="card col-9" style="height:60px; overflow:auto;">
+              <div><%= research.title %></div>
+            </div>
           </div>
-        </div>
-        <div class="row pb-4">
-          <div class="col-2 mr-4 text-right" style="font-weight: bold;">お問い合わせ内容</div>
-          <div class="card col-9" style="height:60px; overflow:auto;">
-            <div><%= research.title %></div>
+          <div class="row">
+            <div class="col-2 mr-4 text-center" style="font-weight: bold;">本文</div>
+            <div class="card col-9 mb-4" style="height:150px; overflow:auto;">
+              <div><%= research.body %></div>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-2 mr-4"></div>
-          <div class="card col-9 mb-4" style="height:150px; overflow:auto;">
-            <div><%= research.body %></div>
+          <div class="row pb-4">
+            <div class="col-2 mr-4 text-center" style="font-weight: bold;">お問い合わせ日時</div>
+            <div class="card col-9">
+              <div><%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></div>
+            </div>
           </div>
         </div>
       </div>
@@ -51,7 +56,6 @@
     <div class="text-center pt-5">お問い合わせはありません。</div>
   <% end %>
 </div>
-
 <%= paginate @researches %>
 
 <%= render "admins/customers/footer" %>

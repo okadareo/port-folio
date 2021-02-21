@@ -4,7 +4,7 @@
 <%= form_with model: @estate, url:admins_estate_path, local: true do |f| %>
 　<div class="container">
 　  <div class="card shadow" style="margin: 0 0 120px 0;">
-  　　<div class="row pt-4 pb-4" style="margin-right: 5px;">
+　    <div class="row pt-4 pb-4" style="margin-right: 5px;">
       　 <div class="col-2 text-center"><%= f.label :物件名 %></div>
          <div class="col-5"><%= f.text_field :name, :size=>"50" %></div>
          <div class="col-2 text-center"><%= f.label :部屋番号 %></div>

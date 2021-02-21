@@ -14,12 +14,12 @@
             <div class="card-text">
               <%= estate.address %>
             </div><br>
-            <div>賃料：¥<%= estate.price.to_s(:delimited) %>　間取り：<%= estate.floor %></div><br>
-
+            <div>
+              賃料：¥<%= estate.price.to_s(:delimited) %>　間取り：<%= estate.floor %>
+            </div><br>
             <div class="favorite_<%= estate.id %>">
               <%= render "customers/favorites/favorite", estate: estate %>
             </div>
-
           </div>
           <div class="card-footer" style="padding-left: 8px;">
             <small class="text-muted">投稿日時　<%= estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></small>
@@ -30,4 +30,5 @@
   </div>
 </div>
 <%= paginate @estates %>
+
 <%= render "customers/customers/footer" %>

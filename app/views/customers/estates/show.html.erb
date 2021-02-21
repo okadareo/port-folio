@@ -15,9 +15,13 @@
         <div class="col-2 address">住所</div>
         <div class="estate col-10 address"><%= @estate.address %></div>
       </div><br>
-      <div>間取り　<%= @estate.floor %></div><br>
-      <div>賃料　¥<%= @estate.price.to_s(:delimited) %></div><br>
-
+      <div>
+        間取り　<%= @estate.floor %>
+      </div><br>
+      <div>
+        賃料　¥<%= @estate.price.to_s(:delimited) %>
+      </div><br>
+      
       <div class="favorite_<%= @estate.id %>">
         <%= render "customers/favorites/favorite", estate: @estate %>
       </div><br>
