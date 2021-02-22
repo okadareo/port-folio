@@ -5,3 +5,21 @@ ja:
       last: <i class="fas fa-angle-double-right"></i>
       previous: <i class="fas fa-angle-left"></i>
       next: <i class="fas fa-angle-right"></i>
+      
+  activerecord:
+    attributes:
+      customer:
+        name: "お名前"
+        email: "メールアドレス"
+        phone_number: "電話番号"
+        password: "パスワード"
+      estate:
+        name:  "物件名"
+        address: "住所"
+        price: "賃料"
+        floor: "間取り"
+        info: "物件概要"
+        background_image_id: "背景画像"
+        floor_image_id: "間取り図画像"
+    models:
+      customer: "カスタマー"

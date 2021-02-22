@@ -6,7 +6,10 @@ class Admins::EstatesController < ApplicationController
   def create
     @estate = Estate.new(estate_params)
     if @estate.save
+      flash[:notice] = "新規物件の入稿が完了しました"
       redirect_to admins_estates_path
+    else
+      render new_admins_estate_path
     end
   end
 
@@ -25,14 +28,21 @@ class Admins::EstatesController < ApplicationController
 
   def update
     @estate = Estate.find(params[:id])
-    @estate.update(estate_params)
-    redirect_to admins_estates_path
+    if @estate.update(estate_params)
+      flash[:notice] = "入稿物件の編集が完了しました"
+      redirect_to admins_estates_path
+    else
+      render edit_admins_estate_path
+    end
   end
 
   def destroy
     estate = Estate.find(params[:id])
-    estate.destroy
-    redirect_to request.referer
+    if estate.destroy
+      redirect_to admins_estates_path
+    else
+      render admins_estates_path
+    end
   end
 
   private

@@ -1,6 +1,14 @@
 <%= render "admins/customers/header" %>
 
 <div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">物件入稿画面</div>
+<% if @estate.errors.any? %>
+  <% @estate.errors.full_messages.each do |message| %>
+    <p class="message text-center" style="color: red">
+      <%= message %>
+    </p>
+  <% end %>
+<% end %>
+
 <%= form_with model: @estate, url:admins_estates_path, local: true do |f| %>
   <div class="container">
     <div class="card shadow" style="margin: 0 0 120px 0;">
@@ -18,7 +26,7 @@
         <div class="col-2 text-center"><%= f.label :賃料 %></div>
         <div class="col-2"><%= f.number_field :price, placeholder: "90000 (半角数字)" %></div>
         <div class="col-2 text-center pt-1"><%= f.label :間取り %></div>
-        <div class="col-2"><%= f.text_field :floor, placeholder: "2LDK" %></div>
+        <div class="col-2"><%= f.text_field :floor, placeholder: "2LDK(半角数字、全角英文字)" %></div>
       </div>
       <div class="row pb-4">
         <div class="col-2 text-center"><%= f.label :物件概要 %></div>

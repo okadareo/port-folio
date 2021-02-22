@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Customer.create!(
-  email: "okadareo0614@gmail.com",
+  email: "okadareo@gmail.com",
   name: "岡田",
-  phone_number: "111111",
+  phone_number: "0300000000",
   password: "111111"
 )
 
@@ -19,7 +19,7 @@ Admin.create!(
 )
 
 20.times do |n|
-  Estate.create(
+  Estate.create!(
     admin_id: '1',
     background_image: open("app/assets/images/1.jpeg"),
     name: "バルク・ド・ハギ",
