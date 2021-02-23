@@ -9,13 +9,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="d-flex flex-column vh-100">
-    <%= yield %>
-
+  <body class="d-flex flex-column vh-100" data-turbolinks="false">
     <span id="back">
       <a href="#">
         <i class="fas fa-chevron-circle-up"></i>
       </a>
     </span>
+    <%= yield %>
   </body>
 </html>

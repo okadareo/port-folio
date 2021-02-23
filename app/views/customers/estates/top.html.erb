@@ -41,6 +41,8 @@
   <%= link_to image_tag("logo1.jpg"), root_path, class: "image-top" %>
 </div>
 
+<%= flash[:notice] %>
+
 <%= search_form_for @q do |f| %>
   <div class="d-flex justify-content-center" style="padding-top: 50px;">
     <div class="search_field" style="padding-bottom: 10px;">
@@ -71,7 +73,7 @@
 
       <%= f.select :floor_eq,
       [["1R"],["1K"],["1DK"],["1LDK"],["2K"],["2DK"],["2LDK"],["3DK"],["3LDK"],
-      ["4DK"],["4LDK"],["5DK"],["5LDK"]], {include_blank: "間取り"} %>
+      ["4LDK"],["5LDK"]], {include_blank: "間取り"} %>
 
       <%= f.number_field :price_gteq, :placeholder => "賃料 (半角数字)", style: "border-width: thin; margin-left: 1px; height: 22px; border-radius: 2px;" %> 〜
       <%= f.number_field :price_lteq, :placeholder => "賃料 (半角数字)", style: "border-width: thin; height: 22px; border-radius: 2px;" %>
@@ -94,72 +96,76 @@
     </div>
   </div>
   <div class="container">
-    <div id="example-3" class="carousel slide" data-ride="carousel" style="width:100%">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="row">
-            <% @estates.first(3).each do |estate| %>
-              <div class="col-4">
-                <div class="card mb-4" style="height:550px;">
-                  <div class="card-img-top">
-                    <%= link_to attachment_image_tag(estate, :background_image, format: 'jpeg', size: "348x200"), estate_path(estate) %>
-                  </div>
-                  <div class="card-body" style="padding: 10px 0 0 8px;">
-                    <div class="card-title">
-                      <%= estate.name %>　<%= estate.room_number %>号室
+    <% if @estates.present? %>
+      <div id="example-3" class="carousel slide" data-ride="carousel" style="width:100%">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+              <% @estates.first(3).each do |estate| %>
+                <div class="col-4">
+                  <div class="card mb-4" style="height:550px;">
+                    <div class="card-img-top">
+                      <%= link_to attachment_image_tag(estate, :background_image, format: 'jpeg', size: "348x200"), estate_path(estate) %>
                     </div>
-                    <div class="card-text">
-                      <%= estate.address %>
-                    </div><br>
-                    <div>
-                      賃料：¥<%= estate.price.to_s(:delimited) %>　間取り：<%= estate.floor %>
-                    </div><br>
-                  </div>
-                  <div class="card-footer" style="padding-left: 8px;">
-                    <small class="text-muted">投稿日時　<%= estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></small>
+                    <div class="card-body" style="padding: 10px 0 0 8px;">
+                      <div class="card-title">
+                        <%= estate.name %>　<%= estate.room_number %>号室
+                      </div>
+                      <div class="card-text">
+                        <%= estate.address %>
+                      </div><br>
+                      <div>
+                        賃料：¥<%= estate.price.to_s(:delimited) %>　間取り：<%= estate.floor %>
+                      </div><br>
+                    </div>
+                    <div class="card-footer" style="padding-left: 8px;">
+                      <small class="text-muted">投稿日時　<%= estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></small>
+                    </div>
                   </div>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
           </div>
-        </div>
-        <div class="carousel-item">
-          <div class="row">
-            <% @estates.drop(3).each do |estate| %>
-              <div class="col-4">
-                <div class="card mb-4" style="height:550px;">
-                  <div class="card-img-top">
-                    <%= link_to attachment_image_tag(estate, :background_image, format: 'jpeg', size: "348x200"), estate_path(estate) %>
-                  </div>
-                  <div class="card-body" style="padding: 10px 0 0 8px;">
-                    <div class="card-title">
-                      <%= estate.name %>　<%= estate.room_number %>号室
+          <div class="carousel-item">
+            <div class="row">
+              <% @estates.drop(3).each do |estate| %>
+                <div class="col-4">
+                  <div class="card mb-4" style="height:550px;">
+                    <div class="card-img-top">
+                      <%= link_to attachment_image_tag(estate, :background_image, format: 'jpeg', size: "348x200"), estate_path(estate) %>
                     </div>
-                    <div class="card-text">
-                      <%= estate.address %>
-                    </div><br>
-                    <div>
-                      賃料：¥<%= estate.price.to_s(:delimited) %>　間取り：<%= estate.floor %>
-                    </div><br>
-                  </div>
-                  <div class="card-footer" style="padding-left: 8px;">
-                    <small class="text-muted">投稿日時　<%= estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></small>
+                    <div class="card-body" style="padding: 10px 0 0 8px;">
+                      <div class="card-title">
+                        <%= estate.name %>　<%= estate.room_number %>号室
+                      </div>
+                      <div class="card-text">
+                        <%= estate.address %>
+                      </div><br>
+                      <div>
+                        賃料：¥<%= estate.price.to_s(:delimited) %>　間取り：<%= estate.floor %>
+                      </div><br>
+                    </div>
+                    <div class="card-footer" style="padding-left: 8px;">
+                      <small class="text-muted">投稿日時　<%= estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></small>
+                    </div>
                   </div>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
           </div>
+          <a class="carousel-control-prev justify-content-start" href="#example-3" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next justify-content-end" href="#example-3" role="button" data-slide="next">
+            <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-        <a class="carousel-control-prev justify-content-start" href="#example-3" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next justify-content-end" href="#example-3" role="button" data-slide="next">
-          <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
       </div>
-    </div>
+  　<% else %>
+    　<div class="text-center pt-5">現在、物件情報はございません。<br>新着物件が出るまでもう少々お待ちください。</div>
+  　<% end %>
   </div>
 </div>
 

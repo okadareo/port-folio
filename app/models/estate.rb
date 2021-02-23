@@ -1,18 +1,18 @@
 class Estate < ApplicationRecord
-  attachment :background_image
-  attachment :floor_image
-  attachment :property_image_a
-  attachment :property_image_b
-  attachment :property_image_c
-  attachment :property_image_d
-  attachment :property_image_e
-  attachment :property_image_f
-  attachment :property_image_g
-  attachment :property_image_h
-  attachment :property_image_i
-  attachment :property_image_j
-  attachment :property_image_k
-  attachment :property_image_l
+  attachment :background_image, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  attachment :floor_image, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  attachment :property_image_a, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  attachment :property_image_b, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  attachment :property_image_c, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  attachment :property_image_d, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  attachment :property_image_e, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  attachment :property_image_f, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  attachment :property_image_g, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  attachment :property_image_h, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  attachment :property_image_i, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  attachment :property_image_j, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  attachment :property_image_k, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  attachment :property_image_l, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   belongs_to :admin, optional: true
   has_many :favorites, dependent: :destroy
@@ -21,20 +21,10 @@ class Estate < ApplicationRecord
   validates :name, presence: true
   validates :address, presence: true
   validates :price, numericality: { only_integer: true }
-  validates :floor, presence: true
+  validates :floor, presence: true, format: { with: /\A[A-Z0-9]+\z/ }
   validates :info, presence: true, length: { minimum: 30 }
   validates :background_image_id, presence: true
   validates :floor_image_id, presence: true
-
-  def avatar_size
-    background_image_id.each do |message|
-      if !message.blob.content_type.in?(%('image/jpeg image/png'))
-        message.purge
-        errors.add(:floor_image_id, 'はjpegまたはpng形式でアップロードしてください')
-      end
-    end
-  end
-
 
   def favorited_by?(customer)
     favorites.where(customer_id: customer.id).exists?

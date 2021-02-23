@@ -1,6 +1,9 @@
 <%= render "admins/customers/header" %>
 
 <div class="text-center" style="padding: 130px 0 10px 0; font-size: 30px; font-weight: bold;">物件編集画面</div>
+
+<%= render 'layouts/error_messages', model: @estate %>
+
 <%= form_with model: @estate, url:admins_estate_path, local: true do |f| %>
 　<div class="container">
 　  <div class="card shadow" style="margin: 0 0 120px 0;">

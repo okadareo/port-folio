@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
     when Customer
-      request.referer
+      root_path
     when Admin
       new_admins_estate_path
     end
@@ -34,8 +34,8 @@ class ApplicationController < ActionController::Base
         params[:q][:groupings][i] = { name_or_info_or_address_or_floor_cont: keyword }
       end
     end
-    @q = Estate.ransack(params[:q])
-    @estates = @q.result
-    @keywords = keywords
+      @q = Estate.ransack(params[:q])
+      @estates = @q.result
+      @keywords = keywords
   end
 end

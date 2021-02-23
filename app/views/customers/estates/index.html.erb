@@ -1,31 +1,46 @@
 <%= render "customers/customers/header" %>
+
+<div class="notice text-center" style="padding-bottom: 50px; color: #FA601A;">
+  <%= flash[:notice] %>
+</div>
+
 <div class="container" style="padding-top: 130px; margin-bottom: 20px;">
-  <div class="row">
-    <% @estates.each do |estate| %>
-      <div class="col-4">
-        <div class="card mb-4" style="height:550px;">
-          <div class="card-img-top">
-            <%= link_to attachment_image_tag(estate, :background_image, format: 'jpeg', size: "348x200"), estate_path(estate) %>
-          </div>
-          <div class="card-body" style="padding: 10px 0 0 8px;">
-            <div class="card-title">
-              <%= estate.name %>　<%= estate.room_number %>号室
+  <% if @estates.present? %>
+    <div class="row">
+      <% @estates.each do |estate| %>
+        <div class="col-4">
+          <div class="card mb-4" style="height:550px;">
+            <div class="card-img-top">
+              <%= link_to attachment_image_tag(estate, :background_image, format: 'jpeg', size: "348x200"), estate_path(estate) %>
             </div>
-            <div class="card-text">
-              <%= estate.address %>
-            </div><br>
-            <div>
-              賃料：¥<%= estate.price.to_s(:delimited) %>　間取り：<%= estate.floor %>
-            </div><br>
-            <div class="favorite_<%= estate.id %>">
-              <%= render "customers/favorites/favorite", estate: estate %>
+            <div class="card-body" style="padding: 10px 0 0 8px;">
+              <div class="card-title">
+                <%= estate.name %>　<%= estate.room_number %>号室
+              </div>
+              <div class="card-text">
+                <%= estate.address %>
+              </div><br>
+              <div>
+                賃料：¥<%= estate.price.to_s(:delimited) %>　間取り：<%= estate.floor %>
+              </div><br>
+              <% if customer_signed_in? %>
+                <div class="favorite_<%= estate.id %>">
+                  <%= render "customers/favorites/favorite", estate: estate %>
+                </div>
+              <% end %>
             </div>
-          </div>
-          <div class="card-footer" style="padding-left: 8px;">
-            <small class="text-muted">投稿日時　<%= estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></small>
+            <div class="card-footer" style="padding-left: 8px;">
+              <small class="text-muted">投稿日時　<%= estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></small>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
+    <% else %>
+    <% if @message.present? %>
+      <div class="text-center pt-5"><%= @message %></div>
+    <% else %>
+     <div class="text-center pt-5">物件情報はございません。<br>新着物件が出るまでもう少々お待ちください。</div>
+    <% end %>
     <% end %>
   </div>
 </div>

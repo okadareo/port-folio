@@ -1,13 +1,8 @@
 <%= render "admins/customers/header" %>
 
 <div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">物件入稿画面</div>
-<% if @estate.errors.any? %>
-  <% @estate.errors.full_messages.each do |message| %>
-    <p class="message text-center" style="color: red">
-      <%= message %>
-    </p>
-  <% end %>
-<% end %>
+
+<%= render 'layouts/error_messages', model: @estate %>
 
 <%= form_with model: @estate, url:admins_estates_path, local: true do |f| %>
   <div class="container">
@@ -26,7 +21,7 @@
         <div class="col-2 text-center"><%= f.label :賃料 %></div>
         <div class="col-2"><%= f.number_field :price, placeholder: "90000 (半角数字)" %></div>
         <div class="col-2 text-center pt-1"><%= f.label :間取り %></div>
-        <div class="col-2"><%= f.text_field :floor, placeholder: "2LDK(半角数字、全角英文字)" %></div>
+        <div class="col-2"><%= f.text_field :floor, placeholder: "2LDK(半角数字)" %></div>
       </div>
       <div class="row pb-4">
         <div class="col-2 text-center"><%= f.label :物件概要 %></div>
@@ -37,8 +32,12 @@
 また、●●町で南向きのお家です。「日当り」は、お金をかけても手に入れられませんので、物件選びの際は日当りも重視したいところです。
 あなたが「新居に置きたいな」と思っておられるテレビや家具が、実際に配置出来るかどうか
 この週末お天気が良ければ、このお家の日当りを見に一緒に現地へ参りましょう。
-日当り重視のあなたに、ご満足頂けると思いますよ。",
-          :size=>"102x10" %></div>
+日当り重視のあなたに、ご満足頂けると思いますよ。
+
+物件設備：エレベーター、２４時間ゴミ出し可、駐輪場、TVモニター付オートロック、宅配BOX
+部屋設備：バス・トイレ別、独立洗面台、浴室乾燥機、温水洗浄便座、室内洗濯機置場、３口ガスコンログリル付、バルコニー有",
+          :size=>"102x10" %>
+        </div>
       </div>
       <div class="row pb-4">
         <div class="col text-center"><%= f.label :背景画像 %></div>

@@ -21,10 +21,12 @@
       <div>
         賃料　¥<%= @estate.price.to_s(:delimited) %>
       </div><br>
-      
-      <div class="favorite_<%= @estate.id %>">
-        <%= render "customers/favorites/favorite", estate: @estate %>
-      </div><br>
+
+      <% if customer_signed_in? %>
+        <div class="favorite_<%= @estate.id %>">
+          <%= render "customers/favorites/favorite", estate: @estate %>
+        </div><br>
+      <% end %>
 
       <p>投稿日時　<%= @estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
     </div>
@@ -33,9 +35,27 @@
       <%= attachment_image_tag @estate, :floor_image, format: 'jpeg', size: "475x475" %>
     </div>
   </div>
+  <% if customer_signed_in? %>
+    <div class="text-center" style="padding: 100px 0;">
+      <%= link_to "お問い合わせ", new_estate_research_path(@estate), class: "search btn-sm btn-outline-secondary", :style=>"text-decoration: none; padding: 20px 60px;" %>
+    </div>
+  <% end %>
 
-  <div class="text-center" style="padding: 100px 0;">
-    <%= link_to "お問い合わせ", new_estate_research_path(@estate), class: "search btn-sm btn-outline-secondary", :style=>"text-decoration: none; padding: 20px 60px;" %>
+  <div class="row">
+    <div class="col-10 text-right" style="padding-top: 20px;">
+      <p>お問い合わせするにはログインが必要です。<br/>会員登録済みの方はログインへ→</p>
+    </div>
+    <div class="col" style="padding-top: 28px;">
+      <%= link_to "ログイン", new_customer_session_path, class: "edit btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 text-right" style="padding: 20px;">
+      <p>お問い合せするには会員登録が必要です。<br/>会員登録をする方は会員登録へ→</p>
+    </div>
+    <div class="col" style="padding-top: 28px;">
+      <%= link_to "会員登録", new_customer_registration_path, class: "edit btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+    </div>
   </div>
 
   <div class="row mb-1">
