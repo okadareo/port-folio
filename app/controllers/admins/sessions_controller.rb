@@ -24,4 +24,8 @@ class Admins::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  
+  
+  
+  # before_action :authenticate_admin!
 end

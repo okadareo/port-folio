@@ -23,8 +23,8 @@ class Estate < ApplicationRecord
   validates :price, numericality: { only_integer: true }
   validates :floor, presence: true, format: { with: /\A[A-Z0-9]+\z/ }
   validates :info, presence: true, length: { minimum: 30 }
-  validates :background_image_id, presence: true
-  validates :floor_image_id, presence: true
+  validates :background_image, presence: true
+  validates :floor_image, presence: true
 
   def favorited_by?(customer)
     favorites.where(customer_id: customer.id).exists?

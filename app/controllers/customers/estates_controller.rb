@@ -14,7 +14,7 @@ class Customers::EstatesController < ApplicationController
       end
       if @q = Estate.all.order(created_at: :desc).page(params[:page]).per(12).ransack(params[:q])
          @estates = @q.result(distinct: true)
-         @message = "検索条件に合致した物件はございません。検索条件を変更して再検索してみて下さい。"
+         @message = "検索条件に合致した物件はございません。再度、検索条件を変更して検索してみて下さい。"
       end
     end
   end

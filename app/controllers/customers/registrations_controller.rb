@@ -59,6 +59,10 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  
+  
+  
+  # before_action :correct_customer, only: [:update]
 
   def update
     @customer = current_customer
@@ -78,4 +82,10 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   def customer_params
     params.require(:customer).permit(:name, :email, :phone_number)
   end
+  
+  # def correct_customer
+  #   if current_customer.id != customer.id
+      
+  #   end
+  # end
 end

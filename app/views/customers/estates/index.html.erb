@@ -35,13 +35,13 @@
           </div>
         </div>
       <% end %>
-    <% else %>
+  <% else %>
     <% if @message.present? %>
       <div class="text-center pt-5"><%= @message %></div>
     <% else %>
      <div class="text-center pt-5">物件情報はございません。<br>新着物件が出るまでもう少々お待ちください。</div>
     <% end %>
-    <% end %>
+  <% end %>
   </div>
 </div>
 <%= paginate @estates %>

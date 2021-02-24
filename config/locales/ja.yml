@@ -19,7 +19,7 @@ ja:
         price: "賃料"
         floor: "間取り"
         info: "物件概要"
-        background_image_id: "背景画像"
-        floor_image_id: "間取り図画像"
+        background_image: "背景画像"
+        floor_image: "間取り図画像"
     models:
       customer: "カスタマー"

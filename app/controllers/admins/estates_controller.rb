@@ -1,4 +1,6 @@
 class Admins::EstatesController < ApplicationController
+  # before_action :authenticate_admin!
+
   def new
     @estate = Estate.new
   end
