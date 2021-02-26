@@ -51,9 +51,8 @@
                 <th>お問い合わせ件数</th>
                 <td class="researches" style="font-size: 22px;">
                   <%= link_to admins_estate_path(estate) do %>
-                    <i class="fas fa-house-user"></i>
-                  <% end %>
                   <%= estate.researches.count %>
+                  <% end %>
                 </td>
                 <td><%= link_to "削除", admins_estate_path(estate), method: :delete, class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;", data: { confirm: '削除しますか？' } %></td>
               </tr>

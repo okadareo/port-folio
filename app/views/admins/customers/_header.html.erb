@@ -8,16 +8,19 @@
       <ul class="navbar-nav">
       <% if admin_signed_in? %>
         <li class="nav-item">
+          <%= link_to "物件入稿", new_admins_estate_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "物件一覧", admins_estates_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "会員一覧", admins_customers_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "お問い合わせ一覧", admins_researches_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+        <li class="nav-item">
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "物件入稿ページへ進む", new_admins_estate_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "物件一覧ページへ進む", admins_estates_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "カスタマー一覧ページへ進む", admins_customers_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
         </li>
       <% end %>
       </ul>

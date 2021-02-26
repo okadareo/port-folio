@@ -13,19 +13,23 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :estates, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-    resources :customers, only: [:index, :show] do
-      resources :researches, only: [:index]
+    resources :researches, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :edit, :update] do
+      patch "withdraw"
+      get "researches" => "researches#index"
       resources :favorites, only:[:index]
     end
   end
 
   scope module: :customers do
-    get 'estates/finish'
+    get "estates/finish"
     resources :estates, only: [:index, :show] do
       resource :favorites, only: [:create, :destroy]
       resources :researches, only: [:new, :create]
     end
     resource :customers, only: [:show]
+    get "customers/unsubscribe"
+    patch "customers/withdraw"
     root to: "estates#top"
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

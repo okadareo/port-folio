@@ -1,0 +1,27 @@
+<div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">
+  お問い合わせ一覧
+</div>
+<div class="container">
+  <div class="card shadow">
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <tr>
+            <th>お問い合わせ物件名</th>
+            <th class="name" style="width: 450px;">名前</th>
+            <th>お問い合わせ日時</th>
+            <th>対応状況</th>
+          </tr>
+          <% @researches.each do |researches| %>
+          <tr>
+            <td><%= link_to researches.customer.name, admins_research_path(researches.customer) %></td>
+            <td><%= researches.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+            <td><%= researches.status %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<%= paginate @researches %>

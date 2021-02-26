@@ -1,0 +1,22 @@
+<%= render "customers/customers/header" %>
+
+<div class="text-center" style="padding: 130px 0 30px 0; font-size: 30px; font-weight: bold;">退会画面</div>
+<div class="container">
+  <div class="row pt-4">
+    <div class="col text-center" style=" font-size: 30px">
+      <p>退会処理を行う場合、『退会する』ボタンを押して下さい。<br>
+      退会処理後はお気に入り物件の閲覧、お問い合わせができなくなります。<br>
+      ※退会後に処理を取り消すことはできません。</p>
+    </div>
+  </div>
+  <div class="row pt-5">
+    <div class="col text-right">
+      <%= link_to "退会する", customers_withdraw_path(@customer), class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;", data: { confirm: '本当に退会して宜しいですか？' }, method: :patch %>
+    </div>
+    <div class="col text-left">
+      <%= link_to "退会しない", customers_path, class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;" %>
+    </div>
+  </div>
+</div>
+
+<%= render "customers/customers/footer" %>

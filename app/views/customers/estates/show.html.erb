@@ -43,24 +43,25 @@
     <div class="text-center" style="padding: 100px 0;">
       <%= link_to "お問い合わせ", new_estate_research_path(@estate), class: "search btn-sm btn-outline-secondary", :style=>"text-decoration: none; padding: 20px 60px;" %>
     </div>
-  <% end %>
+  <% else %>
 
-  <div class="row">
-    <div class="col-10 text-right" style="padding-top: 20px;">
-      <p>お問い合わせするにはログインが必要です。<br/>会員登録済みの方はログインへ→</p>
+    <div class="row">
+      <div class="col-10 text-right" style="padding-top: 20px;">
+        <p>お問い合わせするにはログインが必要です。<br/>会員登録済みの方はログインへ→</p>
+      </div>
+      <div class="col" style="padding-top: 28px;">
+        <%= link_to "ログイン", new_customer_session_path, class: "edit btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+      </div>
     </div>
-    <div class="col" style="padding-top: 28px;">
-      <%= link_to "ログイン", new_customer_session_path, class: "edit btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+    <div class="row">
+      <div class="col-10 text-right" style="padding: 20px;">
+        <p>お問い合せするには会員登録が必要です。<br/>会員登録をする方は会員登録へ→</p>
+      </div>
+      <div class="col" style="padding-top: 28px;">
+        <%= link_to "会員登録", new_customer_registration_path, class: "edit btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-10 text-right" style="padding: 20px;">
-      <p>お問い合せするには会員登録が必要です。<br/>会員登録をする方は会員登録へ→</p>
-    </div>
-    <div class="col" style="padding-top: 28px;">
-      <%= link_to "会員登録", new_customer_registration_path, class: "edit btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
-    </div>
-  </div>
+  <% end %>
 
   <div class="row mb-1">
     <div class="col-4">

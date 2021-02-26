@@ -16,7 +16,10 @@
       <div class="col-7">
         <div class="card" style="font-size: 25px;">
           <%= @customer.email %>
-          </div>
+        </div>
+      </div>
+      <div class="col pt-2">
+        <%= link_to "編集", edit_customer_registration_path, class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;" %>
       </div>
     </div>
     <div class="row pt-4 pb-4">
@@ -27,7 +30,7 @@
         </div>
       </div>
       <div class="col pt-2">
-        <%= link_to "編集", edit_customer_registration_path, class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;" %>
+        <%= link_to "退会", customers_unsubscribe_path, class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;" %>
       </div>
     </div>
   </div>
@@ -72,7 +75,7 @@
       </div>
     <% end %>
   <% else %>
-    <div class="text-center" style="padding: 30px 0 50px 0;">いいねされた物件はありません。</div>
+    <div class="text-center" style="padding: 30px 0 50px 0;">お気に入りされた物件はありません。</div>
   <% end %>
 </div>
 
@@ -106,7 +109,7 @@
             </table>
           </div>
         </div>
-        
+
         <button class="btn btn-outline-primary" data-toggle="collapse" data-target="#key_<%= i %>" aria-expand="false" aria-controls="key_<%= i %>">
           <div class="col-2">お問い合わせ内容</div>
         </button>

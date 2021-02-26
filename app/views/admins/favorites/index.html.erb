@@ -1,7 +1,7 @@
 <%= render "admins/customers/header" %>
 
 <div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">
-  <%= @customer.name %>さんのお気に入り物件一覧
+  <%= @customer.name %> 様のお気に入り物件一覧
 </div>
 
 <div class="container" style="margin-bottom: 20px;">
@@ -40,7 +40,7 @@
       </div>
     <% end %>
   <% else %>
-    <div class="text-center"><%= @customer.name %>さんがお気に入りされた物件はありません。</div>
+    <div class="text-center"><%= @customer.name %> 様がお気に入りされた物件はありません。</div>
   <% end %>
 </div>
 <%= paginate @favorites %>

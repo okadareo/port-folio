@@ -1,0 +1,59 @@
+<%= render "admins/customers/header" %>
+
+<div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">
+  <%= @customer.name %> 様の編集ページ
+</div>
+<div class="container" style="margin-bottom: 20px;">
+  <div class="card shadow">
+    <div class="row pt-4">
+      <div class="col-3 text-center pt-1" style="font-weight: bold; font-size: 25px;">
+        お名前
+      </div>
+      <div class="col-8">
+        <div class="card" style="font-size: 25px;">
+          <%= @customer.name %>
+        </div>
+      </div>
+    </div>
+    <div class="row pt-4">
+      <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">
+        メールアドレス
+      </div>
+      <div class="col-8">
+        <div class="card" style="font-size: 25px;">
+          <%= @customer.email %>
+        </div>
+      </div>
+    </div>
+    <div class="row pt-4">
+      <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">
+        電話番号
+      </div>
+      <div class="col-8">
+        <div class="card" style="font-size: 25px;">
+          <%= @customer.phone_number %>
+        </div>
+      </div>
+    </div>
+    <%= form_with model: @customer, url:admins_customer_withdraw_path(@customer.id), local: true do |f| %>
+    <div class="row pt-4">
+      <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">
+        会員ステータス
+      </div>
+      <div class="col-3" style="font-weight: bold; font-size: 25px;">
+        <%= f.label :有効 %>
+        <%= f.radio_button :status, :有効 %>
+      </div>
+      <div class="col-3" style="font-weight: bold; font-size: 25px;">
+        <%= f.label :無効 %>
+        <%= f.radio_button :status, :無効 %>
+      </div>
+      <div class="col-2">
+        <%= f.submit "保存", class: "search", data: { confirm: 'ステータスを変更して宜しいですか？' } %>
+      </div>
+    </div>
+    <% end %>
+　</div>
+</div>
+
+<%= render "admins/customers/footer" %>

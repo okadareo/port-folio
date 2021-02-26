@@ -2,6 +2,7 @@ class Customers::ResearchesController < ApplicationController
 
   def new
     @research = Research.new
+    @estate = Estate.find(params[:estate_id])
   end
 
   def create
@@ -11,6 +12,8 @@ class Customers::ResearchesController < ApplicationController
     @research.customer_id = current_customer.id
     if @research.save
       redirect_to estates_finish_path
+    else
+      render "new"
     end
   end
 

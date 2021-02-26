@@ -21,5 +21,8 @@ ja:
         info: "物件概要"
         background_image: "背景画像"
         floor_image: "間取り図画像"
+      research:
+        title: "タイトル"
+        body: "本文"
     models:
       customer: "カスタマー"
