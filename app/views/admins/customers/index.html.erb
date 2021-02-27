@@ -1,4 +1,4 @@
-<%= render "admins/customers/header" %>
+<%= render "admins/customers/header", researches: @researches %>
 
 <div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">
   会員一覧
@@ -8,79 +8,43 @@
   <%= flash[:status] %>
 </div>
 
-<div class="container" style="margin-bottom: 20px;">
-  <% if @customers.present? %>
-    <% @customers.each do |customer| %>
-      <div class="card shadow">
-        <div class="row pt-4">
-          <div class="col-3 text-center pt-1" style="font-weight: bold; font-size: 25px;">
-            お名前
-          </div>
-          <div class="col-8">
-            <div class="card" style="font-size: 25px; padding-left: 10px;">
-              <%= customer.name %>
-            </div>
-          </div>
-        </div>
-        <div class="row pt-4">
-          <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">
-            メールアドレス
-          </div>
-          <div class="col-8">
-            <div class="card" style="font-size: 25px; padding-left: 10px;">
-              <%= customer.email %>
-            </div>
-          </div>
-        </div>
-        <div class="row pt-4">
-          <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">
-            電話番号
-          </div>
-          <div class="col-3">
-            <div class="card" style="font-size: 25px; padding-left: 10px;">
-              <%= customer.phone_number %>
-            </div>
-          </div>
-          <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">
-            会員ステータス
-          </div>
-          <div class="col-2">
-            <div class="card text-center" style="font-size: 25px;">
-              <%= customer.status %>
-            </div>
-          </div>
-        </div>
-        <div class="row pt-4">
-          <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">
-            お問い合わせ件数
-          </div>
-          <div class="col-1">
-            <div class="researches" style="font-size: 22px;">
-              <%= link_to admins_customer_researches_path(customer) do %>
-              <%= customer.researches.count %>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">
-            お気に入り件数
-          </div>
-          <div class="col-1">
-            <div class="researches" style="font-size: 22px;">
-              <%= link_to admins_customer_favorites_path(customer) do %>
-              <%= customer.favorites.count %>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-1"></div>
-          <div class="col-2 text-right">
-            <%= link_to "編集", edit_admins_customer_path(customer), class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;" %>
-          </div>
-        </div>
-    　</div>
-　  <% end %>
-　<% else %>
-　  <div class="text-center pt-5">カスタマーはおりません。</div>
-　<% end %>
+<div class="container">
+  <div class="card shadow">
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <tr>
+            <th class="estate" style="width: 230px;">お名前</th>
+            <th class="name" style="width: 380px;">メールアドレス</th>
+            <th class="name" style="width: 35px;">電話番号</th>
+            <th class="status" style="width: 100px;">問い合わせ</th>
+            <th class="status" style="width: 70px;">いいね</th>
+            <th class="status" style="width: 100px;">ステータス</th>
+            <th class="status" style="width: 55px;"></th>
+          </tr>
+          <% if @customers.present? %>
+            <% @customers.each do |customer| %>
+              <tr>
+                <td><%= customer.name %> 様</td>
+                <td><%= customer.email %></td>
+                <td><%= customer.phone_number %></td>
+                <td class="researches text-center"><%= link_to "#{customer.researches.count}", admins_customer_researches_path(customer) %></td>
+                <td class="favorites text-center"><%= link_to "#{customer.favorites.count}", admins_customer_favorites_path(customer) %></td>
+                <% if customer.status == "有効" %>
+                  <td class="status text-center" style="color: green;"><%= customer.status %></td>
+                <% elsif customer.status == "無効" %>
+                  <td class="status text-center" style="color: red;"><%= customer.status %></td>
+                <% end %>
+                <td><%= link_to "編集", edit_admins_customer_path(customer) %></td>
+              </tr>
+            <% end %>
+          <% else %>
+　          <div class="text-center pt-5">カスタマーはおりません。</div>
+　        <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 <%= paginate @customers %>
 

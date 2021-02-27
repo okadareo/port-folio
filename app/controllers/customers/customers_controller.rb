@@ -20,7 +20,7 @@ class Customers::CustomersController < ApplicationController
   # def withdraw
   #   customer = current_customer
   #   customer.status = "無効"
-  #   if customer.save #updateでstatusをfalseに変更
+  #   if customer.save #saveでstatusをfalseに変更
   #     reset_session
   #     flash[:notice] = "退会処理が完了されました。"
   #     redirect_to root_path

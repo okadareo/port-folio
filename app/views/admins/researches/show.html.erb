@@ -1,0 +1,90 @@
+<header class="sticky-top shadow-sm" style="width: 100%;">
+  <nav class="navbar navbar-expand-xs navbar-light">
+    <a class="navbar-brand p-0" href="/admins/sign_in"><%= image_tag('logo1.jpg') %></a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+      <% if admin_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "物件入稿", new_admins_estate_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "物件一覧", admins_estates_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "会員一覧", admins_customers_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "お問い合わせ一覧", admins_researches_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">
+  お問い合わせ詳細
+</div>
+<div class="container">
+  <div class="card shadow" style="margin-bottom: 50px;">
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <tr>
+            <th>お名前</th>
+            <td class="name" style="width: 800px;"><%= @researches.customer.name %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @researches.customer.email %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= @researches.customer.phone_number %></td>
+          </tr>
+          <tr>
+            <th>物件名</th>
+            <td><%= @researches.estate.name %>　<%= @researches.estate.room_number %>号室</td>
+          </tr>
+          <tr>
+            <th>お問い合わせ日時</th>
+            <td><%= @researches.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+          </tr>
+          <tr>
+            <th>対応状況</th>
+            <% if @researches.status == "未対応" %>
+              <td class="status" style="color: red;"><%= @researches.status %></td>
+            <% elsif @researches.status == "対応済" %>
+              <td class="status" style="color: green;"><%= @researches.status %></td>
+            <% end %>
+          </tr>
+          <tr>
+            <th></th>
+            <% if @researches.status == "未対応" %>
+              <td class="name" style="width: 30px;"><%= link_to "対応済にする", admins_research_support_path(@researches), data: { confirm: '対応済にして宜しいですか？' }, method: :patch %></td>
+            <% elsif @researches.status == "対応済" %>
+              <td class="name" style="width: 30px;"><%= link_to "未対応にする", admins_research_support_path(@researches), data: { confirm: '未対応にして宜しいですか？' }, method: :patch %></td>
+            <% end %>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row pt-4 pb-4">
+        <div class="col-2 mr-1" style="font-weight: bold; padding-left: 25px;">タイトル</div>
+        <div class="card col-9" style="height:60px; overflow:auto;"><%= @researches.title %></div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-2 mr-1" style="font-weight: bold; padding-left: 25px;">本文</div>
+        <div class="card col-9" style="height:150px; overflow:auto;"><%= @researches.body %></div>
+      </div>
+  </div>
+</div>
+
+<%= render "admins/customers/footer" %>

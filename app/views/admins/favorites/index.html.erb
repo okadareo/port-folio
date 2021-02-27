@@ -1,4 +1,4 @@
-<%= render "admins/customers/header" %>
+<%= render "admins/customers/header", researches: @researches %>
 
 <div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">
   <%= @customer.name %> 様のお気に入り物件一覧
@@ -40,7 +40,7 @@
       </div>
     <% end %>
   <% else %>
-    <div class="text-center"><%= @customer.name %> 様がお気に入りされた物件はありません。</div>
+    <div class="text-center">お気に入りされた物件はありません。</div>
   <% end %>
 </div>
 <%= paginate @favorites %>

@@ -7,16 +7,24 @@
       <div class="col">
         <table class="table">
           <tr>
-            <th>お問い合わせ物件名</th>
-            <th class="name" style="width: 450px;">名前</th>
-            <th>お問い合わせ日時</th>
-            <th>対応状況</th>
+            <th class="estate" style="width: 400px;">物件名</th>
+            <th class="name" style="width: 220px;">名前</th>
+            <th class="created" style="width: 180px;">お問い合わせ日時</th>
+            <th class="status" style="width: 70px;">対応状況</th>
           </tr>
-          <% @researches.each do |researches| %>
+          <% researches.each do |research| %>
           <tr>
-            <td><%= link_to researches.customer.name, admins_research_path(researches.customer) %></td>
-            <td><%= researches.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
-            <td><%= researches.status %></td>
+            <td><%= link_to admins_research_path(research.customer) do %>
+            <%= research.estate.name %>　<%= research.estate.room_number %>号室
+            <% end %>
+            </td>
+            <td><%= research.customer.name %> 様</td>
+            <td><%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+            <% if research.status == "未対応" %>
+              <td class="status text-center" style="color: red;"><%= research.status %></td>
+            <% elsif research.status == "対応済" %>
+              <td class="status text-center" style="color: green;"><%= research.status %></td>
+            <% end %>
           </tr>
           <% end %>
         </table>
@@ -24,4 +32,4 @@
     </div>
   </div>
 </div>
-<%= paginate @researches %>
+<%= paginate researches %>

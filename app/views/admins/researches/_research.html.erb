@@ -32,7 +32,6 @@
                 <th>お問い合わせ日時</th>
                 <td><%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
               </tr>
-
             </table>
           </div>
         </div>
@@ -57,7 +56,7 @@
       </div>
     <% end %>
   <% else %>
-    <div class="text-center"><%= customer.name %> 様がお問い合わせされた物件はありません。</div>
+    <div class="text-center">お問い合わせされた物件はありません。</div>
   <% end %>
 </div>
 <%= paginate researches %>

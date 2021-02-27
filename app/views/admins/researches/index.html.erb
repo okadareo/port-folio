@@ -1,9 +1,42 @@
-<%= render "admins/customers/header" %>
+<% if @customer %>
+  <%= render "admins/customers/header", researches: @researches %>
+<% else %>
+  <header class="sticky-top shadow-sm" style="width: 100%;">
+    <nav class="navbar navbar-expand-xs navbar-light">
+      <a class="navbar-brand p-0" href="/admins/sign_in"><%= image_tag('logo1.jpg') %></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+        <% if admin_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "物件入稿", new_admins_estate_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "物件一覧", admins_estates_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "会員一覧", admins_customers_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "お問い合わせ一覧", admins_researches_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </nav>
+  </header>
+<% end %>
 
 <% if @customer %>
-  <%= render "research", customer: @customer, researches: @researches %>
+  <%= render "research", researches: @researches, customer: @customer %>
 <% else %>
-  <%= render "researches" %>
+  <%= render "researches", researches: @researches %>
 <% end %>
 
 <%= render "admins/customers/footer" %>

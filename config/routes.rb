@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :estates, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-    resources :researches, only: [:index, :show, :edit, :update]
+    resources :researches, only: [:index, :show] do
+      patch "support"
+    end
     resources :customers, only: [:index, :edit, :update] do
       patch "withdraw"
       get "researches" => "researches#index"

@@ -3,6 +3,7 @@ class Admins::EstatesController < ApplicationController
 
   def new
     @estate = Estate.new
+    @researches = Research.where(status: false)
   end
 
   def create
@@ -17,15 +18,18 @@ class Admins::EstatesController < ApplicationController
 
   def index
     @estates = Estate.all.order(created_at: :desc).page(params[:page]).per(10)
+    @researches = Research.where(status: false)
   end
 
   def show
     @estates = Estate.find(params[:id])
+    @research = Research.where(status: false)
     @researches = Research.where(estate_id: params[:id]).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def edit
     @estate = Estate.find(params[:id])
+    @researches = Research.where(status: false)
   end
 
   def update
