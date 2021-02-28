@@ -4,16 +4,16 @@ class Admins::ResearchesController < ApplicationController
   def index
     if params[:customer_id]
       @customer = Customer.find(params[:customer_id])
-      @researches = Research.where(status: false)
+      @research = Research.where(status: false)
       @researches = Research.where(customer_id: params[:customer_id]).order(created_at: :desc).page(params[:page]).per(10)
     else
-      @researches = Research.where(status: false)
-      @researches = Research.all.order(created_at: :desc).page(params[:page]).per(10)
+      @research = Research.where(status: false)
+      @researches = Research.all.order(status: :asc).page(params[:page]).per(10)
     end
   end
 
   def show
-    @researches = Research.find(params[:id])
+    @research = Research.find(params[:id])
   end
 
   def support

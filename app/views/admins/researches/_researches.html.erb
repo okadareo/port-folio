@@ -14,7 +14,7 @@
           </tr>
           <% researches.each do |research| %>
           <tr>
-            <td><%= link_to admins_research_path(research.customer) do %>
+            <td><%= link_to admins_research_path(research) do %>
             <%= research.estate.name %>　<%= research.estate.room_number %>号室
             <% end %>
             </td>

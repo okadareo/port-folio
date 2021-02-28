@@ -1,13 +1,13 @@
 <header class="sticky-top shadow-sm" style="width: 100%;">
   <nav class="navbar navbar-expand-xs navbar-light">
-    <a class="navbar-brand p-0" href="/admins/sign_in"><%= image_tag('logo1.jpg') %></a>
-    
+    <a class="navbar-brand p-0" href="/admins/estates"><%= image_tag('logo1.jpg') %></a>
+
     <% if researches.present? %>
       <div class="researches text-left" style="font-size: 20px; font-weight: bold;">
         <%= link_to "未対応のお問い合わせが#{researches.count}件あります。", admins_researches_path %>
       </div>
     <% end %>
-    
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,6 +28,9 @@
         </li>
         <li class="nav-item">
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "会員ログイン", new_customer_session_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
         </li>
       <% end %>
       </ul>

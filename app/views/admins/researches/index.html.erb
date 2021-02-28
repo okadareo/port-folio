@@ -1,5 +1,5 @@
 <% if @customer %>
-  <%= render "admins/customers/header", researches: @researches %>
+  <%= render "admins/customers/header", researches: @research %>
 <% else %>
   <header class="sticky-top shadow-sm" style="width: 100%;">
     <nav class="navbar navbar-expand-xs navbar-light">
@@ -25,6 +25,9 @@
           </li>
           <li class="nav-item">
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "会員ログイン", new_customer_session_path, class: "btn-sm btn-outline-secondary", :style=>"font-size: 20px; text-decoration: none;" %>
           </li>
         <% end %>
         </ul>

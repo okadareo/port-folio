@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :search_product
+  before_action :current_location, unless: :devise_controller?
 
   def after_sign_in_path_for(resource)
     case resource
     when Customer
-      root_path
+      stored_location_for(resource) || root_path
     when Admin
       admins_estates_path
     end
@@ -37,5 +38,9 @@ class ApplicationController < ActionController::Base
       @q = Estate.ransack(params[:q])
       @estates = @q.result
       @keywords = keywords
+  end
+
+  def current_location
+    store_location_for(:customer, request.url)
   end
 end
