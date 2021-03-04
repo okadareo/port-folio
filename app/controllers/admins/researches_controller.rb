@@ -12,6 +12,12 @@ class Admins::ResearchesController < ApplicationController
     end
   end
 
+  def search
+    method = params[:search_method]
+    word = params[:search_word]
+    @researches = Research.search(method,word)
+  end
+
   def show
     @research = Research.find(params[:id])
   end
