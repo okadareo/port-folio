@@ -6,18 +6,20 @@ class Research < ApplicationRecord
   validates :body, presence: :true, length: { minimum: 10 }
 
   enum status: {未対応: false, 対応済: true }
-  
-  def self.search(method,word)
-    if method == "forward_match"
-            @researches = Research.where("text LIKE?","#{word}%")
-    elsif method == "backward_match"
-            @researches = Research.where("text LIKE?","%#{word}")
-    elsif method == "perfect_match"
-            @researches = Research.where("#{word}")
-    elsif method == "partial_match"
-            @researches = Research.where("text LIKE?","%#{word}%")
+
+  def self.search(name, create)
+    if name.present? && create.present?
+      # Research.where("created_at LIKE?", "%#{create}%")
+      # logger.debug("aaa")
+      customer = Customer.where("name LIKE?", "%#{name}%")
+      logger.debug(customer.ids)
+      logger.debug("aaa")
+      # Research.where(customer_id: customer.ids, created_at: date )
+      Research.where(['created_at LIKE? OR customer_id LIKE?', "%#{create}%", [customer.ids]])
+    elsif create.present?
+
     else
-            @researches = Post.all
+      @researches = Research.all
     end
   end
 end

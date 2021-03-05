@@ -16,7 +16,7 @@ class Estate < ApplicationRecord
 
   belongs_to :admin, optional: true
   has_many :favorites, dependent: :destroy
-  has_many :researches, dependent: :destroy
+  has_many :researches
 
   validates :name, presence: true
   validates :address, presence: true
