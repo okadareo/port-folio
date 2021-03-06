@@ -1,4 +1,14 @@
-<div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">
+<div class="text-center" style="padding: 130px 0 50px 0; font-size: 20px; font-weight: bold;">
+  <%= form_with(scope: :search, url: admins_researches_path, method: :get, local: true) do |f| %>
+    <%= f.label :名前 %>
+    <%= f.text_field :name %>
+    <%= f.date_field :created_at_from %> ~
+    <%= f.date_field :created_at_to %>
+    <%= f.submit "検索" %>
+  <% end %>
+</div>
+
+<div class="text-center" style="padding-bottom: 50px; font-size: 30px; font-weight: bold;">
   お問い合わせ一覧
 </div>
 <div class="container">

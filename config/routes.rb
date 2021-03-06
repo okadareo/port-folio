@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :researches, only: [:index, :show] do
       patch "support"
     end
+    get "researches/search" => "researches#search"
+    
     resources :customers, only: [:index, :edit, :update] do
       patch "withdraw"
       get "researches" => "researches#index"
@@ -29,6 +31,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :researches, only: [:new, :create]
     end
+    
     resource :customers, only: [:show]
     get "customers/unsubscribe"
     patch "customers/withdraw"

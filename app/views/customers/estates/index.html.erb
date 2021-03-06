@@ -5,8 +5,8 @@
 </div>
 
 <div class="container" style="padding-top: 130px; margin-bottom: 20px;">
-  <% if @estates.present? %>
-    <div class="row">
+  <div class="row">
+    <% if @estates.present? %>
       <% @estates.each do |estate| %>
         <div class="col-4">
           <div class="card mb-4" style="height:550px;">
@@ -39,13 +39,13 @@
           </div>
         </div>
       <% end %>
-  <% else %>
-    <% if @message.present? %>
-      <div class="text-center pt-5"><%= @message %></div>
     <% else %>
-     <div class="text-center pt-5">物件情報はございません。<br>新着物件が出るまでもう少々お待ちください。</div>
+      <% if @message.present? %>
+        <div class="text-center pt-5"><%= @message %></div>
+      <% else %>
+        <div class="text-center pt-5">物件情報はございません。<br>新着物件が出るまでもう少々お待ちください。</div>
+      <% end %>
     <% end %>
-  <% end %>
   </div>
 </div>
 <%= paginate @estates %>
