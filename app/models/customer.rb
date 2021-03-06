@@ -13,6 +13,6 @@ class Customer < ApplicationRecord
   enum status: {有効: true, 無効: false}
 
   def active_for_authentication?
-    super && (self.status == "有効 ")
+    super && (self.status == "有効")
   end
 end
