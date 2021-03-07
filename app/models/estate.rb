@@ -25,6 +25,8 @@ class Estate < ApplicationRecord
   validates :info, presence: true, length: { minimum: 30 }
   validates :background_image, presence: true
   validates :floor_image, presence: true
+  
+  scope :name_like, -> { where('name LIKE ?', "%#{name}%") if name.present? }
 
   def favorited_by?(customer)
     favorites.where(customer_id: customer.id).exists?

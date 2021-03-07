@@ -1,9 +1,9 @@
 <div class="text-center" style="padding: 130px 0 50px 0; font-size: 20px; font-weight: bold;">
   <%= form_with(scope: :search, url: admins_researches_path, method: :get, local: true) do |f| %>
     <%= f.label :名前 %>
-    <%= f.text_field :name %>
-    <%= f.date_field :created_at_from %> ~
-    <%= f.date_field :created_at_to %>
+    <%= f.text_field :name, value: search_params[:name] %>
+    <%= f.date_field :created_at_from, value: search_params[:created_at_from] %> ~
+    <%= f.date_field :created_at_to, value: search_params[:created_at_to] %>
     <%= f.submit "検索" %>
   <% end %>
 </div>

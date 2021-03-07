@@ -39,7 +39,7 @@
 <% if @customer %>
   <%= render "research", researches: @researches, customer: @customer %>
 <% else %>
-  <%= render "researches", researches: @researches %>
+  <%= render "researches", researches: @researches, search_params: @search_params %>
 <% end %>
 
 <%= render "admins/customers/footer" %>

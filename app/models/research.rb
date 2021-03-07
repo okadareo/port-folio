@@ -7,19 +7,17 @@ class Research < ApplicationRecord
 
   enum status: {未対応: false, 対応済: true }
 
-  def self.search(name, create)
-    if name.present? && create.present?
-      # Research.where("created_at LIKE?", "%#{create}%")
-      # logger.debug("aaa")
-      customer = Customer.where("name LIKE?", "%#{name}%")
-      logger.debug(customer.ids)
-      logger.debug("aaa")
-      # Research.where(customer_id: customer.ids, created_at: date )
-      Research.where(['created_at LIKE? OR customer_id LIKE?', "%#{create}%", [customer.ids]])
-    elsif create.present?
-
-    else
-      @researches = Research.all
-    end
+  scope :research, -> (search_params) do
+    return if search_params.blank?
+      name_like(search_params[:name])
+      .created_at_from(search_params[:created_at_from])
+      .created_at_to(search_params[:created_at_to])
   end
+
+  scope :name_like, -> (name) {
+    customer = Customer.where('name LIKE ?', "%#{name}%")
+    where(customer_id: customer.ids) if name.present? }
+  scope :created_at_from, -> (from) { where('? <= created_at', from) if from.present? }
+  scope :created_at_to, -> (to) { where('created_at <= ?', to) if to.present? }
+
 end
