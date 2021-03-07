@@ -7,23 +7,16 @@ class Admins::ResearchesController < ApplicationController
       @research = Research.where(status: false)
       @researches = Research.where(customer_id: params[:customer_id]).order(created_at: :desc).page(params[:page]).per(10)
     else
-
-
-        @research = Research.where(status: false)
-        name = research_search_params[:name]
-        create = research_search_params[:created_at_from]
-        @researches = Research.search(name, create).order(status: :asc).page(params[:page]).per(10)
-        logger.debug(@researches)
-      # @search_params = _search_params
-      # @users = User.search(@search_params).includes(:prefecture)
+      @research = Research.where(status: false)
+      @search_params = research_search_params
+      if @search_params.present?
+        logger.debug(@search_params)
+        @researches = Research.research(@search_params).order(status: :asc).page(params[:page]).per(25)
+      else
+        @researches = Research.all.order(status: :asc).page(params[:page]).per(25)
+      end
     end
   end
-
-  # def search
-  #   word = params[:search_word]
-  #   @researches = Research.search(word)
-  #   redirect_to admins_researches_path
-  # end
 
   def show
     @research = Research.find(params[:id])
