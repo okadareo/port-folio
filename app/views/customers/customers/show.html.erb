@@ -12,7 +12,9 @@
       </div>
     </div>
     <div class="row pt-4">
-      <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">メールアドレス</div>
+      <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">
+        メールアドレス
+      </div>
       <div class="col-7">
         <div class="card" style="font-size: 25px;">
           <%= @customer.email %>
@@ -23,7 +25,9 @@
       </div>
     </div>
     <div class="row pt-4 pb-4">
-      <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">電話番号</div>
+      <div class="col-3 text-center" style="font-weight: bold; font-size: 25px;">
+        電話番号
+      </div>
       <div class="col-7">
         <div class="card" style="font-size: 25px;">
           <%= @customer.phone_number %>
@@ -86,7 +90,7 @@
       <div class="card shadow" style="margin-bottom: 30px; height: auto;">
         <div class="row">
           <div class="col-md-2 col-sm-12">
-            <%= link_to attachment_image_tag(research.estate, :background_image, format: 'jpeg', size: "200x200"), estate_path(research.estate), {class: "image-top"} %>
+            <%= attachment_image_tag research.estate, :background_image, format: 'jpeg', size: "200x200" %>
           </div>
           <div class="col-md-10 col-sm-12" style="padding-left: 26px;">
             <table class="table table-striped" style="margin-bottom: 0;">

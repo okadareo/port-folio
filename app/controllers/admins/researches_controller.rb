@@ -10,7 +10,6 @@ class Admins::ResearchesController < ApplicationController
       @research = Research.where(status: false)
       @search_params = research_search_params
       if @search_params.present?
-        logger.debug(@search_params)
         @researches = Research.research(@search_params).order(status: :asc).page(params[:page]).per(25)
       else
         @researches = Research.all.order(status: :asc).page(params[:page]).per(25)

@@ -8,11 +8,17 @@
   <% end %>
 </div>
 
-<div class="text-center" style="padding-bottom: 50px; font-size: 30px; font-weight: bold;">
+<div class="text-center" style="font-size: 30px; font-weight: bold;">
   お問い合わせ一覧
 </div>
+
+<div class="text-center pt-5 pb-5" style="font-size: 20px; font-weight: bold;">
+  <%= flash[:status] %>
+</div>
+
 <div class="container">
-  <div class="card shadow">
+  <% if researches.present? %>
+  <div class="card shadow" style="margin-bottom: 100px;">
     <div class="row">
       <div class="col">
         <table class="table">
@@ -41,5 +47,12 @@
       </div>
     </div>
   </div>
+  <% else %>
+    <% if search_params.present? %>
+      <div class="text-center">検索条件に合致したお問い合わせはございません。</div>
+    <% else %>
+      <div class="text-center">現在、お問い合わせはございません。</div>
+    <% end %>
+  <% end %>
 </div>
 <%= paginate researches %>
