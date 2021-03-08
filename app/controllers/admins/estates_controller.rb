@@ -17,8 +17,13 @@ class Admins::EstatesController < ApplicationController
   end
 
   def index
-    @estates = Estate.all.order(created_at: :desc).page(params[:page]).per(10)
     @researches = Research.where(status: false)
+    @search_params = research_search_params
+    if @search_params.present?
+      @estates = Estate.research(@search_params).order(created_at: :desc).page(params[:page]).per(10)
+    else
+      @estates = Estate.all.order(created_at: :desc).page(params[:page]).per(10)
+    end
   end
 
   def show
@@ -68,5 +73,9 @@ class Admins::EstatesController < ApplicationController
       :property_image_k,
       :property_image_l,
       :name, :room_number, :info, :address, :floor, :price)
+  end
+
+  def research_search_params
+    params.fetch(:search, {}).permit(:name, :address, :floor, :price_from, :price_to)
   end
 end

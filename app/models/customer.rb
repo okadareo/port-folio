@@ -15,4 +15,15 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (self.status == "有効")
   end
+  
+  scope :research, -> (search_params) do
+    return if search_params.blank?
+    
+    name_like(search_params[:name])
+      .phone_number_like(search_params[:phone_number])
+  end
+  
+  scope :name_like, -> (name) {where('name LIKE ?', "%#{name}%") if name.present?}
+  scope :phone_number_like, -> (phone_number) {where('phone_number LIKE ?', "%#{phone_number}%") if phone_number.present?}
+  
 end

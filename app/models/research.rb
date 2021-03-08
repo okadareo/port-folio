@@ -9,15 +9,16 @@ class Research < ApplicationRecord
 
   scope :research, -> (search_params) do
     return if search_params.blank?
-      name_like(search_params[:name])
+
+    name_like(search_params[:name])
       .created_at_from(search_params[:created_at_from])
       .created_at_to(search_params[:created_at_to])
   end
 
   scope :name_like, -> (name) {
     customer = Customer.where('name LIKE ?', "%#{name}%")
-    where(customer_id: customer.ids) if name.present? }
-  scope :created_at_from, -> (from) { where('? <= created_at', from) if from.present? }
-  scope :created_at_to, -> (to) { where('created_at <= ?', to) if to.present? }
+    where(customer_id: customer.ids) if name.present?}
+  scope :created_at_from, -> (from) {where('? <= created_at', from) if from.present?}
+  scope :created_at_to, -> (to) {where('created_at <= ?', to) if to.present?}
 
 end

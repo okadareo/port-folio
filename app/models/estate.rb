@@ -25,10 +25,23 @@ class Estate < ApplicationRecord
   validates :info, presence: true, length: { minimum: 30 }
   validates :background_image, presence: true
   validates :floor_image, presence: true
-  
-  scope :name_like, -> { where('name LIKE ?', "%#{name}%") if name.present? }
 
   def favorited_by?(customer)
     favorites.where(customer_id: customer.id).exists?
   end
+
+  scope :research, -> (search_params) do
+    name_like(search_params[:name])
+      .address_like(search_params[:address])
+      .floor_like(search_params[:floor])
+      .price_from(search_params[:price_from])
+      .price_to(search_params[:price_to])
+  end
+
+  scope :name_like, -> (name) {where('name LIKE ?', "%#{name}%") if name.present?}
+  scope :address_like, -> (address) {where('address LIKE ?', "%#{address}%") if address.present?}
+  scope :floor_like, -> (floor) {where('floor LIKE ?', "%#{floor}%") if floor.present?}
+  # logger.debug(floor)
+  scope :price_from, -> (from) {where('? <= price', from) if from.present?}
+  scope :price_to, -> (to) {where('price <= ?', to) if to.present?}
 end

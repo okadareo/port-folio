@@ -2,8 +2,13 @@ class Admins::CustomersController < ApplicationController
   before_action :authenticate_admin!, only: [:index]
 
   def index
-    @customers = Customer.all.page(params[:page]).per(20)
     @researches = Research.where(status: false)
+    @search_params = research_search_params
+    if @search_params.present?
+      @customers = Customer.research(@search_params).page(params[:page]).per(20)
+    else
+      @customers = Customer.all.page(params[:page]).per(20)
+    end
   end
 
   def edit
@@ -30,5 +35,11 @@ class Admins::CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:status)
+  end
+  
+  private
+  
+  def research_search_params
+    params.fetch(:search, {}).permit(:name, :phone_number)
   end
 end
