@@ -8,15 +8,13 @@
   <% end %>
 </div>
 
-<div class="text-center" style="font-size: 30px; font-weight: bold;">
-  お問い合わせ一覧
-</div>
+<div class="text-center" style="font-size: 30px; font-weight: bold;">お問い合わせ一覧</div>
 
-<div class="text-center pt-5 pb-5" style="font-size: 20px; font-weight: bold;">
+<div class="text-center pt-5 pb-5" style="font-size: 20px; font-weight: bold; color: #FA601A;">
   <%= flash[:status] %>
 </div>
 
-<div class="container">
+<div class="container" style="margin-bottom: 20px;">
   <% if researches.present? %>
   <div class="card shadow" style="margin-bottom: 100px;">
     <div class="row">
@@ -49,9 +47,9 @@
   </div>
   <% else %>
     <% if search_params.present? %>
-      <div class="text-center">検索条件に合致したお問い合わせはございません。</div>
+      <div class="text-center" style="font-size: 20px; font-weight: bold;">検索条件に合致したお問い合わせはございません。</div>
     <% else %>
-      <div class="text-center">現在、お問い合わせはございません。</div>
+      <div class="text-center" style="font-size: 20px; font-weight: bold;">現在、お問い合わせはございません。</div>
     <% end %>
   <% end %>
 </div>

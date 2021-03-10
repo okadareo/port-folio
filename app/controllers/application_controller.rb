@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :search_product
   before_action :current_location, unless: :devise_controller?
+  before_action :set_locale
 
   def after_sign_in_path_for(resource)
     case resource
@@ -43,4 +44,17 @@ class ApplicationController < ActionController::Base
   def current_location
     store_location_for(:customer, request.url)
   end
+
+  def set_locale
+    I18n.locale = locale
+  end
+
+  def locale
+    @locale ||= params[:locale] || I18n.default_locale
+  end
+
+  def default_url_options(options={})
+    options.merge(locale: locale)
+  end
+
 end
