@@ -2,4 +2,7 @@
   <nav class="navbar">
     <a class="navbar-brand pr-5" href="/"><%= image_tag('logo.jpg') %></a>
   </nav>
+  <% I18n.available_locales.reject{|l| l == I18n.locale}.each do |locale| %>
+    <%= link_to(locale, i18n_url_for(params.merge(locale: locale))) %>
+  <% end %>
 </footer>
