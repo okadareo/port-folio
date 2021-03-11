@@ -18,7 +18,7 @@ module Techroom
 
 
     config.i18n.enforce_available_locales = true
-    config.i18n.available_locales = ["ja", "en", "ko", "zh"] #koは韓国語、zhは中国語
+    config.i18n.available_locales = %i(ja en ko zh) #koは韓国語、zhは中国語
 
     config.time_zone = 'Tokyo'
     config.i18n.default_locale = :ja
