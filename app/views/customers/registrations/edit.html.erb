@@ -1,4 +1,4 @@
-<%= render "customers/customers/header" %>
+
 <div class="text-center" style="padding: 150px 0 30px 0; font-size: 30px; font-weight: bold;">マイページ編集</div>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "customers/shared/error_messages", resource: resource %>
@@ -23,4 +23,3 @@
     </div>
   </div>
 <% end %>
-<%= render "customers/customers/footer" %>

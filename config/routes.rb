@@ -34,10 +34,10 @@ Rails.application.routes.draw do
         resources :researches, only: [:new, :create]
       end
 
-      resource :customers, only: [:show], param: :slug
-      get "customers/unsubscribe", param: :slug
-      patch "customers/withdraw", param: :slug
-      root to: "estates#top", param: :slug
+      resource :customers, only: [:show]
+      get "customers/unsubscribe"
+      patch "customers/withdraw"
+      root to: "estates#top"
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,5 +1,3 @@
-<%= render "customers/customers/header" %>
-
 <div class="text-center" style="padding: 150px 0 50px 0; font-size: 40px;">会員登録</div>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "customers/shared/error_messages", resource: resource %>
@@ -39,5 +37,3 @@
     </div>
   </div>
 <% end %>
-
-<%= render "customers/customers/footer" %>
