@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Customer.create!(
-  email: "okadareo@gmail.com",
+  email: "b@b",
   name: "岡田",
   phone_number: "0300000000",
   password: "111111"
