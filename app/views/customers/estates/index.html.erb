@@ -1,3 +1,5 @@
+<%= render "customers/customers/header" %>
+
 <div class="notice text-center" style="padding-bottom: 50px; color: #FA601A;">
   <%= flash[:notice] %>
 </div>
@@ -39,7 +41,7 @@
       <% end %>
     <% else %>
       <% if @message.present? %>
-        <div class="text-center pt-5"><%= @message %></div>
+        <div class="pt-5" style="margin: 0 auto; font-size: 20px; font-weight: bold; color: #FA601A;"><%= @message %></div>
       <% else %>
         <div class="text-center pt-5">物件情報はございません。<br>新着物件が出るまでもう少々お待ちください。</div>
       <% end %>

@@ -1,8 +1,12 @@
 class Customers::ResearchesController < ApplicationController
 
   def new
-    @research = Research.new
-    @estate = Estate.find(params[:estate_id])
+    if customer_signed_in?
+      @research = Research.new
+      @estate = Estate.find(params[:estate_id])
+    else
+      redirect_to root_path
+    end
   end
 
   def create

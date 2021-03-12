@@ -36,9 +36,9 @@ class ApplicationController < ActionController::Base
         params[:q][:groupings][i] = { name_or_info_or_address_or_floor_cont: keyword }
       end
     end
-      @q = Estate.ransack(params[:q])
-      @estates = @q.result
-      @keywords = keywords
+    @q = Estate.ransack(params[:q])
+    @estates = @q.result
+    @keywords = keywords
   end
 
   def current_location
@@ -56,5 +56,4 @@ class ApplicationController < ActionController::Base
   def default_url_options(options={})
     options.merge(locale: locale)
   end
-
 end
