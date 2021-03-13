@@ -67,8 +67,8 @@ group :production do
 end
 
 gem 'devise'
-gem "refile", require: "refile/rails", github: 'manfe/refile'
-gem "refile-mini_magick"
+gem 'refile', require: 'refile/rails', github: 'manfe/refile'
+gem 'refile-mini_magick'
 gem 'jquery-rails'
 gem 'kaminari','~> 1.2.1'
 gem 'bootstrap', '~> 4.5'
