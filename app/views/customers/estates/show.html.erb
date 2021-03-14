@@ -22,7 +22,7 @@
       <div>
         賃料　¥<%= @estate.price.to_s(:delimited) %>
       </div><br>
-
+      
       <% if customer_signed_in? %>
         <div class="favorite_<%= @estate.id %>">
           <%= render "customers/favorites/favorite", estate: @estate %>
