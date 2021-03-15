@@ -6,7 +6,7 @@
     <%= f.text_field :name, value: @search_params[:name] %>
     <%= f.label :電話番号 %>
     <%= f.number_field :phone_number.to_s, value: @search_params[:phone_number], placeholder:"080... (半角数字)" %>
-    <%= f.submit "検索" %>
+    <%= f.submit "検索", class: "searches" %>
   <% end %>
 </div>
 
