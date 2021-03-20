@@ -1,10 +1,10 @@
 # techhome
 
 ## サイト概要
-リノベーション物件情報を管理者が投稿し、ユーザは検索から閲覧・お気に入り登録・問い合わせができる不動産ポータルサイト
+リノベーション物件情報を管理者が投稿し、ユーザは検索から閲覧・お気に入り登録・問い合わせができる不動産ポータルサイトです。
 
 ### サイトテーマ
-ユーザー目線に立った見やすい不動産サイトです。
+カスタマー目線では見やすく・管理者目線では管理しやすい不動産サイトです。
 
 ### テーマを選んだ理由
 世に出ている不動産ポータルサイトは、問い合わせをするまでに時間が掛かるかつ
@@ -23,9 +23,9 @@
 https://docs.google.com/spreadsheets/d/1q60cEvW7fn-65QT29w7lgM8vjXWKWi4_S2-J6Sfa-04/edit#gid=0
 
 ## 開発環境
-- OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby on Rails
+- OS：Amazon Linux release 2 (Karoo)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
-- JSライブラリ：jQuery,Bootstrap
+- JSライブラリ：jQuery
 - IDE：Cloud9
 
