@@ -79,9 +79,7 @@
       ["東京都葛飾区"],
       ["東京都江戸川区"]], {include_blank: "物件住所"} %>
 
-      <%= f.select :floor_eq,
-      [["1R"],["1K"],["1DK"],["1LDK"],["2K"],["2DK"],["2LDK"],["3DK"],["3LDK"],
-      ["4LDK"],["5LDK"]], {include_blank: "間取り"} %>
+      <%= f.collection_select :floor_eq, Estate.group(:floor), :floor, :floor, include_blank: "間取り" %>
 
       <%= f.select :price_gteq,
       [["30000"],["35000"],["40000"],["45000"],["50000"],["55000"],["60000"],["65000"],["70000"],["75000"],["80000"],["85000"],["90000"],["95000"],["100000"],

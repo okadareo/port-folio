@@ -17,8 +17,6 @@ module Techroom
     # the framework and any gems in your application.
 
 
-    config.i18n.enforce_available_locales = true
-    config.i18n.available_locales = %i(ja en ko zh) #koは韓国語、zhは中国語
 
     config.time_zone = 'Tokyo'
     config.i18n.default_locale = :ja
