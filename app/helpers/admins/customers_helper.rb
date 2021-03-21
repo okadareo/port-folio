@@ -1,2 +1,2 @@
-module Admins::CustomerHelper
+module Admins::CustomersHelper
 end
