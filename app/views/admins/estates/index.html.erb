@@ -2,7 +2,7 @@
 
 <%= form_with(scope: :search, url: admins_estates_path, method: :get, local: true) do |f| %>
   <div class="text-center" style="padding-top: 130px; font-size: 20px; font-weight: bold;">
-    <%= f.label :間取り%>
+    <%= f.label :間取り %>
     <%= f.collection_select :floor, Estate.group(:floor), :floor, :floor, selected: @search_params[:floor], include_blank: "間取り" %>
     <%= f.label :賃料 %>
     <%= f.select :price_from,
