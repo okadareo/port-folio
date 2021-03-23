@@ -1,0 +1,29 @@
+<div class="edit btn-sm btn-outline-secondary text-center" style="margin: 0 auto; margin-bottom: 40px; width: 200px;" data-toggle="modal" data-target="#new-Modal">
+  予定登録
+</div>
+
+<div class="modal fade" id="new-Modal" tabindex="-1" role="dialog" aria-labelledby="new-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <%= form_with model: calendar, url: admins_calendars_path, local: true do |f| %>
+        <div class="container">
+          <div class="row justify-content-center pt-3 pb-3">
+            <%= f.text_field :title, :size=> "53", placeholder: "スケジュール名" %>
+          </div>
+          <div class="row justify-content-center pb-3">
+            <%= f.text_area :body, :size=> "52x5", placeholder: "スケジュール内容" %>
+          </div>
+          <div class="row justify-content-center pb-3">
+            <%= f.datetime_field :start_time %>〜<%= f.datetime_field :finish_time %>
+          </div>
+          <div class="row justify-content-center pb-3">
+            <%= f.submit "登録", class: "btn btn-dark" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="text-center">
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;"><i class="far fa-times-circle"></i></button>
+  </div>
+</div>

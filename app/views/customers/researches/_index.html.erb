@@ -1,0 +1,53 @@
+<div class="container" style="padding: 130px 0 50px 0; padding-bottom: 20px;">
+  <% if researches.present? %>
+    <% researches.each_with_index do |research, i| %>
+      <div class="card shadow" style="margin-bottom: 30px; height: auto;">
+        <div class="row">
+          <div class="col-md-2 col-sm-12">
+            <%= attachment_image_tag research.estate, :background_image, format: 'jpeg', size: "200x200" %>
+          </div>
+          <div class="col-md-10 col-sm-12" style="padding-left: 26px;">
+            <table class="table table-striped" style="margin-bottom: 0;">
+              <tr>
+                <th class="th" style="width: 15%;">物件名</th>
+                <td class="name"><%= research.estate.name %>　<%= research.estate.room_number %>号室</td>
+              </tr>
+              <tr>
+                <th>住所</th>
+                <td class="address"><%= research.estate.address %></td>
+              </tr>
+              <tr>
+                <th>賃料</th>
+                <td>¥<%= research.estate.price.to_s(:delimited) %></td>
+              </tr>
+              <tr>
+                <th>お問い合わせ日時</th>
+                <td><%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <button class="btn btn-outline-primary" data-toggle="collapse" data-target="#key_<%= i %>" aria-expand="false" aria-controls="key_<%= i %>">
+          <div class="col-2">お問い合わせ内容</div>
+        </button>
+        <div class="collapse" id="key_<%= i %>">
+          <div class="row pb-4 pt-4">
+            <div class="col-2 mr-4 text-center" style="font-weight: bold;">タイトル</div>
+            <div class="card col-9" style="height:60px; overflow:auto;">
+              <div><%= research.title %></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2 mr-4 text-center" style="font-weight: bold;">本文</div>
+            <div class="card col-9 mb-4" style="height:150px; overflow:auto;">
+              <div><%= research.body %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="text-center" style="font-size: 20px; font-weight: bold;">お問い合わせされた物件はございません。</div>
+  <% end %>
+</div>
+<%= paginate researches %>

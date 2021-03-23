@@ -1,5 +1,5 @@
 class Customers::FavoritesController < ApplicationController
-
+  
   def create
     @estate = Estate.find(params[:estate_id])
     @favorite = Favorite.new

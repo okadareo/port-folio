@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row pt-3 justify-content-center" style="font-weight: bold;">
+    <%= calendar.start_time.strftime('%Y/%m/%d %H時%M分') %> 〜
+    <%= calendar.finish_time.strftime('%Y/%m/%d %H時%M分') %>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card mt-3 mb-3" style="height: 50px; overflow: auto;">
+        <%= calendar.title %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card mb-3" style="height: 150px; overflow: auto;">
+        <%= calendar.body %>
+      </div>
+    </div>
+  </div>
+  <div class="row pb-3">
+    <div class="col text-right">
+      <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#edit-Modal">
+        編集
+      </button>
+      <div class="modal fade" id="edit-Modal" tabindex="-1" role="dialog" aria-labelledby="edit-ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2"><%= render "edit", calendar: calendar %></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <%= link_to "削除", admins_calendars_path, class: "btn btn-dark", data: { confirm: '削除してよろしいですか？' }, method: :delete %>
+    </div>
+  </div>
+</div>
+
+

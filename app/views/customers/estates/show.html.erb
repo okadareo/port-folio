@@ -22,7 +22,7 @@
       <div>
         賃料　¥<%= @estate.price.to_s(:delimited) %>
       </div><br>
-      
+
       <% if customer_signed_in? %>
         <div class="favorite_<%= @estate.id %>">
           <%= render "customers/favorites/favorite", estate: @estate %>
@@ -50,7 +50,7 @@
       <%= link_to "お問い合わせ", new_customer_session_path, class: "search btn-sm btn-outline-secondary", :style=>"text-decoration: none; padding: 20px 60px;" %>
     </div>
   <% end %>
-  
+
   <% unless customer_signed_in? %>
     <div class="row">
       <div class="col-10 text-right" style="padding-top: 20px;">

@@ -12,6 +12,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require simple_calendar
  *= require_tree .
  *= require_self
  */
@@ -164,4 +165,12 @@ input[type="number"]::-webkit-inner-spin-button {
 
 #q_price_lteq {
   width: 120px;
+}
+
+.profile:hover {
+  opacity: 0.7;
+}
+
+.profile_image {
+  border-radius: 60%;
 }
