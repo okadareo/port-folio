@@ -3,7 +3,9 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  
+  attachment :profile_image, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+         
   has_many :favorites, dependent: :destroy
   has_many :researches, dependent: :destroy
 

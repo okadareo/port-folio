@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :customers do
-    get 'calenders/index'
-  end
   devise_for :admins, controllers: {
     sessions: "admins/sessions",
     passwords: "admins/passwords",
@@ -15,6 +12,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
+    resources :calendars, only: [:create, :index, :show, :edit, :update, :destroy]
     resources :estates, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :researches, only: [:index, :show] do
       patch "support"
@@ -36,12 +34,10 @@ Rails.application.routes.draw do
     end
 
     resource :customers, only: [:show] do
-      resources :calenders, only: [:index]
     end
     get "customers/unsubscribe"
     patch "customers/withdraw"
     root to: "estates#top"
   end
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

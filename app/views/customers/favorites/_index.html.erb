@@ -1,0 +1,41 @@
+<div class="container" style="padding: 130px 0 50px 0; padding-bottom: 30px;">
+  <% if favorites.present? %>
+    <% favorites.reverse.each do |favorite| %>
+      <div class="card shadow" style="margin-bottom: 30px; padding-bottom: 0;">
+        <div class="row">
+          <div class="col-md-2 col-sm-12" style= "padding-bottom: 0;">
+            <%= link_to attachment_image_tag(favorite.estate, :background_image, format: 'jpeg', size: "210x210"), estate_path(favorite.estate), {class: "image-top"} %>
+          </div>
+          <div class="col-md-10 col-sm-12" style="padding-left: 37px;">
+            <table class="table table-striped" style="margin-bottom: 0;">
+              <tr>
+                <th class="th" style="width: 15%;">物件名</th>
+                <td class="name"><%= favorite.estate.name %>　<%= favorite.estate.room_number %>号室</td>
+              </tr>
+              <tr>
+                <th>住所</th>
+                <td class="address"><%= favorite.estate.address %></td>
+              </tr>
+              <tr>
+                <th>賃料</th>
+                <td>¥<%= favorite.estate.price.to_s(:delimited) %></td>
+              </tr>
+              <tr>
+                <th>お気に入り数</th>
+                <td>
+                  <% if favorite.estate.favorited_by?(current_customer) %>
+                    <%= link_to estate_favorites_path(favorite.estate), method: :delete, local: true, style: "font-size: 22px;" do %>
+                    <i class="fas fa-building"></i><%= favorite.estate.favorites.count %>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="text-center" style="padding: 30px 0 50px 0; font-size: 20px;">お気に入りされた物件はございません。</div>
+  <% end %>
+</div>
