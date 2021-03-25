@@ -24,5 +24,14 @@ ja:
       research:
         title: "タイトル"
         body: "本文"
+      calendar:
+        title: "スケジュール名"
+        body: "スケジュール内容"
+        start_time: "開始時刻"
+        finish_time: "終了日時"
     models:
       customer: "カスタマー"
+
+  simple_calendar:
+      previous: "<<"
+      next: ">>"

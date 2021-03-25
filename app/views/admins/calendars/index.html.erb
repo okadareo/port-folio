@@ -1,29 +1,18 @@
 <%= render "admins/customers/header", researches: @researches %>
 
-<div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">スケジュールカレンダー</div>
+<div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">カレンダー</div>
+
+<div class="notice text-center pt-2 pb-5" style="font-size: 20px; font-weight: bold; color: #FA601A;">
+  <%= flash[:new] %>
+  <%= flash[:calendar_new] %>
+  <%= flash[:edit] %>
+  <%= flash[:calendar_destroy] %>
+</div>
 
 <%= render "new", calendar: @calendar %>
 
-<div class="container" style="padding-bottom: 50px;">
-  <%= month_calendar events: @calendars do |date, calendars| %>
-    <%= date.day %>
-
-    <% calendars.each do |calendar| %>
-      <button type="button" data-toggle="modal" data-target="#show_<%= @i %>">
-        <%= calendar.title %>
-      </button>
-      <div class="modal fade" id="show_<%= @i %>" tabindex="-1" role="dialog" aria-labelledby="show-ModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <%= render "show", calendar: calendar %>
-          </div>
-        </div>
-        <div class="text-center">
-          <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;"><i class="far fa-times-circle"></i></button>
-        </div>
-      </div>
-    　<% @i = @i+1 %>
-    <% end %>
-      <% @i = @i+1 %>
-  <% end %>
+<div class="row justify-content-center" style="padding-bottom: 50px;">
+  <div class="col-11">
+    <%= render 'calendar', calendars: @calendars %>
+  </div>
 </div>

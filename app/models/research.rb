@@ -20,5 +20,5 @@ class Research < ApplicationRecord
     where(customer_id: customer.ids) if name.present?}
   scope :created_at_from, -> (from) {where('? <= created_at', from) if from.present?}
   scope :created_at_to, -> (to) {where('created_at <= ?', to) if to.present?}
-
+  
 end

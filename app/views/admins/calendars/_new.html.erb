@@ -1,5 +1,5 @@
-<div class="edit btn-sm btn-outline-secondary text-center" style="margin: 0 auto; margin-bottom: 40px; width: 200px;" data-toggle="modal" data-target="#new-Modal">
-  予定登録
+<div class="edit btn-sm btn-outline-secondary text-center" style="margin: 0 auto; margin-bottom: 40px; width: 250px;" data-toggle="modal" data-target="#new-Modal">
+  スケジュール登録
 </div>
 
 <div class="modal fade" id="new-Modal" tabindex="-1" role="dialog" aria-labelledby="new-ModalLabel" aria-hidden="true">
@@ -7,6 +7,9 @@
     <div class="modal-content">
       <%= form_with model: calendar, url: admins_calendars_path, local: true do |f| %>
         <div class="container">
+          
+          <%= render 'layouts/error_messages', model: calendar %>
+          
           <div class="row justify-content-center pt-3 pb-3">
             <%= f.text_field :title, :size=> "53", placeholder: "スケジュール名" %>
           </div>

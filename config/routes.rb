@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    resources :calendars, only: [:create, :index, :show, :edit, :update, :destroy]
+    resources :calendars, only: [:create, :index, :show, :update, :destroy]
     resources :estates, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :researches, only: [:index, :show] do
       patch "support"

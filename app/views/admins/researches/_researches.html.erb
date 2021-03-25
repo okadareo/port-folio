@@ -29,7 +29,11 @@
           <% researches.each do |research| %>
           <tr>
             <td><%= link_to admins_research_path(research) do %>
-            <%= research.estate.name %>　<%= research.estate.room_number %>号室
+            <% if research.estate.nil? %>
+               <p>物件が存在しません</p>
+            <% else %>
+              <%= research.estate.name %>　<%= research.estate.room_number %>号室
+            <% end %>
             <% end %>
             </td>
             <td><%= research.customer.name %> 様</td>

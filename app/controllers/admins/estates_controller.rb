@@ -7,8 +7,9 @@ class Admins::EstatesController < ApplicationController
   end
 
   def create
-    estate = Estate.new(estate_params)
-    if estate.save
+    @estate = Estate.new(estate_params)
+    @researches = Research.where(status: false)
+    if @estate.save
       flash[:new] = "新規物件の入稿が完了しました"
       redirect_to admins_estates_path
     else
@@ -38,8 +39,9 @@ class Admins::EstatesController < ApplicationController
   end
 
   def update
-    estate = Estate.find(params[:id])
-    if estate.update(estate_params)
+    @estate = Estate.find(params[:id])
+    @researches = Research.where(status: false)
+    if @estate.update(estate_params)
       flash[:notice] = "入稿物件の編集が完了しました"
       redirect_to admins_estates_path
     else
@@ -48,8 +50,9 @@ class Admins::EstatesController < ApplicationController
   end
 
   def destroy
-    estate = Estate.find(params[:id])
-    if estate.destroy
+    @estate = Estate.find(params[:id])
+    if @estate.destroy
+      flash[:destroy] = "入稿物件の削除が完了しました"
       redirect_to admins_estates_path
     end
   end
