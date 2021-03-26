@@ -12,7 +12,7 @@ class Customer < ApplicationRecord
   validates :name, presence: true, length: { minimum: 2 }
   validates :phone_number, numericality: true, presence: true, uniqueness: true, format: { with: /\A\d{10,11}\z/ } #ハイフンなしで10・11桁
 
-  enum status: {有効: true, 無効: false}
+  enum status: { 有効: true, 無効: false }
 
   def active_for_authentication?
     super && (self.status == "有効")

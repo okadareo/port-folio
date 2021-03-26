@@ -64,6 +64,7 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
+      flash[:update] = "プロフィール編集が完了しました"
       redirect_to customers_path
     else
       render "edit"

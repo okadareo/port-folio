@@ -1,6 +1,6 @@
 <%= render "admins/customers/header", researches: @research %>
 
-<div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">
+<div style="text-align: center; padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">
    <%= @estates.name %>　<%= @estates.room_number %>号室のお問い合わせ一覧
 </div>
 
@@ -9,19 +9,19 @@
     <% @researches.each_with_index do |research, i| %>
       <div class="card shadow" style="margin-bottom: 40px; height: auto;">
         <div class="row pt-4 pb-4">
-          <div class="col-2 mr-4 text-center" style="font-weight: bold;">カスタマー情報</div>
+          <div class="col-2 mr-4" style="text-align: center; font-weight: bold;">カスタマー情報</div>
           <div class="card col-9" style="border-width: 1px">
             <div class="row">
               <div class="col-3">
-                <div class="name" style="font-weight: bold; ">名前</div>
+                <div style="font-weight: bold; ">名前</div>
                 <div><%= research.customer.name %></div>
               </div>
               <div class="col-6">
-                <div class="email" style="font-weight: bold; ">メールアドレス</div>
+                <div style="font-weight: bold; ">メールアドレス</div>
                 <div><%= research.customer.email %></div>
               </div>
               <div class="col-3">
-                <div class="phone" style="font-weight: bold; ">電話番号</div>
+                <div style="font-weight: bold; ">電話番号</div>
                 <div><%= research.customer.phone_number %></div>
               </div>
             </div>
@@ -32,28 +32,22 @@
         </button>
         <div class="collapse" id="key_<%= i %>">
           <div class="row pb-4 pt-4">
-            <div class="col-2 mr-4 text-center" style="font-weight: bold;">タイトル</div>
-            <div class="card col-9" style="height:60px; overflow:auto;">
-              <div><%= research.title %></div>
-            </div>
+            <div class="col-2 mr-4" style="text-align: center; font-weight: bold;">タイトル</div>
+            <div class="card col-9" style="height:60px; overflow:auto;"><%= research.title %></div>
           </div>
           <div class="row">
-            <div class="col-2 mr-4 text-center" style="font-weight: bold;">本文</div>
-            <div class="card col-9 mb-4" style="height:150px; overflow:auto;">
-              <div><%= research.body %></div>
-            </div>
+            <div class="col-2 mr-4" style="text-align: center; font-weight: bold;">本文</div>
+            <div class="card col-9 mb-4" style="height:150px; overflow:auto;"><%= research.body %></div>
           </div>
           <div class="row pb-4">
-            <div class="col-2 mr-4 text-center" style="font-weight: bold;">お問い合わせ日時</div>
-            <div class="card col-9">
-              <div><%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></div>
-            </div>
+            <div class="col-2 mr-4" style="text-align: center; font-weight: bold;">お問い合わせ日時</div>
+            <div class="card col-9"><%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></div>
           </div>
         </div>
       </div>
     <% end %>
   <% else %>
-    <div class="text-center pt-5">お問い合わせはありません。</div>
+    <div style="text-align: center; padding-top: 60px; font-size: 20px; font-weight: bold;">お問い合わせはございません</div>
   <% end %>
 </div>
 <%= paginate @researches %>

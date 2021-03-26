@@ -9,7 +9,7 @@
           <div class="col-md-10 col-sm-12" style="padding-left: 26px;">
             <table class="table table-striped" style="margin-bottom: 0;">
               <tr>
-                <th class="th" style="width: 15%;">物件名</th>
+                <th style="width: 15%;">物件名</th>
                 <td class="name"><%= research.estate.name %>　<%= research.estate.room_number %>号室</td>
               </tr>
               <tr>
@@ -47,7 +47,7 @@
       </div>
     <% end %>
   <% else %>
-    <div class="text-center" style="font-size: 20px; font-weight: bold;">お問い合わせされた物件はございません。</div>
+    <div style="text-align: center; font-size: 20px; font-weight: bold;">お問い合わせされた物件はございません</div>
   <% end %>
 </div>
 <%= paginate researches %>

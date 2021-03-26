@@ -1,7 +1,7 @@
 <%= render "admins/customers/header", researches: @researches %>
 
 <%= form_with(scope: :search, url: admins_estates_path, method: :get, local: true) do |f| %>
-  <div class="text-center" style="padding-top: 130px; font-size: 20px; font-weight: bold;">
+  <div style="text-align: center; padding-top: 130px; font-size: 20px; font-weight: bold;">
     <%= f.label :間取り %>
     <%= f.collection_select :floor, Estate.group(:floor), :floor, :floor, selected: @search_params[:floor], include_blank: "間取り" %>
     <%= f.label :賃料 %>
@@ -18,7 +18,7 @@
       ["290000"],["300000"],["310000"],["320000"],["330000"],["340000"],["350000"],["360000"],["370000"],["380000"],["390000"],["400000"],["410000"],["420000"],
       ["430000"],["440000"],["450000"],["460000"],["470000"],["480000"],["490000"],["500000"],["1000000"]], {include_blank: "賃料(上限)", selected: @search_params[:price_to]} %>
   </div>
-  <div class="text-center" style="padding-bottom: 50px; font-size: 20px; font-weight: bold;">
+  <div style="text-align: center; padding-bottom: 50px; font-size: 20px; font-weight: bold;">
     <%= f.label :物件名 %>
     <%= f.text_field :name, value: @search_params[:name] %>
     <%= f.label :住所 %>
@@ -28,11 +28,11 @@
   <% end %>
 </div>
 
-<div class="text-center" style="font-size: 30px; font-weight: bold;">
+<div style="text-align: center; font-size: 30px; font-weight: bold;">
   物件一覧
 </div>
 
-<div class="notice text-center pt-5 pb-5" style="font-size: 20px; font-weight: bold; color: #FA601A;">
+<div style="padding: 50px 0; text-align: center; font-size: 20px; font-weight: bold; color: #FA601A;">
   <%= flash[:new] %>
   <%= flash[:notice] %>
   <%= flash[:destroy] %>
@@ -49,9 +49,9 @@
           <div class="col-md-9 col-sm-12">
             <table class="table table-striped" style="margin-bottom: 0;">
               <tr>
-                <th class="th" style="width: 20%;">物件名</th>
+                <th style="width: 20%;">物件名</th>
                 <td class="name"><%= estate.name %>　<%= estate.room_number %>号室</td>
-                <td class="td" style="width: 18%;"></td>
+                <td style="width: 18%;"></td>
               </tr>
               <tr>
                 <th>住所</th>
@@ -76,16 +76,20 @@
               <tr>
                 <th>更新日時</th>
                 <td><%= estate.updated_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
-                <td><%= link_to "編集", edit_admins_estate_path(estate), class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;" %></td>
+                <td>
+                  <%= link_to "編集", edit_admins_estate_path(estate), class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;" %>
+                </td>
               </tr>
               <tr>
                 <th>お問い合わせ件数</th>
-                <td class="researches" style="font-size: 22px;">
+                <td style="font-size: 22px;">
                   <%= link_to admins_estate_path(estate) do %>
-                  <%= estate.researches.count %>
+                    <%= estate.researches.count %>
                   <% end %>
                 </td>
-                <td><%= link_to "削除", admins_estate_path(estate), method: :delete, class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;", data: { confirm: '削除しますか？' } %></td>
+                <td>
+                  <%= link_to "削除", admins_estate_destroy_path(estate), method: :patch, class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;", data: { confirm: '削除してよろしいですか？' } %>
+                </td>
               </tr>
             </table>
           </div>
@@ -94,10 +98,10 @@
     <% end %>
   <% else %>
     <% if @search_params.present? %>
-      <div class="text-center pt-5">検索条件に合致した入稿物件はございません。</div>
+      <div style="text-align: center; padding-top: 60px; font-size: 25px; font-weight: bold;">検索条件に該当する入稿物件はございません</div>
     <% else %>
-      <div class="text-center pt-5">入稿物件はございません。</div>
+      <div style="text-align: center; padding-top: 60px; font-size: 25px; font-weight: bold;">入稿物件はございません</div>
     <% end %>
   <% end %>
 </div>
-<%= paginate @estates %>
+<%#= paginate @estates %>

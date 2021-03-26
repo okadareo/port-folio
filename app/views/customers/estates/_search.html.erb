@@ -1,5 +1,5 @@
 <%= search_form_for @q do |f| %>
-  <div class="search_field" style="padding-bottom: 5px;">
+  <div style="padding-bottom: 5px;">
     <%= f.select :address_start,
     [["東京都千代田区"],
     ["東京都中央区"],
@@ -40,7 +40,7 @@
     ["290000"],["300000"],["310000"],["320000"],["330000"],["340000"],["350000"],["360000"],["370000"],["380000"],["390000"],["400000"],["410000"],["420000"],
     ["430000"],["440000"],["450000"],["460000"],["470000"],["480000"],["490000"],["500000"],["1000000"]], {include_blank: "賃料(上限)"} %>
   </div>
-  <div class="search_field">
+  <div>
     <%= f.search_field :keyword, value: @keywords,
     :placeholder => "フリーワード　(検索例)浴室乾燥機　オートロック", style: "outline-offset: 0;  border-width: thin; height: 22px; border-radius: 2px; padding-right: 5px; outline-offset: 0;", :size => "58" %>
     <%= f.submit "検索", class: "searches", style: "margin-left: 20px;" %>

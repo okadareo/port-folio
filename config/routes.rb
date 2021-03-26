@@ -13,11 +13,13 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :calendars, only: [:create, :index, :show, :update, :destroy]
-    resources :estates, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+    resources :estates, only: [:new, :create, :index, :show, :edit, :update] do
+      patch "destroy"
+    end
     resources :researches, only: [:index, :show] do
       patch "support"
     end
-    get "researches/search" => "researches#search"
+    get "researches/search"
 
     resources :customers, only: [:index, :edit, :update] do
       patch "withdraw"
@@ -33,8 +35,7 @@ Rails.application.routes.draw do
       resources :researches, only: [:new, :create]
     end
 
-    resource :customers, only: [:show] do
-    end
+    resource :customers, only: [:show]
     get "customers/unsubscribe"
     patch "customers/withdraw"
     root to: "estates#top"

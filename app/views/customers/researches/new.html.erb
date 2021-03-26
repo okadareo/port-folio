@@ -1,12 +1,12 @@
 <%= render "customers/customers/header" %>
 
-<div class="text-center" style="padding: 150px 0 30px 0; font-size: 30px; font-weight: bold;">お問い合わせ</div>
+<div style="text-align: center; padding: 150px 0 30px 0; font-size: 30px; font-weight: bold;">お問い合わせ</div>
 
 <%= render 'layouts/error_messages', model: @research %>
 
 <%= form_with model: @research, url: estate_researches_path, local: true do |f| %>
   <div class="container">
-    <div class="card shadow" style="margin: 0 0 150px 0;">
+    <div class="card shadow" style="margin-bottom: 150px;">
       <div class="row" style="padding: 60px 0 40px 0">
         <div class="col-2 text-center"><%= f.label :タイトル %></div>
         <div class="col-10"><%= f.text_field :title, placeholder:"お問い合わせタイトルを2文字以上でご入力ください。", :size=>"105x10" %></div>
@@ -15,7 +15,7 @@
         <div class="col-2 text-center"><%= f.label :本文 %></div>
         <div class="col-10"><%= f.text_area :body, placeholder:"お問い合わせ内容を10文字以上でご入力ください。", :size=>"104x10" %></div>
       </div>
-      <div class="row justify-content-center pb-5">
+      <div class="row pb-5 justify-content-center">
         <%= f.submit "お問い合わせする", class: "search" %>
       </div>
       <div class="accordion" id="accordionExample">
@@ -43,8 +43,7 @@
                     <div class="col-10"><%= @estate.address %></div>
                   </div>
                   <div class="row pb-3">
-                    <div class="col-2">賃料
-                    </div>
+                    <div class="col-2">賃料</div>
                     <div class="col-10">¥<%= @estate.price.to_s(:delimited) %></div>
                   </div>
                   <div class="row pb-3">

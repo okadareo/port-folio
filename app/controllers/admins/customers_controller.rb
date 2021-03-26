@@ -4,10 +4,16 @@ class Admins::CustomersController < ApplicationController
   def index
     @researches = Research.where(status: false)
     @search_params = research_search_params
-    if @search_params.present?
-      @customers = Customer.research(@search_params).page(params[:page]).per(20)
-    else
+    if @search_params.empty?
       @customers = Customer.all.page(params[:page]).per(20)
+    else
+      if @search_params[:name].empty? && @search_params[:phone_number].empty?
+        flash[:status] = "検索条件を入力してください"
+        redirect_to admins_customers_path
+      end
+      if
+        @customers = Customer.research(@search_params).page(params[:page]).per(20)
+      end
     end
   end
 

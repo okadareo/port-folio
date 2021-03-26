@@ -3,6 +3,7 @@ class Customers::CustomersController < ApplicationController
 
   def show
     @customer = current_customer
+    @estate = Estate.where(status: "有効")
     @favorites = current_customer.favorites.all
     @researches = current_customer.researches.all.order(created_at: :desc).page(params[:page]).per(10)
   end
@@ -30,9 +31,4 @@ class Customers::CustomersController < ApplicationController
   def unsubscribe
   end
 
-  private
-
-  def customer_params
-    params.permit(:status)
-  end
 end

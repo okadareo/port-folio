@@ -20,10 +20,16 @@ class Admins::EstatesController < ApplicationController
   def index
     @researches = Research.where(status: false)
     @search_params = research_search_params
-    if @search_params.present?
-      @estates = Estate.research(@search_params).order(created_at: :desc).page(params[:page]).per(10)
+    if @search_params.empty?
+      @estates = Estate.where(status: "有効").order(created_at: :desc).page(params[:page]).per(10)
     else
-      @estates = Estate.all.order(created_at: :desc).page(params[:page]).per(10)
+      if @search_params[:name].empty? && @search_params[:address].empty? && @search_params[:floor].empty? && @search_params[:price_from].empty? && @search_params[:price_to].empty?
+        flash[:notice] = "検索条件を入力してください"
+        redirect_to admins_estates_path
+      end
+      if
+        @estates = Estate.where(status: "有効").research(@search_params).order(created_at: :desc).page(params[:page]).per(10)
+      end
     end
   end
 
@@ -50,8 +56,8 @@ class Admins::EstatesController < ApplicationController
   end
 
   def destroy
-    @estate = Estate.find(params[:id])
-    if @estate.destroy
+    @estate = Estate.find(params[:estate_id])
+    if @estate.update(status: "無効")
       flash[:destroy] = "入稿物件の削除が完了しました"
       redirect_to admins_estates_path
     end

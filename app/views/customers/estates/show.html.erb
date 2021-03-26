@@ -2,19 +2,19 @@
 
 <%= attachment_image_tag @estate, :background_image, format: 'jpeg', width: "100%;", heigth: "10%;" %>
 <div class="container" style="margin-bottom: 50px;">
-  <div class="text-center" style="padding: 80px 0 80px 0; font-size: 30px; font-weight: bold;">
+  <div class="estate" style="text-align: center; padding: 80px 0 80px 0; font-size: 30px; font-weight: bold;">
     <%= @estate.name %>　<%= @estate.room_number %>号室
   </div>
   <div class="row">
     <div class="col-6">
       <div class="row justify-content-start">
-        <div class="info col-12">
+        <div class="estate col-12">
           <%= @estate.info %><br><br>
         </div>
       </div>
       <div class="row justify-content-start">
         <div class="col-2 address">住所</div>
-        <div class="estate col-10 address"><%= @estate.address %></div>
+        <div class="estate col-10"><%= @estate.address %></div>
       </div><br>
       <div>
         間取り　<%= @estate.floor %>
@@ -28,12 +28,12 @@
           <%= render "customers/favorites/favorite", estate: @estate %>
         </div><br>
       <% else %>
-        <div class="favorite" style="font-size: 22px;">
+        <div style="font-size: 22px; padding-bottom: 20px;">
           <i class="fas fa-building"></i><%= @estate.favorites.count %>
         </div>
       <% end %>
 
-      <p>投稿日時　<%= @estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+      <div>投稿日時　<%= @estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></div>
     </div>
     <div class="col-1"></div>
     <div class="col-5">
@@ -42,18 +42,18 @@
   </div>
 
   <% if customer_signed_in? %>
-    <div class="text-center" style="padding: 100px 0;">
+    <div style="text-align: center; padding: 100px 0;">
       <%= link_to "お問い合わせ", new_estate_research_path(@estate), class: "search btn-sm btn-outline-secondary", :style=>"text-decoration: none; padding: 20px 60px;" %>
     </div>
   <% else %>
-    <div class="text-center" style="padding: 100px 0;">
+    <div style="text-align: center; padding: 100px 0;">
       <%= link_to "お問い合わせ", new_customer_session_path, class: "search btn-sm btn-outline-secondary", :style=>"text-decoration: none; padding: 20px 60px;" %>
     </div>
   <% end %>
 
   <% unless customer_signed_in? %>
     <div class="row">
-      <div class="col-10 text-right" style="padding-top: 20px;">
+      <div class="col-10" style="text-align: right; padding-top: 20px;">
         <p>お問い合わせするにはログインが必要です。<br/>会員登録済みの方はログインへ→</p>
       </div>
       <div class="col" style="padding-top: 28px;">
@@ -61,7 +61,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-10 text-right" style="padding: 20px;">
+      <div class="col-10" style="text-align: right; padding: 20px;">
         <p>お問い合せするには会員登録が必要です。<br/>会員登録をする方は会員登録へ→</p>
       </div>
       <div class="col" style="padding-top: 28px;">
@@ -78,7 +78,9 @@
       <div class="modal fade text-center m-3" id="myModal-1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <%= attachment_image_tag @estate, :property_image_a, format: 'jpeg', size: "1400x550" %>
         <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;"><i class="far fa-times-circle"></i></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+          <i class="far fa-times-circle"></i>
+        </button>
       </div>
     </div>
     <div class="col-4">
@@ -88,7 +90,9 @@
       <div class="modal fade text-center m-3" id="myModal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <%= attachment_image_tag @estate, :property_image_b, format: 'jpeg', size: "1400x550" %>
         <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;"><i class="far fa-times-circle"></i></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+          <i class="far fa-times-circle"></i>
+        </button>
       </div>
     </div>
     <div class="col-4">
@@ -98,7 +102,9 @@
       <div class="modal fade text-center m-3" id="myModal-3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <%= attachment_image_tag @estate, :property_image_c, format: 'jpeg', size: "1400x550" %>
         <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;"><i class="far fa-times-circle"></i></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+          <i class="far fa-times-circle"></i>
+        </button>
       </div>
     </div>
   </div>
@@ -111,7 +117,9 @@
       <div class="modal fade text-center m-3" id="myModal-4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <%= attachment_image_tag @estate, :property_image_d, format: 'jpeg', size: "1400x550" %>
         <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;"><i class="far fa-times-circle"></i></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+          <i class="far fa-times-circle"></i>
+        </button>
       </div>
     </div>
     <div class="col-4">
@@ -121,7 +129,9 @@
       <div class="modal fade text-center m-3" id="myModal-5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <%= attachment_image_tag @estate, :property_image_e, format: 'jpeg', size: "1400x550" %>
         <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;"><i class="far fa-times-circle"></i></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+          <i class="far fa-times-circle"></i>
+        </button>
       </div>
     </div>
     <div class="col-4">
@@ -131,7 +141,9 @@
       <div class="modal fade text-center m-3" id="myModal-6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <%= attachment_image_tag @estate, :property_image_f, format: 'jpeg', size: "1400x550" %>
         <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;"><i class="far fa-times-circle"></i></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+          <i class="far fa-times-circle"></i>
+        </button>
       </div>
     </div>
   </div>
@@ -144,7 +156,9 @@
       <div class="modal fade text-center m-3" id="myModal-7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <%= attachment_image_tag @estate, :property_image_g, format: 'jpeg', size: "1400x550" %>
         <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;"><i class="far fa-times-circle"></i></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+          <i class="far fa-times-circle"></i>
+        </button>
       </div>
     </div>
     <div class="col-4">
@@ -164,7 +178,9 @@
       <div class="modal fade text-center m-3" id="myModal-9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <%= attachment_image_tag @estate, :property_image_i, format: 'jpeg', size: "1400x550" %>
         <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;"><i class="far fa-times-circle"></i></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+          <i class="far fa-times-circle"></i>
+        </button>
       </div>
     </div>
   </div>
@@ -177,7 +193,9 @@
       <div class="modal fade text-center m-3" id="myModal-10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <%= attachment_image_tag @estate, :property_image_j, format: 'jpeg', size: "1400x550" %>
         <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;"><i class="far fa-times-circle"></i></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+          <i class="far fa-times-circle"></i>
+        </button>
       </div>
     </div>
     <div class="col-4">
@@ -187,7 +205,9 @@
       <div class="modal fade text-center m-3" id="myModal-11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <%= attachment_image_tag @estate, :property_image_k, format: 'jpeg', size: "1400x550" %>
         <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;"><i class="far fa-times-circle"></i></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+          <i class="far fa-times-circle"></i>
+        </button>
       </div>
     </div>
     <div class="col-4">
@@ -197,7 +217,9 @@
       <div class="modal fade text-center m-3" id="myModal-12" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <%= attachment_image_tag @estate, :property_image_l, format: 'jpeg', size: "1400x550" %>
         <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;"><i class="far fa-times-circle"></i></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+          <i class="far fa-times-circle"></i>
+        </button>
       </div>
     </div>
   </div>

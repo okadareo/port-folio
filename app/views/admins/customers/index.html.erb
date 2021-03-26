@@ -1,6 +1,6 @@
 <%= render "admins/customers/header", researches: @researches %>
 
-<div class="text-center" style="padding: 130px 0 50px 0; font-size: 20px; font-weight: bold;">
+<div style="text-align: center; padding: 130px 0 50px 0; font-size: 20px; font-weight: bold;">
   <%= form_with(scope: :search, url: admins_customers_path, method: :get, local: true) do |f| %>
     <%= f.label :名前 %>
     <%= f.text_field :name, value: @search_params[:name] %>
@@ -10,9 +10,9 @@
   <% end %>
 </div>
 
-<div class="text-center" style="font-size: 30px; font-weight: bold;">会員一覧</div>
+<div style="text-align: center; font-size: 30px; font-weight: bold;">会員一覧</div>
 
-<div class="text-center pt-5 pb-5" style="font-size: 20px; font-weight: bold; color: #FA601A;">
+<div style="text-align: center; padding: 50px 0; font-size: 20px; font-weight: bold; color: #FA601A;">
   <%= flash[:status] %>
 </div>
 
@@ -23,25 +23,25 @@
         <div class="col">
           <table class="table">
             <tr>
-              <th class="estate" style="width: 230px;">お名前</th>
-              <th class="name" style="width: 380px;">メールアドレス</th>
-              <th class="name" style="width: 35px;">電話番号</th>
-              <th class="status" style="width: 100px;">問い合わせ</th>
-              <th class="status" style="width: 70px;">いいね</th>
-              <th class="status" style="width: 100px;">ステータス</th>
-              <th class="status" style="width: 55px;"></th>
+              <th style="width: 230px;">お名前</th>
+              <th style="width: 380px;">メールアドレス</th>
+              <th style="width: 35px;">電話番号</th>
+              <th style="width: 100px;">問い合わせ</th>
+              <th style="width: 70px;">いいね</th>
+              <th style="width: 100px;">ステータス</th>
+              <th style="width: 55px;"></th>
             </tr>
             <% @customers.each do |customer| %>
             <tr>
               <td><%= customer.name %> 様</td>
               <td><%= customer.email %></td>
               <td><%= customer.phone_number %></td>
-              <td class="researches text-center"><%= link_to "#{customer.researches.count}", admins_customer_researches_path(customer) %></td>
-              <td class="favorites text-center"><%= link_to "#{customer.favorites.count}", admins_customer_favorites_path(customer) %></td>
+              <td style="text-align: center;"><%= link_to "#{customer.researches.count}", admins_customer_researches_path(customer) %></td>
+              <td style="text-align: center;"><%= link_to "#{customer.favorites.count}", admins_customer_favorites_path(customer) %></td>
               <% if customer.status == "有効" %>
-                <td class="status text-center" style="color: green;"><%= customer.status %></td>
+                <td style="text-align: center; color: green;"><%= customer.status %></td>
               <% elsif customer.status == "無効" %>
-                <td class="status text-center" style="color: red;"><%= customer.status %></td>
+                <td style="text-align: center; color: red;"><%= customer.status %></td>
               <% end %>
               <td><%= link_to "編集", edit_admins_customer_path(customer) %></td>
             </tr>
@@ -52,9 +52,9 @@
     </div>
   <% else %>
     <% if @search_params.present? %>
-      <div class="text-center" style="font-size: 20px; font-weight: bold;">検索条件に合致した会員はおりません。</div>
+      <div style="text-align: center; padding-top: 60px; font-size: 25px; font-weight: bold;">検索条件に該当する会員はおりません</div>
     <% else %>
-      <div class="text-center" style="font-size: 20px; font-weight: bold;">会員はおりません。</div>
+      <div style="text-align: center; padding-top: 60px; font-size: 25px; font-weight: bold;">会員はおりません</div>
     <% end %>
 　<% end %>
 </div>
