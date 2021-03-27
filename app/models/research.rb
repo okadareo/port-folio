@@ -5,7 +5,7 @@ class Research < ApplicationRecord
   validates :title, presence: :true, length: { minimum: 2 }
   validates :body, presence: :true, length: { minimum: 10 }
 
-  enum status: {未対応: false, 対応済: true }
+  enum status: { 未対応: false, 対応済: true }
 
   scope :research, -> (search_params) do
     return if search_params.blank?
@@ -17,8 +17,8 @@ class Research < ApplicationRecord
 
   scope :name_like, -> (name) {
     customer = Customer.where('name LIKE ?', "%#{name}%")
-    where(customer_id: customer.ids) if name.present?}
-  scope :created_at_from, -> (from) {where('? <= created_at', from) if from.present?}
-  scope :created_at_to, -> (to) {where('created_at <= ?', to) if to.present?}
+    where(customer_id: customer.ids) if name.present? }
+  scope :created_at_from, -> (from) { where('? <= created_at', DateTime.strptime("#{from} JST", '%Y-%m-%d %Z').to_time) if from.present? }
+  scope :created_at_to, -> (to) { where('created_at < ?', DateTime.strptime("#{to} JST", '%Y-%m-%d %Z').to_time.since(1.days)) if to.present? }
 
 end

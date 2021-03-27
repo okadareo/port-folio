@@ -1,16 +1,17 @@
-<div class="text-center" style="padding: 130px 0 50px 0; font-size: 20px; font-weight: bold;">
+<div style="text-align: center; padding: 130px 0 50px 0; font-size: 20px; font-weight: bold;">
   <%= form_with(scope: :search, url: admins_researches_path, method: :get, local: true) do |f| %>
-    <%= f.label :名前 %>
+    <%= f.label :会員名 %>
     <%= f.text_field :name, value: search_params[:name] %>
     <%= f.date_field :created_at_from, value: search_params[:created_at_from] %> ~
     <%= f.date_field :created_at_to, value: search_params[:created_at_to] %>
+
     <%= f.submit "検索", class: "searches" %>
   <% end %>
 </div>
 
-<div class="text-center" style="font-size: 30px; font-weight: bold;">お問い合わせ一覧</div>
+<div style="text-align: center; font-size: 30px; font-weight: bold;">お問い合わせ一覧</div>
 
-<div class="text-center pt-5 pb-5" style="font-size: 20px; font-weight: bold; color: #FA601A;">
+<div style="padding: 50px 0; text-align: center; font-size: 20px; font-weight: bold; color: #FA601A;">
   <%= flash[:status] %>
 </div>
 
@@ -21,25 +22,27 @@
       <div class="col">
         <table class="table">
           <tr>
-            <th class="estate" style="width: 400px;">物件名</th>
-            <th class="name" style="width: 220px;">名前</th>
-            <th class="created" style="width: 180px;">お問い合わせ日時</th>
-            <th class="status" style="width: 70px;">対応状況</th>
+            <th>物件名</th>
+            <th>名前</th>
+            <th>お問い合わせ日時</th>
+            <th>対応状況</th>
           </tr>
           <% researches.each do |research| %>
-          <tr>
-            <td><%= link_to admins_research_path(research) do %>
-            <%= research.estate.name %>　<%= research.estate.room_number %>号室
-            <% end %>
-            </td>
-            <td><%= research.customer.name %> 様</td>
-            <td><%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
-            <% if research.status == "未対応" %>
-              <td class="status text-center" style="color: red;"><%= research.status %></td>
-            <% elsif research.status == "対応済" %>
-              <td class="status text-center" style="color: green;"><%= research.status %></td>
-            <% end %>
-          </tr>
+            <%#= byebug %>
+            <tr>
+              <td class="name" style="width: 400px;">
+                <%= link_to admins_research_path(research) do %>
+                  <%= research.estate.name %>　<%= research.estate.room_number %>号室
+                <% end %>
+              </td>
+              <td class="name" style="width: 220px;"><%= research.customer.name %> 様</td>
+              <td style="width: 180px;"><%= research.created_at.strftime('%Y年%m月%d日 %H時%M分') %></td>
+              <% if research.status == "未対応" %>
+                <td style="text-align: center; width: 70px; color: red;"><%= research.status %></td>
+              <% elsif research.status == "対応済" %>
+                <td style="text-align: center; width: 70px; color: green;"><%= research.status %></td>
+              <% end %>
+            </tr>
           <% end %>
         </table>
       </div>
@@ -47,9 +50,9 @@
   </div>
   <% else %>
     <% if search_params.present? %>
-      <div class="text-center" style="font-size: 20px; font-weight: bold;">検索条件に合致したお問い合わせはございません。</div>
+      <div style="text-align: center; padding-top: 60px; font-size: 25px; font-weight: bold;">検索条件に該当するお問い合わせはございません</div>
     <% else %>
-      <div class="text-center" style="font-size: 20px; font-weight: bold;">現在、お問い合わせはございません。</div>
+      <div style="text-align: center; padding-top: 60px; font-size: 25px; font-weight: bold;">お問い合わせはございません</div>
     <% end %>
   <% end %>
 </div>

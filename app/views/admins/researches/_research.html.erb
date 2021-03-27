@@ -1,4 +1,4 @@
-<div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">
+<div style="text-align: center; padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">
   <%= customer.name %> 様のお問い合わせ物件一覧
 </div>
 
@@ -13,7 +13,7 @@
           <div class="col-md-10 col-sm-12" style="padding-left: 70px;">
             <table class="table table-striped" style="margin-bottom: 0;">
               <tr>
-                <th class="th" style="width: 20%;">物件名</th>
+                <th style="width: 20%;">物件名</th>
                 <td class="name"><%= research.estate.name %>　<%= research.estate.room_number %>号室</td>
               </tr>
               <tr>
@@ -56,7 +56,7 @@
       </div>
     <% end %>
   <% else %>
-    <div class="text-center" style="padding-top: 70px; font-size: 20px; font-weight: bold;">お問い合わせされた物件はございません。</div>
+    <div style="text-align: center; padding-top: 70px; font-size: 20px; font-weight: bold;">お問い合わせされた物件はございません</div>
   <% end %>
 </div>
 <%= paginate researches %>

@@ -25,6 +25,8 @@ class Estate < ApplicationRecord
   validates :info, presence: true, length: { minimum: 30 }
   validates :background_image, presence: true
   validates :floor_image, presence: true
+  
+  enum status: { 有効: true, 無効: false }
 
   def favorited_by?(customer)
     favorites.where(customer_id: customer.id).exists?
@@ -38,9 +40,9 @@ class Estate < ApplicationRecord
       .price_to(search_params[:price_to])
   end
 
-  scope :name_like, -> (name) {where('name LIKE ?', "%#{name}%") if name.present?}
-  scope :address_like, -> (address) {where('address LIKE ?', "%#{address}%") if address.present?}
-  scope :floor_like, -> (floor) {where('floor LIKE ?', "#{floor}") if floor.present?}
-  scope :price_from, -> (from) {where('? <= price', from) if from.present?}
-  scope :price_to, -> (to) {where('price <= ?', to) if to.present?}
+  scope :name_like, -> (name) { where('name LIKE ?', "%#{name}%") if name.present? }
+  scope :address_like, -> (address) { where('address LIKE ?', "%#{address}%") if address.present? }
+  scope :floor_like, -> (floor) { where('floor LIKE ?', "#{floor}") if floor.present? }
+  scope :price_from, -> (from) { where('? <= price', from) if from.present? }
+  scope :price_to, -> (to) { where('price <= ?', to) if to.present? }
 end

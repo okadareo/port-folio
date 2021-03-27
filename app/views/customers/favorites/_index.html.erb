@@ -9,7 +9,7 @@
           <div class="col-md-10 col-sm-12" style="padding-left: 37px;">
             <table class="table table-striped" style="margin-bottom: 0;">
               <tr>
-                <th class="th" style="width: 15%;">物件名</th>
+                <th style="width: 15%;">物件名</th>
                 <td class="name"><%= favorite.estate.name %>　<%= favorite.estate.room_number %>号室</td>
               </tr>
               <tr>
@@ -25,7 +25,7 @@
                 <td>
                   <% if favorite.estate.favorited_by?(current_customer) %>
                     <%= link_to estate_favorites_path(favorite.estate), method: :delete, local: true, style: "font-size: 22px;" do %>
-                    <i class="fas fa-building"></i><%= favorite.estate.favorites.count %>
+                      <i class="fas fa-building"></i><%= favorite.estate.favorites.count %>
                     <% end %>
                   <% end %>
                 </td>
@@ -36,6 +36,6 @@
       </div>
     <% end %>
   <% else %>
-    <div class="text-center" style="padding: 30px 0 50px 0; font-size: 20px;">お気に入りされた物件はございません。</div>
+    <div style="text-align: center; font-size: 20px; font-weight: bold;">お気に入りされた物件はございません</div>
   <% end %>
 </div>

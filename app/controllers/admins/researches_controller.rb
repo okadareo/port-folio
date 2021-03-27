@@ -7,12 +7,20 @@ class Admins::ResearchesController < ApplicationController
       @research = Research.where(status: false)
       @researches = Research.where(customer_id: params[:customer_id]).order(created_at: :desc).page(params[:page]).per(10)
     else
-      @research = Research.where(status: false)
       @search_params = research_search_params
-      if @search_params.present?
-        @researches = Research.research(@search_params).order(status: :asc).page(params[:page]).per(25)
-      else
+      puts '@@@@@@@@@@@@@@@@@@'
+      puts @search_params[:created_at_from]
+      puts @search_params[:created_at_to]
+      if @search_params.empty?
         @researches = Research.all.order(status: :asc).page(params[:page]).per(25)
+      else
+        if @search_params[:name].empty? && @search_params[:created_at_from].empty? && @search_params[:created_at_to].empty?
+          flash[:status] = "検索条件を入力してください"
+          redirect_to admins_researches_path
+        end
+        if
+          @researches = Research.research(@search_params).order(status: :asc).page(params[:page]).per(25)
+        end
       end
     end
   end
@@ -32,7 +40,7 @@ class Admins::ResearchesController < ApplicationController
     end
 
     if research.save
-      flash[:status] = "対応状況が変更されました。"
+      flash[:status] = "対応状況が変更されました"
       redirect_to admins_researches_path
     end
   end

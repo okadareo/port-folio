@@ -1,7 +1,5 @@
-<div class="row justify-content-center p-5" style="color: white; font-weight: bold;">
-  <div class="text" style="font-size: 60px;">
-    <div class>お気に入り数ランキング</div>
-  </div>
+<div class="row" style="padding: 50px; justify-content: center; color: white; font-weight: bold; font-size: 60px;">
+  お気に入り数ランキング
 </div>
 <div class="container">
   <% if all_ranks.present? %>
@@ -25,7 +23,7 @@
               <div>
                 賃料：¥<%= estate.price.to_s(:delimited) %>　間取り：<%= estate.floor %>
               </div><br>
-              <div class="favorite" style="font-size: 22px;">
+              <div style="font-size: 22px;">
                 <i class="fas fa-building"></i><%= estate.favorites.count %>
               </div>
             </div>
@@ -37,6 +35,8 @@
       <% end %>
     </div>
   <% else %>
-    <div class="text-center pt-5">現在、お気に入りされた物件情報はございません。<br>お気に入りされる物件が出てくるまでもう少々お待ちください。</div>
+    <div style="padding-top: 50px; text-align: center; font-size: 20px; font-weight: bold;">
+      現在、お気に入りされた物件情報はございません。<br>お気に入りされる物件が出てくるまでもう少々お待ちください。
+    </div>
   <% end %>
 </div>

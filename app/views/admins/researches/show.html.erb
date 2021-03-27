@@ -35,7 +35,7 @@
   </nav>
 </header>
 
-<div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">
+<div style="text-align: center; padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">
   お問い合わせ詳細
 </div>
 <div class="container">
@@ -66,20 +66,20 @@
           <tr>
             <th>対応状況</th>
             <% if @research.status == "未対応" %>
-              <td class="status" style="color: red;"><%= @research.status %></td>
+              <td style="color: red;"><%= @research.status %></td>
             <% elsif @research.status == "対応済" %>
-              <td class="status" style="color: green;"><%= @research.status %></td>
+              <td style="color: green;"><%= @research.status %></td>
             <% end %>
           </tr>
           <tr>
             <th></th>
             <% if @research.status == "未対応" %>
-              <td class="name" style="width: 30px;">
-                <%= link_to "対応済にする", admins_research_support_path(@research), data: { confirm: '対応済にして宜しいですか？' }, method: :patch %>
+              <td style="width: 30px;">
+                <%= link_to "対応済にする", admins_research_support_path(@research), data: { confirm: '対応済にしてよろしいですか？' }, method: :patch %>
               </td>
             <% elsif @research.status == "対応済" %>
-              <td class="name" style="width: 30px;">
-                <%= link_to "未対応にする", admins_research_support_path(@research), data: { confirm: '未対応にして宜しいですか？' }, method: :patch %>
+              <td style="width: 30px;">
+                <%= link_to "未対応にする", admins_research_support_path(@research), data: { confirm: '未対応にしてよろしいですか？' }, method: :patch %>
               </td>
             <% end %>
           </tr>

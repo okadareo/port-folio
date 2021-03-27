@@ -5,7 +5,7 @@ class Customers::FavoritesController < ApplicationController
     @favorite = Favorite.new
     @favorite.estate_id = params[:estate_id]
     @favorite.customer_id = current_customer.id
-    # favorite = current_customer.favorites.new(estate_id: estate.id)
+    # favorite = current_customer.favorites.new(estate_id: estate.id)は5-7行目を1行でまとめたもの
     @favorite.save
   end
 

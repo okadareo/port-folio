@@ -7,8 +7,9 @@ class Admins::EstatesController < ApplicationController
   end
 
   def create
-    estate = Estate.new(estate_params)
-    if estate.save
+    @estate = Estate.new(estate_params)
+    @researches = Research.where(status: false)
+    if @estate.save
       flash[:new] = "新規物件の入稿が完了しました"
       redirect_to admins_estates_path
     else
@@ -19,10 +20,16 @@ class Admins::EstatesController < ApplicationController
   def index
     @researches = Research.where(status: false)
     @search_params = research_search_params
-    if @search_params.present?
-      @estates = Estate.research(@search_params).order(created_at: :desc).page(params[:page]).per(10)
+    if @search_params.empty?
+      @estates = Estate.where(status: "有効").order(created_at: :desc).page(params[:page]).per(10)
     else
-      @estates = Estate.all.order(created_at: :desc).page(params[:page]).per(10)
+      if @search_params[:name].empty? && @search_params[:address].empty? && @search_params[:floor].empty? && @search_params[:price_from].empty? && @search_params[:price_to].empty?
+        flash[:notice] = "検索条件を入力してください"
+        redirect_to admins_estates_path
+      end
+      if
+        @estates = Estate.where(status: "有効").research(@search_params).order(created_at: :desc).page(params[:page]).per(10)
+      end
     end
   end
 
@@ -38,8 +45,9 @@ class Admins::EstatesController < ApplicationController
   end
 
   def update
-    estate = Estate.find(params[:id])
-    if estate.update(estate_params)
+    @estate = Estate.find(params[:id])
+    @researches = Research.where(status: false)
+    if @estate.update(estate_params)
       flash[:notice] = "入稿物件の編集が完了しました"
       redirect_to admins_estates_path
     else
@@ -48,8 +56,9 @@ class Admins::EstatesController < ApplicationController
   end
 
   def destroy
-    estate = Estate.find(params[:id])
-    if estate.destroy
+    @estate = Estate.find(params[:estate_id])
+    if @estate.update(status: "無効")
+      flash[:destroy] = "入稿物件の削除が完了しました"
       redirect_to admins_estates_path
     end
   end

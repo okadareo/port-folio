@@ -12,7 +12,7 @@ class Customer < ApplicationRecord
   validates :name, presence: true, length: { minimum: 2 }
   validates :phone_number, numericality: true, presence: true, uniqueness: true, format: { with: /\A\d{10,11}\z/ } #ハイフンなしで10・11桁
 
-  enum status: {有効: true, 無効: false}
+  enum status: { 有効: true, 無効: false }
 
   def active_for_authentication?
     super && (self.status == "有効")
@@ -25,7 +25,7 @@ class Customer < ApplicationRecord
       .phone_number_like(search_params[:phone_number])
   end
   
-  scope :name_like, -> (name) {where('name LIKE ?', "%#{name}%") if name.present?}
-  scope :phone_number_like, -> (phone_number) {where('phone_number LIKE ?', "%#{phone_number}%") if phone_number.present?}
+  scope :name_like, -> (name) { where('name LIKE ?', "%#{name}%") if name.present? }
+  scope :phone_number_like, -> (phone_number) { where('phone_number LIKE ?', "%#{phone_number}%") if phone_number.present? }
   
 end

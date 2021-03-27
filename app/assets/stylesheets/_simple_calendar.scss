@@ -1,0 +1,26 @@
+.simple-calendar {
+  .day {height: 200px;}
+
+  .wday-0 {padding: 0 0 0 5px;}
+  .wday-1 {padding: 0 0 0 5px;}
+  .wday-2 {padding: 0 0 0 5px;}
+  .wday-3 {padding: 0 0 0 5px;}
+  .wday-4 {padding: 0 0 0 5px;}
+  .wday-5 {padding: 0 0 0 5px;}
+  .wday-6 {padding: 0 0 0 5px;}
+
+  .calendar-heading {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .calendar-title {
+    font-size: 35px;
+    font-weight: bold;
+  }
+
+  th {
+    text-align: center;
+  }
+}
+
