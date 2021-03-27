@@ -3,9 +3,9 @@ class Customers::CustomersController < ApplicationController
 
   def show
     @customer = current_customer
-    @estate = Estate.where(status: "有効")
-    @favorites = current_customer.favorites.all
     @researches = current_customer.researches.all.order(created_at: :desc).page(params[:page]).per(10)
+    estate = Estate.where(status: "有効")
+    @favorites = current_customer.favorites.where(estate_id: estate.ids)
   end
 
   def withdraw

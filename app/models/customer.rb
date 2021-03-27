@@ -25,7 +25,7 @@ class Customer < ApplicationRecord
       .phone_number_like(search_params[:phone_number])
   end
   
-  scope :name_like, -> (name) {where('name LIKE ?', "%#{name}%") if name.present?}
-  scope :phone_number_like, -> (phone_number) {where('phone_number LIKE ?', "%#{phone_number}%") if phone_number.present?}
+  scope :name_like, -> (name) { where('name LIKE ?', "%#{name}%") if name.present? }
+  scope :phone_number_like, -> (phone_number) { where('phone_number LIKE ?', "%#{phone_number}%") if phone_number.present? }
   
 end

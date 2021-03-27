@@ -40,9 +40,9 @@ class Estate < ApplicationRecord
       .price_to(search_params[:price_to])
   end
 
-  scope :name_like, -> (name) {where('name LIKE ?', "%#{name}%") if name.present?}
-  scope :address_like, -> (address) {where('address LIKE ?', "%#{address}%") if address.present?}
-  scope :floor_like, -> (floor) {where('floor LIKE ?', "#{floor}") if floor.present?}
-  scope :price_from, -> (from) {where('? <= price', from) if from.present?}
-  scope :price_to, -> (to) {where('price <= ?', to) if to.present?}
+  scope :name_like, -> (name) { where('name LIKE ?', "%#{name}%") if name.present? }
+  scope :address_like, -> (address) { where('address LIKE ?', "%#{address}%") if address.present? }
+  scope :floor_like, -> (floor) { where('floor LIKE ?', "#{floor}") if floor.present? }
+  scope :price_from, -> (from) { where('? <= price', from) if from.present? }
+  scope :price_to, -> (to) { where('price <= ?', to) if to.present? }
 end

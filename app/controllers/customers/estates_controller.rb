@@ -5,9 +5,11 @@ class Customers::EstatesController < ApplicationController
   def top
     @q = Estate.where(status: "有効").order(created_at: :desc).limit(6).ransack(params[:q])
     @estates = @q.result(distinct: true)
-    @all_ranks = Estate.find(Favorite.group(:estate_id).order("count(estate_id) desc").limit(6).pluck(:estate_id))
-
+    estate = Estate.where(status: "有効")
+    @all_ranks = Estate.find(Favorite.group(:estate_id).where(estate_id: estate.ids).order("count(estate_id) desc").limit(6).pluck(:estate_id))
+    
     # Favorite.group(:estate_id)　#物件の番号(estate_id)が同じものにグループを分ける
+    # where(estate_id: estate.ids)でestateに代入されたものでstatusが"有効"のみを表示
     # order("count(estate_id) desc").limit(6)　#それを、番号の多い順に並び替えて最多の６件を表示
     # pluck(:estate_id)　#最後に:estate_idカラムのみを数字で取り出すように指定
     # Estate.find()　#最終的に、pluckで取り出される数字を物件のIDとすることでいいね順に物件を取得する事ができる
