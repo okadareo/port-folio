@@ -4,7 +4,6 @@
     <%= f.text_field :name, value: search_params[:name] %>
     <%= f.date_field :created_at_from, value: search_params[:created_at_from] %> ~
     <%= f.date_field :created_at_to, value: search_params[:created_at_to] %>
-
     <%= f.submit "検索", class: "searches" %>
   <% end %>
 </div>
@@ -28,7 +27,6 @@
             <th>対応状況</th>
           </tr>
           <% researches.each do |research| %>
-            <%#= byebug %>
             <tr>
               <td class="name" style="width: 400px;">
                 <%= link_to admins_research_path(research) do %>

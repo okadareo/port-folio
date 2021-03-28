@@ -27,10 +27,10 @@ ja:
       calendar:
         title: "スケジュール名"
         body: "スケジュール内容"
-        start_time: "開始時刻"
+        start_time: "開始日時"
         finish_time: "終了日時"
     models:
-      customer: "カスタマー"
+      customer: "会員情報"
 
   simple_calendar:
       previous: "<<"

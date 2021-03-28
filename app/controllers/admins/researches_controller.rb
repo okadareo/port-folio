@@ -8,9 +8,7 @@ class Admins::ResearchesController < ApplicationController
       @researches = Research.where(customer_id: params[:customer_id]).order(created_at: :desc).page(params[:page]).per(10)
     else
       @search_params = research_search_params
-      puts '@@@@@@@@@@@@@@@@@@'
-      puts @search_params[:created_at_from]
-      puts @search_params[:created_at_to]
+
       if @search_params.empty?
         @researches = Research.all.order(status: :asc).page(params[:page]).per(25)
       else

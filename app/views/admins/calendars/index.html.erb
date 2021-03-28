@@ -1,12 +1,16 @@
 <%= render "admins/customers/header", researches: @researches %>
 
-<div class="text-center" style="padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">カレンダー</div>
+<div class="text-center" style="padding: 130px 0 40px 0; font-size: 30px; font-weight: bold;">カレンダー</div>
 
-<div class="notice text-center pt-2 pb-5" style="font-size: 20px; font-weight: bold; color: #FA601A;">
-  <%= flash[:new] %>
-  <%= flash[:calendar_new] %>
-  <%= flash[:edit] %>
-  <%= flash[:calendar_destroy] %>
+<div class="notice text-center pt-2 pb-5" style="font-size: 20px; font-weight: bold;">
+  <div style="color: red;">
+    <%= flash[:calendar_new] %>
+  </div>
+  <div style="color: #FA601A;">
+    <%= flash[:new] %>
+    <%= flash[:edit] %>
+    <%= flash[:calendar_destroy] %>
+  </div>
 </div>
 
 <%= render "new", calendar: @calendar %>
