@@ -23,16 +23,18 @@ Rails.application.routes.draw do
 
     resources :customers, only: [:index, :edit, :update] do
       patch "withdraw"
-      get "researches" => "researches#index"
+      resources :researches, only:[:index]
       resources :favorites, only:[:index]
     end
   end
 
   scope module: :customers do
     get "estates/finish"
+
+    get "estates/:estate_id/new" => "estates#new", as: 'estate_new'
+    post "estates/:estate_id" => "estates#create", as: 'estate_create'
     resources :estates, only: [:index, :show] do
       resource :favorites, only: [:create, :destroy]
-      resources :researches, only: [:new, :create]
     end
 
     resource :customers, only: [:show]

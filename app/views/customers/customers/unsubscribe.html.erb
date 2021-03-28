@@ -11,10 +11,10 @@
   </div>
   <div class="row pt-5">
     <div class="col text-right">
-      <%= link_to "退会する", customers_withdraw_path(@customer), class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;", data: { confirm: '本当に退会して宜しいですか？' }, method: :patch %>
+      <%= link_to "退会する", customers_withdraw_path(@customer), class: "edit btn-sm btn-outline-secondary", style: "text-decoration: none;", data: { confirm: '本当に退会して宜しいですか？' }, method: :patch %>
     </div>
     <div class="col text-left">
-      <%= link_to "退会しない", customers_path, class: "edit btn-sm btn-outline-secondary", :style=>"text-decoration: none;" %>
+      <%= link_to "退会しない", customers_path, class: "edit btn-sm btn-outline-secondary", style: "text-decoration: none;" %>
     </div>
   </div>
 </div>

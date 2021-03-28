@@ -16,7 +16,7 @@ class Admins::CalendarsController < ApplicationController
       flash[:new] = "スケジュール登録が完了されました"
       redirect_to admins_calendars_path
     else
-      flash[:calendar_new] = "スケジュール登録ができませんでした"
+      flash[:calendar_new] = "スケジュール登録ができませんでした。再度、送信フォームをご確認下さい。"
       render "index"
     end
   end

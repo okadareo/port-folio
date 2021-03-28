@@ -170,3 +170,42 @@ input[type="number"]::-webkit-inner-spin-button {
 .profile_image {
   border-radius: 60%;
 }
+
+.modal-edit {
+  background-color: #18003E;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 3px 25px;
+}
+
+.search_modal {
+  padding: 15px 60px;
+  background-color: #18003E;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.modal-calendar-submit {
+  background-color: #18003E;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 3px 30px;
+}
+
+.modal-estate-submit {
+  background-color: #18003E;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 3px 40px;
+}
+
+.modal-estate-submit:hover {
+  transform: scale(1.1, 1.1);
+}

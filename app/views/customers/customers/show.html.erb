@@ -2,7 +2,7 @@
 
 <div class="container"  id="accordionExample" style="padding: 160px 0 70px 0;">
   <div class="row" style="justify-content: center; padding-bottom: 50px;">
-    <div class="profile_image">
+    <div>
       <div style="padding-bottom: 20px; text-align: center; font-size: 25px; font-weight: bold;">プロフィール</div>
       <%= link_to attachment_image_tag(@customer, :profile_image, format: 'jpeg', size: "200x200", fallback: "no-image.jpeg", size: "200x200"), edit_customer_registration_path, class: "profile" %>
     </div>
@@ -12,19 +12,19 @@
 　</div>
   <div class="row">
     <div class="col-4 text-center">
-      <button class="btn btn-link" style="font-size: 100px;" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+      <button class="btn btn-link" style="font-size: 100px; text-decoration: none;" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
         <i class="fas fa-heart"></i>
         <div style="font-size: 22px; font-weight: bold;">お気に入りした物件</div>
       </button>
     </div>
     <div class="col-4 text-center">
-      <button class="btn btn-link" style="font-size: 100px;" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+      <button class="btn btn-link" style="font-size: 100px; text-decoration: none;" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
         <i class="fas fa-comment"></i>
         <div style="font-size: 22px; font-weight: bold;">お問い合わせした物件</div>
       </button>
     </div>
     <div class="col-4 text-center">
-      <%= link_to customers_unsubscribe_path, style: "font-size: 100px;" do %>
+      <%= link_to customers_unsubscribe_path, style: "font-size: 100px; text-decoration: none;" do %>
         <i class="fas fa-sad-tear"></i>
         <div style="font-size: 22px; font-weight: bold;">退会</div>
       <% end %>

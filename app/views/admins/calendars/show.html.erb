@@ -7,20 +7,20 @@
   <div class="notice text-center pt-5 pb-4" style="font-size: 20px; font-weight: bold; color: #FA601A;">
     <%= flash[:calendar_edit] %>
   </div>
-  
+
   <div class="row pt-3 justify-content-center" style="font-weight: bold;">
     <%= @calendar.start_time.strftime('%Y/%m/%d %H時%M分') %> 〜
     <%= @calendar.finish_time.strftime('%Y/%m/%d %H時%M分') %>
   </div>
-  <div class="row">
-    <div class="col">
+  <div class="row justify-content-center">
+    <div class="col-10">
       <div class="card mt-3 mb-3" style="height: 50px; overflow: auto;">
         <%= @calendar.title %>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
+  <div class="row justify-content-center">
+    <div class="col-10">
       <div class="card mb-3" style="height: 150px; overflow: auto;">
         <%= @calendar.body %>
       </div>
@@ -28,7 +28,7 @@
   </div>
   <div class="row pb-3">
     <div class="col text-right">
-      <button type="button" id="edit-modal-button" class="btn btn-dark" data-toggle="modal" data-target="#edit-Modal" onclick="edit_modal_button_onclick();">
+      <button type="button" id="edit-modal-button" class="modal-edit btn btn-outline-secondary" data-toggle="modal" data-target="#edit-Modal" onclick="edit_modal_button_onclick();">
         編集
       </button>
       <div class="modal fade" id="edit-Modal" tabindex="-1" role="dialog" aria-labelledby="edit-ModalLabel" aria-hidden="true">
@@ -37,11 +37,19 @@
             <%= render "edit", calendar: @calendar %>
           </div>
         </div>
+        <div style="text-align: center;">
+          <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+            <i class="far fa-times-circle"></i>
+          </button>
+        </div>
       </div>
     </div>
     <div class="col">
-      <%= link_to "削除", admins_calendar_path(@calendar), method: :delete, class: "btn btn-dark", data: { confirm: '削除してよろしいですか？' } %>
+      <%= link_to "削除", admins_calendar_path(@calendar), method: :delete, class: "modal-edit btn btn-outline-secondary", data: { confirm: '削除してよろしいですか？' } %>
     </div>
+  </div>
+  <div class="row justify-content-end" style="font-size: 19px; font-weight: bold;">
+    <%= link_to "スケジュール登録ページへ", admins_calendars_path, style: "text-decoration: none;" %>
   </div>
 </div>
 
