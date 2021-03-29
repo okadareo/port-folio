@@ -34,7 +34,7 @@ class Admins::CalendarsController < ApplicationController
       flash[:edit] = "スケジュール編集が完了しました"
       redirect_to admins_calendars_path
     else
-      flash[:calendar_edit] = "スケジュール編集ができませんでした"
+      flash[:calendar_edit] = "スケジュール編集ができませんでした。送信フォームに記入ミスがある為、再度ご確認下さい。"
       redirect_to admins_calendar_path(@calendar)
     end
   end

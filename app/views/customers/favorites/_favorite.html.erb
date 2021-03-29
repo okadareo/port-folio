@@ -1,9 +1,9 @@
 <% if estate.favorited_by?(current_customer) %>
   <%= link_to estate_favorites_path(estate), method: :delete, remote: true, style: "font-size: 22px;" do %>
-  <i class="fas fa-building"></i><%= estate.favorites.count %>
+    <i class="fas fa-building"></i><%= estate.favorites.count %>
   <% end %>
 <% else %>
   <%= link_to estate_favorites_path(estate), method: :post, remote: true, style: "font-size: 22px;" do %>
-  <i class="far fa-building"></i><%= estate.favorites.count %>
+    <i class="far fa-building"></i><%= estate.favorites.count %>
   <% end %>
 <% end %>
