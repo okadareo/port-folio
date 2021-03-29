@@ -1,1 +1,5 @@
-$(".favorite_<%= @estate.id %>").html("<%= j(render "customers/favorites/favorite", estate: @estate) %>");
+<% if @estate.present? %>
+  $("#favorite_<%= @estate.id %>").html("<%= j(render "customers/favorites/favorite", estate: @estate) %>");
+<% else %>
+  $("#favorite_<%= @favorite.id %>").html("<%= j(render "customers/favorites/favorite-index", favorite: @favorite) %>");
+<% end %>
