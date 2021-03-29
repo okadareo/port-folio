@@ -23,27 +23,27 @@
         <div class="col">
           <table class="table">
             <tr>
-              <th style="width: 230px;">お名前</th>
-              <th style="width: 380px;">メールアドレス</th>
-              <th style="width: 35px;">電話番号</th>
-              <th style="width: 100px;">問い合わせ</th>
-              <th style="width: 70px;">いいね</th>
-              <th style="width: 100px;">ステータス</th>
-              <th style="width: 55px;"></th>
+              <th>お名前</th>
+              <th>メールアドレス</th>
+              <th>電話番号</th>
+              <th>問い合わせ</th>
+              <th>いいね</th>
+              <th>ステータス</th>
+              <th></th>
             </tr>
             <% @customers.each do |customer| %>
             <tr>
-              <td><%= customer.name %> 様</td>
-              <td><%= customer.email %></td>
-              <td><%= customer.phone_number %></td>
-              <td style="text-align: center;"><%= link_to "#{customer.researches.count}", admins_customer_researches_path(customer) %></td>
-              <td style="text-align: center;"><%= link_to "#{customer.favorites.count}", admins_customer_favorites_path(customer) %></td>
+              <td class="name" style="width: 230px;"><%= customer.name %> 様</td>
+              <td class="name" style="width: 380px;"><%= customer.email %></td>
+              <td style="width: 35px;"><%= customer.phone_number %></td>
+              <td style="text-align: center; width: 100px;"><%= link_to "#{customer.researches.count}", admins_customer_researches_path(customer) %></td>
+              <td style="text-align: center; width: 70px;"><%= link_to "#{customer.favorites.count}", admins_customer_favorites_path(customer) %></td>
               <% if customer.status == "有効" %>
-                <td style="text-align: center; color: green;"><%= customer.status %></td>
+                <td style="text-align: center; color: green; width: 100px;"><%= customer.status %></td>
               <% elsif customer.status == "無効" %>
-                <td style="text-align: center; color: red;"><%= customer.status %></td>
+                <td style="text-align: center; color: red; width: 100px;"><%= customer.status %></td>
               <% end %>
-              <td><%= link_to "編集", edit_admins_customer_path(customer) %></td>
+              <td style="width: 55px;"><%= link_to "編集", edit_admins_customer_path(customer) %></td>
             </tr>
             <% end %>
           </table>

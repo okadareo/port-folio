@@ -24,7 +24,7 @@
       </div><br>
 
       <% if customer_signed_in? %>
-        <div class="favorite_<%= @estate.id %>">
+        <div id="favorite_<%= @estate.id %>">
           <%= render "customers/favorites/favorite", estate: @estate %>
         </div><br>
       <% else %>
