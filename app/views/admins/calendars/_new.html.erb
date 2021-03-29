@@ -7,11 +7,10 @@
     <div class="modal-content">
       <%= form_with model: calendar, url: admins_calendars_path, local: true do |f| %>
         <div class="container">
-          
           <div class="row">
             <h2 style="padding-top: 20px; margin: 0 auto; font-weight: bold;">スケジュール登録</h2>
           </div>
-          
+
           <div style="padding: 20px 0 10px 0;">
             <%= render 'layouts/error_messages', model: calendar %>
           </div>

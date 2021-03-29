@@ -22,8 +22,12 @@
               </tr>
               <tr>
                 <th>お気に入り数</th>
-                <td id="favorite_<%= favorite.id %>">
-                  <%= render "customers/favorites/favorite-index", favorite: favorite %>
+                <td>
+                  <% if favorite.estate.favorited_by?(current_customer) %>
+                    <%= link_to estate_favorites_path(favorite.estate, favorite_index: true), method: :delete, remote: true, style: "font-size: 22px;" do %>
+                      <i class="fas fa-building"></i><%= favorite.estate.favorites.count %>
+                    <% end %>
+                  <% end %>
                 </td>
               </tr>
             </table>
@@ -32,6 +36,6 @@
       </div>
     <% end %>
   <% else %>
-    <div style="text-align: center; font-size: 20px; font-weight: bold;">お気に入りされた物件はございません</div>
+    <div style="text-align: center; font-size: 25px; font-weight: bold;">お気に入りされた物件はございません</div>
   <% end %>
 </div>

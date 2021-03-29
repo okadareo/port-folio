@@ -7,7 +7,7 @@ class Calendar < ApplicationRecord
   validate :start_finish_check
 
   def start_finish_check
-    return if start_time.blank? && finish_time.blank?
+    return if start_time.blank? || finish_time.blank?
 
     if start_time > finish_time
       errors.add(:finish_time, "が開始日時より前の日付では登録できません。")
