@@ -11,7 +11,6 @@ class Admins::CalendarsController < ApplicationController
     @researches = Research.where(status: false)
     @calendar = Calendar.new(calendar_params)
     @calendars = Calendar.all
-    @calendar.admin_id = current_admin.id
     if @calendar.save
       flash[:new] = "スケジュール登録が完了されました"
       redirect_to admins_calendars_path
