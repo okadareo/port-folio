@@ -20,12 +20,12 @@ class Estate < ApplicationRecord
 
   validates :name, presence: true
   validates :address, presence: true
-  validates :price, numericality: { only_integer: true }
+  validates :price, numericality: { only_integer: true, greater_than: 30000 }
   validates :floor, presence: true, format: { with: /\A[A-Z0-9]+\z/ }
   validates :info, presence: true, length: { minimum: 30 }
   validates :background_image, presence: true
   validates :floor_image, presence: true
-  
+
   enum status: { 有効: true, 無効: false }
 
   def favorited_by?(customer)

@@ -1,5 +1,5 @@
 class Calendar < ApplicationRecord
-  belongs_to :admin
+  belongs_to :admin, optional: true
 
   validates :title,  presence: true
   validates :start_time,  presence: true
