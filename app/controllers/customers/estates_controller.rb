@@ -47,9 +47,6 @@ class Customers::EstatesController < ApplicationController
     @research.customer_id = current_customer.id
     if @research.save
       redirect_to estates_finish_path
-    else
-      flash[:research_new] = "お問い合わせ内容が送信できませんでした。再度、送信フォームをご確認下さい。"
-      render "show"
     end
   end
 

@@ -1,17 +1,18 @@
 <%= render "customers/customers/header" %>
 
-<div style="text-align: center; padding-bottom: 50px; color: #FA601A;">
-  <%= flash[:notice] %>
-</div>
-
 <div class="container" style="padding-top: 130px; margin-bottom: 20px;">
+
+  <div style="text-align: center; padding-bottom: 50px; color: #FA601A;">
+    <%= flash[:notice] %>
+  </div>
+
   <div class="row">
     <% if @estates.present? %>
       <% @estates.each do |estate| %>
         <div class="col-4">
           <div class="card mb-4" style="height:550px;">
             <div class="card-img-top">
-              <%= link_to attachment_image_tag(estate, :background_image, format: 'jpeg', size: "348x200"), estate_path(estate) %>
+              <%= link_to attachment_image_tag(estate, :background_image, size: "348x200"), estate_path(estate) %>
             </div>
             <div class="card-body" style="padding: 10px 0 0 8px;">
               <div class="card-title">

@@ -1,39 +1,24 @@
-<div class="edit btn-sm btn-outline-secondary" style="text-align: center; margin: 0 auto; margin-bottom: 40px; width: 250px;" data-toggle="modal" data-target="#new-Modal">
-  スケジュール登録
-</div>
-
-<div class="modal fade" id="new-Modal" tabindex="-1" role="dialog" aria-labelledby="new-ModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <%= form_with model: calendar, url: admins_calendars_path, local: true do |f| %>
-        <div class="container">
-          <div class="row">
-            <h2 style="padding-top: 20px; margin: 0 auto; font-weight: bold;">スケジュール登録</h2>
-          </div>
-
-          <div style="padding: 20px 0 10px 0;">
-            <%= render 'layouts/error_messages', model: calendar %>
-          </div>
-
-          <div class="row justify-content-center pb-3">
-            <%= f.text_field :title, :size=> "53", placeholder: "スケジュール名" %>
-          </div>
-          <div class="row justify-content-center pb-3">
-            <%= f.text_area :body, :size=> "52x5", placeholder: "スケジュール内容" %>
-          </div>
-          <div class="row justify-content-center pb-3">
-            <%= f.datetime_field :start_time %>〜<%= f.datetime_field :finish_time %>
-          </div>
-          <div class="row justify-content-center pb-3">
-            <%= f.submit "登録", class: "modal-calendar-submit btn btn-dark" %>
-          </div>
-        </div>
-      <% end %>
+<div class="container">
+  <div class="row">
+    <h2 style="padding-top: 20px; margin: 0 auto; font-weight: bold;">スケジュール登録</h2>
+  </div>
+  
+  <div style="padding: 20px 0 10px 0;">
+    <%= render 'layouts/error_messages', model: calendar %>
+  </div>
+  
+  <%= form_with model: calendar, url: admins_calendars_path, remote: true do |f| %>
+    <div class="row justify-content-center pb-3">
+      <%= f.text_field :title, :size=> "53", placeholder: "スケジュール名" %>
     </div>
-  </div>
-  <div style="text-align: center;">
-    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-      <i class="far fa-times-circle"></i>
-    </button>
-  </div>
+    <div class="row justify-content-center pb-3">
+      <%= f.text_area :body, :size=> "52x5", placeholder: "スケジュール内容" %>
+    </div>
+    <div class="row justify-content-center pb-3">
+      <%= f.datetime_field :start_time %>〜<%= f.datetime_field :finish_time %>
+    </div>
+    <div class="row justify-content-center pb-3">
+      <%= f.submit "登録", class: "modal-calendar-submit btn btn-dark" %>
+    </div>
+  <% end %>
 </div>

@@ -1,245 +1,40 @@
 <%= render "admins/customers/header", researches: @researches %>
 
-<div style="text-align: center; padding: 130px 0 10px 0; font-size: 30px; font-weight: bold;">物件編集画面</div>
-
-<%= render 'layouts/error_messages', model: @estate %>
-
-<%= form_with model: @estate, url: admins_estate_path, local: true do |f| %>
-　<div class="container">
-　  <div class="card shadow" style="margin-bottom: 120px;">
-　    <div class="row pt-4 pb-4" style="margin-right: 5px;">
-      　 <div class="col-2 text-center"><%= f.label :物件名 %></div>
-         <div class="col-5"><%= f.text_field :name, :size=>"50" %></div>
-         <div class="col-2 text-center"><%= f.label :部屋番号 %></div>
-         <div class="col-1"><%= f.number_field :room_number %></div>
-      </div>
-      <div class="row pb-4">
-         <div class="col-2 ml-2 mr-1 text-center"><%= f.label :住所 %></div>
-         <div class="col"><%= f.text_field :address, :size=>"102" %></div>
-      </div>
-      <div class="row pb-4">
-         <div class="col-2 ml-2 mr-1 text-center"><%= f.label :賃料 %></div>
-         <div class="col-2"><%= f.number_field :price, placeholder: "90000" %></div>
-         <div class="col-2 pt-1 text-center"><%= f.label :間取り %></div>
-         <div class="col-2"><%= f.text_field :floor, placeholder: "2LDK" %></div>
-      </div>
-      <div class="row pb-4">
-         <div class="col-2 ml-2 mr-1 text-center"><%= f.label :物件概要 %></div>
-         <div class="col"><%= f.text_area :info, :size=>"101x10" %></div>
-      </div>
-      <div class="row pb-4" style="margin-right: 1px;">
-         <div class="col pt-5 text-center">
-            <%= f.label :背景画像 %>
-            <%= f.attachment_field :background_image %>
-         </div>
-         <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-1">
-            <%= attachment_image_tag @estate, :background_image, format: 'jpeg', size: "150x150" %>
-         </button>
-         <div class="modal fade text-center m-3" id="myModal-1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <%= attachment_image_tag @estate, :background_image, format: 'jpeg', size: "1400x550" %>
-            <div class="modal-dialog" role="document"></div>
-            <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-               <i class="far fa-times-circle"></i>
-            </button>
-         </div>
-         <div class="col pt-5 text-center">
-            <%= f.label :間取り図画像 %>
-            <%= f.attachment_field :floor_image %>
-         </div>
-         <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-2">
-            <%= attachment_image_tag @estate, :floor_image, format: 'jpeg', size: "150x150" %>
-         </button>
-         <div class="modal fade text-center m-3" id="myModal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <%= attachment_image_tag @estate, :floor_image, format: 'jpeg', size: "1400x550" %>
-            <div class="modal-dialog" role="document"></div>
-            <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-               <i class="far fa-times-circle"></i>
-            </button>
-         </div>
-      </div>
-      <div class="row pb-4" style="margin-right: 1px">
-         <div class="col pt-5 text-center">
-            <%= f.label :物件画像１ %>
-            <%= f.attachment_field :property_image_a %>
-         </div>
-         <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-3">
-            <%= attachment_image_tag @estate, :property_image_a, format: 'jpeg', size: "150x150" %>
-         </button>
-         <div class="modal fade text-center m-3" id="myModal-3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <%= attachment_image_tag @estate, :property_image_a, format: 'jpeg', size: "1400x550" %>
-            <div class="modal-dialog" role="document"></div>
-            <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-               <i class="far fa-times-circle"></i>
-            </button>
-         </div>
-         <div class="col pt-5 text-center">
-            <%= f.label :物件画像２ %>
-            <%= f.attachment_field :property_image_b %>
-         </div>
-         <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-4">
-            <%= attachment_image_tag @estate, :property_image_b, format: 'jpeg', size: "150x150" %>
-         </button>
-         <div class="modal fade text-center m-3" id="myModal-4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <%= attachment_image_tag @estate, :property_image_b, format: 'jpeg', size: "1400x550" %>
-            <div class="modal-dialog" role="document"></div>
-            <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-               <i class="far fa-times-circle"></i>
-            </button>
-         </div>
-      </div>
-      <div class="row pb-4" style="margin-right: 1px">
-         <div class="col pt-5 text-center">
-            <%= f.label :物件画像３ %>
-            <%= f.attachment_field :property_image_c %>
-         </div>
-         <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-5">
-            <%= attachment_image_tag @estate, :property_image_c, format: 'jpeg', size: "150x150" %>
-         </button>
-         <div class="modal fade text-center m-3" id="myModal-5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <%= attachment_image_tag @estate, :property_image_c, format: 'jpeg', size: "1400x550" %>
-            <div class="modal-dialog" role="document"></div>
-            <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-               <i class="far fa-times-circle"></i>
-            </button>
-         </div>
-         <div class="col pt-5 text-center">
-            <%= f.label :物件画像４ %>
-            <%= f.attachment_field :property_image_d %>
-         </div>
-         <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-6">
-            <%= attachment_image_tag @estate, :property_image_d, format: 'jpeg', size: "150x150" %>
-         </button>
-         <div class="modal fade text-center m-3" id="myModal-6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <%= attachment_image_tag @estate, :property_image_d, format: 'jpeg', size: "1400x550" %>
-            <div class="modal-dialog" role="document"></div>
-            <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-               <i class="far fa-times-circle"></i>
-            </button>
-         </div>
-      </div>
-      <div class="row pb-4" style="margin-right: 1px">
-         <div class="col pt-5 text-center">
-            <%= f.label :物件画像５ %>
-            <%= f.attachment_field :property_image_e %>
-         </div>
-         <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-7">
-            <%= attachment_image_tag @estate, :property_image_e, format: 'jpeg', size: "150x150" %>
-         </button>
-         <div class="modal fade text-center m-3" id="myModal-7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <%= attachment_image_tag @estate, :property_image_e, format: 'jpeg', size: "1400x550" %>
-            <div class="modal-dialog" role="document"></div>
-            <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-               <i class="far fa-times-circle"></i>
-            </button>
-         </div>
-         <div class="col pt-5 text-center">
-            <%= f.label :物件画像６ %>
-            <%= f.attachment_field :property_image_f %>
-         </div>
-         <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-8">
-            <%= attachment_image_tag @estate, :property_image_f, format: 'jpeg', size: "150x150" %>
-         </button>
-         <div class="modal fade text-center m-3" id="myModal-8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <%= attachment_image_tag @estate, :property_image_f, format: 'jpeg', size: "1400x550" %>
-            <div class="modal-dialog" role="document"></div>
-            <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-               <i class="far fa-times-circle"></i>
-            </button>
-         </div>
-      </div>
-      <div class="row pb-4" style="margin-right: 1px">
-         <div class="col pt-5 text-center">
-            <%= f.label :物件画像７ %>
-            <%= f.attachment_field :property_image_g %>
-         </div>
-         <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-9">
-            <%= attachment_image_tag @estate, :property_image_g, format: 'jpeg', size: "150x150" %>
-         </button>
-         <div class="modal fade text-center m-3" id="myModal-9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <%= attachment_image_tag @estate, :property_image_g, format: 'jpeg', size: "1400x550" %>
-            <div class="modal-dialog" role="document"></div>
-            <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-               <i class="far fa-times-circle"></i>
-            </button>
-         </div>
-         <div class="col pt-5 text-center">
-            <%= f.label :物件画像８ %>
-            <%= f.attachment_field :property_image_h %>
-         </div>
-         <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-10">
-            <%= attachment_image_tag @estate, :property_image_h, format: 'jpeg', size: "150x150" %>
-         </button>
-         <div class="modal fade text-center m-3" id="myModal-10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <%= attachment_image_tag @estate, :property_image_h, format: 'jpeg', size: "1400x550" %>
-            <div class="modal-dialog" role="document"></div>
-            <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-               <i class="far fa-times-circle"></i>
-            </button>
-         </div>
-      </div>
-      <div class="row pb-4" style="margin-right: 1px">
-         <div class="col pt-5 text-center">
-            <%= f.label :物件画像９ %>
-            <%= f.attachment_field :property_image_i %>
-         </div>
-         <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-11">
-            <%= attachment_image_tag @estate, :property_image_i, format: 'jpeg', size: "150x150" %>
-         </button>
-         <div class="modal fade text-center m-3" id="myModal-11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <%= attachment_image_tag @estate, :property_image_i, format: 'jpeg', size: "1400x550" %>
-            <div class="modal-dialog" role="document"></div>
-            <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-               <i class="far fa-times-circle"></i>
-            </button>
-         </div>
-         <div class="col pt-5 text-center">
-            <%= f.label :物件画像１０ %>
-            <%= f.attachment_field :property_image_j %>
-         </div>
-         <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-12">
-            <%= attachment_image_tag @estate, :property_image_j, format: 'jpeg', size: "150x150" %>
-         </button>
-         <div class="modal fade text-center m-3" id="myModal-12" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <%= attachment_image_tag @estate, :property_image_j, format: 'jpeg', size: "1400x550" %>
-            <div class="modal-dialog" role="document"></div>
-            <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-               <i class="far fa-times-circle"></i>
-            </button>
-         </div>
-      </div>
-      <div class="row" style="margin-right: 1px">
-         <div class="col pt-5 text-center">
-            <%= f.label :物件画像１１ %>
-            <%= f.attachment_field :property_image_k %>
-         </div>
-         <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-13">
-            <%= attachment_image_tag @estate, :property_image_k, format: 'jpeg', size: "150x150" %>
-         </button>
-         <div class="modal fade text-center m-3" id="myModal-13" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <%= attachment_image_tag @estate, :property_image_k, format: 'jpeg', size: "1400x550" %>
-            <div class="modal-dialog" role="document"></div>
-            <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-               <i class="far fa-times-circle"></i>
-            </button>
-         </div>
-         <div class="col pt-5 text-center">
-            <%= f.label :物件画像１２ %>
-            <%= f.attachment_field :property_image_l %>
-         </div>
-         <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-14">
-            <%= attachment_image_tag @estate, :property_image_l, format: 'jpeg', size: "150x150" %>
-         </button>
-         <div class="modal fade text-center m-3" id="myModal-14" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <%= attachment_image_tag @estate, :property_image_l, format: 'jpeg', size: "1400x550" %>
-            <div class="modal-dialog" role="document"></div>
-            <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-               <i class="far fa-times-circle"></i>
-            </button>
-         </div>
-      </div>
-      <div class="row justify-content-center" style="padding: 80px 0;">
-         <%= f.submit "保存", class: "search" %>
-      </div>
-    </div>
+<div class="container">
+  <div style="text-align: center; padding: 130px 0 40px 0; font-size: 35px; font-weight: bold;">
+    物件編集
   </div>
-<% end %>
+
+  <%= render 'layouts/error_messages', model: @estate %>
+
+  <%= form_with model: @estate, url: admins_estate_path, local: true do |f| %>
+    <div class="card shadow" style="margin-bottom: 120px;">
+      <div class="row pt-5 pb-4">
+        <div class="col-2 text-center"><%= f.label :物件名 %></div>
+        <div class="col-9" style="padding-left: 1px;"><%= f.text_field :name, placeholder:"techroom", :size=>"108" %></div>
+      </div>
+      <div class="row pb-4">
+        <div class="col-2 text-center"><%= f.label :部屋番号 %></div>
+        <div class="col-2" style="padding-left: 1px;"><%= f.number_field :room_number.to_s, placeholder: "304 (半角数字のみ)" %></div>
+        <div class="col-1 mr-4 text-right"><%= f.label :賃料 %></div>
+        <div class="col-2"><%= f.number_field :price, placeholder: "30000~(半角数字のみ)" %></div>
+        <div class="col-1 ml-5 mr-3 text-center"><%= f.label :間取り %></div>
+        <div class="col-2 mr-4"><%= f.text_field :floor, placeholder: "2LDK(半角数字・全角英字)", :size=>"24" %></div>
+      </div>
+      <div class="row pb-4">
+        <div class="col-2 text-center"><%= f.label :住所 %></div>
+        <div class="col" style="padding-left: 1px;"><%= f.text_field :address, placeholder: "東京都新宿区岡田町1-2-2", :size=>"108" %></div>
+      </div>
+      <div class="row pb-4">
+        <div class="col-2 text-center"><%= f.label :物件概要 %></div>
+        <div class="col" style="padding-left: 1px;"><%= f.text_area :info, :size=>"107x10" %></div>
+      </div>
+
+      <%= render "edit_modal", f: f, estate: @estate %>
+
+      <div class="row justify-content-center" style="padding: 80px 0;">
+        <%= f.submit "保存", class: "search" %>
+      </div>
+   </div>
+  <% end %>
+</div>

@@ -1,0 +1,223 @@
+<div class="row pb-4" style="margin-right: 1px;">
+  <div class="col pt-5 text-center">
+    <%= f.label :背景画像 %>
+    <%= f.attachment_field :background_image %>
+  </div>
+  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-1">
+    <%= attachment_image_tag estate, :background_image, size: "150x150" %>
+  </button>
+  <div class="modal fade text-center m-3" id="myModal-1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= attachment_image_tag estate, :background_image, size: "1400x550" %>
+    <div class="modal-dialog" role="document"></div>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+      <i class="far fa-times-circle"></i>
+    </button>
+  </div>
+  
+  <div class="col pt-5 text-center">
+    <%= f.label :間取り図画像 %>
+    <%= f.attachment_field :floor_image %>
+  </div>
+  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-2">
+    <%= attachment_image_tag estate, :floor_image, size: "150x150" %>
+  </button>
+  <div class="modal fade text-center m-3" id="myModal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= attachment_image_tag estate, :floor_image, size: "1400x550" %>
+    <div class="modal-dialog" role="document"></div>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+      <i class="far fa-times-circle"></i>
+    </button>
+  </div>
+</div>
+
+<div class="row pb-4" style="margin-right: 1px">
+  <div class="col pt-5 text-center">
+    <%= f.label :物件画像１ %>
+    <%= f.attachment_field :property_image_a %>
+  </div>
+  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-3">
+    <%= attachment_image_tag estate, :property_image_a, size: "150x150" %>
+  </button>
+  <div class="modal fade text-center m-3" id="myModal-3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= attachment_image_tag estate, :property_image_a, size: "1400x550" %>
+    <div class="modal-dialog" role="document"></div>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+      <i class="far fa-times-circle"></i>
+    </button>
+  </div>
+  
+  <div class="col pt-5 text-center">
+    <%= f.label :物件画像２ %>
+    <%= f.attachment_field :property_image_b %>
+  </div>
+  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-4">
+    <%= attachment_image_tag estate, :property_image_b, size: "150x150" %>
+  </button>
+  <div class="modal fade text-center m-3" id="myModal-4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= attachment_image_tag estate, :property_image_b, size: "1400x550" %>
+    <div class="modal-dialog" role="document"></div>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+      <i class="far fa-times-circle"></i>
+    </button>
+  </div>
+</div>
+
+<div class="row pb-4" style="margin-right: 1px">
+  <div class="col pt-5 text-center">
+    <%= f.label :物件画像３ %>
+    <%= f.attachment_field :property_image_c %>
+  </div>
+  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-5">
+    <%= attachment_image_tag estate, :property_image_c, size: "150x150" %>
+  </button>
+  <div class="modal fade text-center m-3" id="myModal-5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= attachment_image_tag estate, :property_image_c, size: "1400x550" %>
+    <div class="modal-dialog" role="document"></div>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+      <i class="far fa-times-circle"></i>
+    </button>
+  </div>
+  
+  <div class="col pt-5 text-center">
+    <%= f.label :物件画像４ %>
+    <%= f.attachment_field :property_image_d %>
+  </div>
+  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-6">
+    <%= attachment_image_tag estate, :property_image_d, size: "150x150" %>
+  </button>
+  <div class="modal fade text-center m-3" id="myModal-6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= attachment_image_tag estate, :property_image_d, size: "1400x550" %>
+    <div class="modal-dialog" role="document"></div>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+      <i class="far fa-times-circle"></i>
+    </button>
+  </div>
+</div>
+
+<div class="row pb-4" style="margin-right: 1px">
+  <div class="col pt-5 text-center">
+    <%= f.label :物件画像５ %>
+    <%= f.attachment_field :property_image_e %>
+  </div>
+  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-7">
+    <%= attachment_image_tag estate, :property_image_e, size: "150x150" %>
+  </button>
+  <div class="modal fade text-center m-3" id="myModal-7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= attachment_image_tag estate, :property_image_e, size: "1400x550" %>
+    <div class="modal-dialog" role="document"></div>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+      <i class="far fa-times-circle"></i>
+    </button>
+  </div>
+  
+  <div class="col pt-5 text-center">
+    <%= f.label :物件画像６ %>
+    <%= f.attachment_field :property_image_f %>
+  </div>
+  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-8">
+    <%= attachment_image_tag estate, :property_image_f, size: "150x150" %>
+  </button>
+  <div class="modal fade text-center m-3" id="myModal-8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= attachment_image_tag estate, :property_image_f, size: "1400x550" %>
+    <div class="modal-dialog" role="document"></div>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+      <i class="far fa-times-circle"></i>
+    </button>
+  </div>
+</div>
+
+<div class="row pb-4" style="margin-right: 1px">
+  <div class="col pt-5 text-center">
+    <%= f.label :物件画像７ %>
+    <%= f.attachment_field :property_image_g %>
+  </div>
+  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-9">
+    <%= attachment_image_tag estate, :property_image_g, size: "150x150" %>
+  </button>
+  <div class="modal fade text-center m-3" id="myModal-9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= attachment_image_tag estate, :property_image_g, size: "1400x550" %>
+    <div class="modal-dialog" role="document"></div>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+      <i class="far fa-times-circle"></i>
+    </button>
+  </div>
+  
+  <div class="col pt-5 text-center">
+    <%= f.label :物件画像８ %>
+    <%= f.attachment_field :property_image_h %>
+  </div>
+  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-10">
+    <%= attachment_image_tag estate, :property_image_h, size: "150x150" %>
+  </button>
+  <div class="modal fade text-center m-3" id="myModal-10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= attachment_image_tag estate, :property_image_h, size: "1400x550" %>
+    <div class="modal-dialog" role="document"></div>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+      <i class="far fa-times-circle"></i>
+    </button>
+  </div>
+</div>
+
+<div class="row pb-4" style="margin-right: 1px">
+  <div class="col pt-5 text-center">
+    <%= f.label :物件画像９ %>
+    <%= f.attachment_field :property_image_i %>
+  </div>
+  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-11">
+    <%= attachment_image_tag estate, :property_image_i, size: "150x150" %>
+  </button>
+  <div class="modal fade text-center m-3" id="myModal-11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= attachment_image_tag estate, :property_image_i, size: "1400x550" %>
+    <div class="modal-dialog" role="document"></div>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+      <i class="far fa-times-circle"></i>
+    </button>
+  </div>
+  
+  <div class="col pt-5 text-center">
+    <%= f.label :物件画像１０ %>
+    <%= f.attachment_field :property_image_j %>
+  </div>
+  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-12">
+    <%= attachment_image_tag estate, :property_image_j, size: "150x150" %>
+  </button>
+  <div class="modal fade text-center m-3" id="myModal-12" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= attachment_image_tag estate, :property_image_j, size: "1400x550" %>
+    <div class="modal-dialog" role="document"></div>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+      <i class="far fa-times-circle"></i>
+    </button>
+  </div>
+</div>
+
+<div class="row" style="margin-right: 1px">
+  <div class="col pt-5 text-center">
+    <%= f.label :物件画像１１ %>
+    <%= f.attachment_field :property_image_k %>
+  </div>
+  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-13">
+    <%= attachment_image_tag estate, :property_image_k, size: "150x150" %>
+  </button>
+  <div class="modal fade text-center m-3" id="myModal-13" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= attachment_image_tag estate, :property_image_k, size: "1400x550" %>
+    <div class="modal-dialog" role="document"></div>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+      <i class="far fa-times-circle"></i>
+    </button>
+  </div>
+  
+  <div class="col pt-5 text-center">
+    <%= f.label :物件画像１２ %>
+    <%= f.attachment_field :property_image_l %>
+  </div>
+  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-14">
+    <%= attachment_image_tag estate, :property_image_l, size: "150x150" %>
+  </button>
+  <div class="modal fade text-center m-3" id="myModal-14" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <%= attachment_image_tag estate, :property_image_l, size: "1400x550" %>
+    <div class="modal-dialog" role="document"></div>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
+      <i class="far fa-times-circle"></i>
+    </button>
+  </div>
+</div>
