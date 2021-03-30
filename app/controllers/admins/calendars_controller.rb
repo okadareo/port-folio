@@ -14,9 +14,6 @@ class Admins::CalendarsController < ApplicationController
     if @calendar.save
       flash[:new] = "スケジュール登録が完了されました"
       redirect_to admins_calendars_path
-    else
-      flash[:calendar_new] = "スケジュール登録ができませんでした。再度、送信フォームをご確認下さい。"
-      render "index"
     end
   end
 
@@ -33,16 +30,13 @@ class Admins::CalendarsController < ApplicationController
     if @calendar.update(calendar_params)
       flash[:edit] = "スケジュール編集が完了しました"
       redirect_to admins_calendars_path
-    else
-      flash[:calendar_edit] = "スケジュール編集ができませんでした。送信フォームに記入ミスがある為、再度ご確認下さい。"
-      redirect_to admins_calendar_path(@calendar)
     end
   end
 
   def destroy
     @calendar = Calendar.find(params[:id])
     if @calendar.destroy
-      flash[:calendar_destroy] = "スケジュール削除が完了しました"
+      flash[:destroy] = "スケジュール削除が完了しました"
       redirect_to admins_calendars_path
     end
   end

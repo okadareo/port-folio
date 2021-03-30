@@ -1,7 +1,7 @@
-<div class="row" style="padding: 50px; justify-content: center; color: white; font-weight: bold; font-size: 60px;">
-  お気に入り数ランキング
-</div>
 <div class="container">
+  <div class="row" style="padding: 50px; justify-content: center; color: white; font-weight: bold; font-size: 60px;">
+    お気に入り数ランキング
+  </div>
   <% if all_ranks.present? %>
     <div class="row">
       <% all_ranks.each.with_index(1) do |estate, i| %>
@@ -11,7 +11,7 @@
           </div>
           <div class="card mb-4" style="height:550px;">
             <div class="card-img-top">
-              <%= link_to attachment_image_tag(estate, :background_image, format: 'jpeg', size: "348x200"), estate_path(estate) %>
+              <%= link_to attachment_image_tag(estate, :background_image, size: "348x200"), estate_path(estate) %>
             </div>
             <div class="card-body" style="padding: 10px 0 0 8px;">
               <div class="card-title">

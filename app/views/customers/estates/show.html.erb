@@ -1,6 +1,6 @@
 <%= render "customers/customers/header" %>
 
-<%= attachment_image_tag @estate, :background_image, format: 'jpeg', width: "100%;", heigth: "10%;" %>
+<%= attachment_image_tag @estate, :background_image, width: "100%;", heigth: "10%;" %>
 <div class="container" style="margin-bottom: 50px;">
   <div class="estate" style="text-align: center; padding: 80px 0 80px 0; font-size: 30px; font-weight: bold;">
     <%= @estate.name %>　<%= @estate.room_number %>号室
@@ -37,16 +37,29 @@
     </div>
     <div class="col-1"></div>
     <div class="col-5">
-      <%= attachment_image_tag @estate, :floor_image, format: 'jpeg', size: "475x475" %>
+      <%= attachment_image_tag @estate, :floor_image, size: "475x475" %>
     </div>
   </div>
 
-  <div style="padding-top: 50px; text-align: center; font-size: 20px; font-weight: bold; color: red">
-    <%= flash[:research_new] %>
-  </div>
-
   <% if customer_signed_in? %>
-    <%= render "customers/estates/new", research: @research, estate: @estate %>
+    <div style="text-align: center; padding: 50px 0 100px 0;">
+      <button type="button" class="search_modal btn btn-outline-secondary" data-toggle="modal" data-target="#new-modal">
+        お問い合わせする
+      </button>
+    </div>
+
+    <div class="modal fade" id="new-modal" tabindex="-1" role="dialog" aria-labelledby="new-modalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" id="form-modal">
+          <%= render "customers/estates/new", research: @research, estate: @estate %>
+        </div>
+      </div>
+      <div style="text-align: center; position-top: 500px;">
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="text-align: center; color: white; font-size: 50px;">
+          <i class="far fa-times-circle"></i>
+        </button>
+      </div>
+    </div>
   <% else %>
     <div style="text-align: center; padding: 50px 0 70px 0;">
       <%= link_to "お問い合わせする", new_customer_session_path, class: "search btn-sm btn-outline-secondary", style: "text-decoration: none; padding: 20px 60px;" %>
@@ -71,159 +84,8 @@
       </div>
     </div>
   <% end %>
-
-  <div class="row mb-1">
-    <div class="col-4">
-      <button type="button" class="btn btn-white" data-toggle="modal" data-target="#myModal-1">
-        <%= attachment_image_tag @estate, :property_image_a, format: 'jpeg', size: "350x350" %>
-      </button>
-      <div class="modal fade text-center m-3" id="myModal-1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <%= attachment_image_tag @estate, :property_image_a, format: 'jpeg', size: "1400x550" %>
-        <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-          <i class="far fa-times-circle"></i>
-        </button>
-      </div>
-    </div>
-    <div class="col-4">
-      <button type="button" class="btn btn-white" data-toggle="modal" data-target="#myModal-2">
-        <%= attachment_image_tag @estate, :property_image_b, format: 'jpeg', size: "350x350" %>
-      </button>
-      <div class="modal fade text-center m-3" id="myModal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <%= attachment_image_tag @estate, :property_image_b, format: 'jpeg', size: "1400x550" %>
-        <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-          <i class="far fa-times-circle"></i>
-        </button>
-      </div>
-    </div>
-    <div class="col-4">
-      <button type="button" class="btn btn-white" data-toggle="modal" data-target="#myModal-3">
-        <%= attachment_image_tag @estate, :property_image_c, format: 'jpeg', size: "350x350" %>
-      </button>
-      <div class="modal fade text-center m-3" id="myModal-3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <%= attachment_image_tag @estate, :property_image_c, format: 'jpeg', size: "1400x550" %>
-        <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-          <i class="far fa-times-circle"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-1">
-    <div class="col-4">
-      <button type="button" class="btn btn-white" data-toggle="modal" data-target="#myModal-4">
-        <%= attachment_image_tag @estate, :property_image_d, format: 'jpeg', size: "350x350" %>
-      </button>
-      <div class="modal fade text-center m-3" id="myModal-4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <%= attachment_image_tag @estate, :property_image_d, format: 'jpeg', size: "1400x550" %>
-        <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-          <i class="far fa-times-circle"></i>
-        </button>
-      </div>
-    </div>
-    <div class="col-4">
-      <button type="button" class="btn btn-white" data-toggle="modal" data-target="#myModal-5">
-        <%= attachment_image_tag @estate, :property_image_e, format: 'jpeg', size: "350x350" %>
-      </button>
-      <div class="modal fade text-center m-3" id="myModal-5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <%= attachment_image_tag @estate, :property_image_e, format: 'jpeg', size: "1400x550" %>
-        <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-          <i class="far fa-times-circle"></i>
-        </button>
-      </div>
-    </div>
-    <div class="col-4">
-      <button type="button" class="btn btn-white" data-toggle="modal" data-target="#myModal-6">
-        <%= attachment_image_tag @estate, :property_image_f, format: 'jpeg', size: "350x350" %>
-      </button>
-      <div class="modal fade text-center m-3" id="myModal-6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <%= attachment_image_tag @estate, :property_image_f, format: 'jpeg', size: "1400x550" %>
-        <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-          <i class="far fa-times-circle"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-1">
-    <div class="col-4">
-      <button type="button" class="btn btn-white" data-toggle="modal" data-target="#myModal-7">
-        <%= attachment_image_tag @estate, :property_image_g, format: 'jpeg', size: "350x350" %>
-      </button>
-      <div class="modal fade text-center m-3" id="myModal-7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <%= attachment_image_tag @estate, :property_image_g, format: 'jpeg', size: "1400x550" %>
-        <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-          <i class="far fa-times-circle"></i>
-        </button>
-      </div>
-    </div>
-    <div class="col-4">
-      <button type="button" class="btn btn-white" data-toggle="modal" data-target="#myModal-8">
-        <%= attachment_image_tag @estate, :property_image_h, format: 'jpeg', size: "350x350" %>
-      </button>
-      <div class="modal fade text-center m-3" id="myModal-8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <%= attachment_image_tag @estate, :property_image_h, format: 'jpeg', size: "1400x550" %>
-        <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;"><i class="far fa-times-circle"></i></button>
-      </div>
-    </div>
-    <div class="col-4">
-      <button type="button" class="btn btn-white" data-toggle="modal" data-target="#myModal-9">
-        <%= attachment_image_tag @estate, :property_image_i, format: 'jpeg', size: "350x350" %>
-      </button>
-      <div class="modal fade text-center m-3" id="myModal-9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <%= attachment_image_tag @estate, :property_image_i, format: 'jpeg', size: "1400x550" %>
-        <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-          <i class="far fa-times-circle"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-1">
-    <div class="col-4">
-      <button type="button" class="btn btn-white" data-toggle="modal" data-target="#myModal-10">
-        <%= attachment_image_tag @estate, :property_image_j, format: 'jpeg', size: "350x350" %>
-      </button>
-      <div class="modal fade text-center m-3" id="myModal-10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <%= attachment_image_tag @estate, :property_image_j, format: 'jpeg', size: "1400x550" %>
-        <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-          <i class="far fa-times-circle"></i>
-        </button>
-      </div>
-    </div>
-    <div class="col-4">
-      <button type="button" class="btn btn-white" data-toggle="modal" data-target="#myModal-11">
-        <%= attachment_image_tag @estate, :property_image_k, format: 'jpeg', size: "350x350" %>
-      </button>
-      <div class="modal fade text-center m-3" id="myModal-11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <%= attachment_image_tag @estate, :property_image_k, format: 'jpeg', size: "1400x550" %>
-        <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-          <i class="far fa-times-circle"></i>
-        </button>
-      </div>
-    </div>
-    <div class="col-4">
-      <button type="button" class="btn btn-white" data-toggle="modal" data-target="#myModal-12">
-        <%= attachment_image_tag @estate, :property_image_l, format: 'jpeg', size: "350x350" %>
-      </button>
-      <div class="modal fade text-center m-3" id="myModal-12" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <%= attachment_image_tag @estate, :property_image_l, format: 'jpeg', size: "1400x550" %>
-        <div class="modal-dialog" role="document"></div>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="color: white; font-size: 50px;">
-          <i class="far fa-times-circle"></i>
-        </button>
-      </div>
-    </div>
-  </div>
+  
+  <%= render "show_modal", estate: @estate %>
+  
 </div>
 

@@ -1,22 +1,22 @@
 <%= render "admins/customers/header", researches: @researches %>
 
-<div style="text-align: center; padding: 130px 0 50px 0; font-size: 20px; font-weight: bold;">
-  <%= form_with(scope: :search, url: admins_customers_path, method: :get, local: true) do |f| %>
-    <%= f.label :名前 %>
-    <%= f.text_field :name, value: @search_params[:name] %>
-    <%= f.label :電話番号 %>
-    <%= f.number_field :phone_number.to_s, value: @search_params[:phone_number], placeholder:"080... (半角数字)" %>
-    <%= f.submit "検索", class: "searches" %>
-  <% end %>
-</div>
-
-<div style="text-align: center; font-size: 30px; font-weight: bold;">会員一覧</div>
-
-<div style="text-align: center; padding: 50px 0; font-size: 20px; font-weight: bold; color: #FA601A;">
-  <%= flash[:status] %>
-</div>
-
 <div class="container" style="margin-bottom: 20px;">
+  <div style="text-align: center; padding: 130px 0 50px 0; font-size: 20px; font-weight: bold;">
+    <%= form_with(scope: :search, url: admins_customers_path, method: :get, local: true) do |f| %>
+      <%= f.label :名前 %>
+      <%= f.text_field :name, value: @search_params[:name] %>
+      <%= f.label :電話番号 %>
+      <%= f.number_field :phone_number.to_s, value: @search_params[:phone_number], placeholder:"080... (半角数字)" %>
+      <%= f.submit "検索", class: "searches" %>
+    <% end %>
+  </div>
+  <div style="text-align: center; font-size: 30px; font-weight: bold;">
+    会員一覧
+  </div>
+  <div style="text-align: center; padding: 50px 0; font-size: 20px; font-weight: bold; color: #FA601A;">
+    <%= flash[:status] %>
+  </div>
+
   <% if @customers.present? %>
     <div class="card shadow" style="margin-bottom: 100px;">
       <div class="row">
@@ -52,9 +52,13 @@
     </div>
   <% else %>
     <% if @search_params.present? %>
-      <div style="text-align: center; padding-top: 60px; font-size: 25px; font-weight: bold;">検索条件に該当する会員はおりません</div>
+      <div style="text-align: center; padding-top: 60px; font-size: 25px; font-weight: bold;">
+        検索条件に該当する会員はおりません
+      </div>
     <% else %>
-      <div style="text-align: center; padding-top: 60px; font-size: 25px; font-weight: bold;">会員はおりません</div>
+      <div style="text-align: center; padding-top: 60px; font-size: 25px; font-weight: bold;">
+        会員はおりません
+      </div>
     <% end %>
 　<% end %>
 </div>

@@ -1,9 +1,14 @@
 <%= render "admins/customers/header", researches: @researches %>
 
-<div style="text-align: center; padding: 130px 0 50px 0; font-size: 30px; font-weight: bold;">
-  <%= @customer.name %> 様の編集ページ
-</div>
 <div class="container" style="margin-bottom: 20px;">
+  <div style="text-align: center; word-break: break-all; overflow-wrap: break-word; padding-top: 130px; font-size: 30px; font-weight: bold;">
+    <div style="display: inline-block; text-align: left;">
+      <%= @customer.name %> 様
+    </div>
+  </div>
+  <div style="text-align: center; padding-bottom: 50px; font-size: 30px; font-weight: bold;">
+    会員ステータス編集
+  </div>
   <div class="card shadow">
     <div class="row pt-4">
       <div class="col-3 pt-1" style="text-align: center; font-weight: bold; font-size: 25px;">

@@ -48,7 +48,7 @@ class Admins::EstatesController < ApplicationController
     @estate = Estate.find(params[:id])
     @researches = Research.where(status: false)
     if @estate.update(estate_params)
-      flash[:notice] = "入稿物件の編集が完了しました"
+      flash[:edit] = "入稿物件の編集が完了しました"
       redirect_to admins_estates_path
     else
       render "edit"

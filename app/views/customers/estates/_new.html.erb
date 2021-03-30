@@ -1,35 +1,21 @@
-<div style="text-align: center; padding: 50px 0 100px 0;">
-  <button type="button" class="search_modal btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModal">
-    お問い合わせする
-  </button>
+<div style="text-align: center; padding-top: 20px; font-size: 30px; font-weight: bold;">
+  お問い合わせ
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div style="text-align: center; padding-top: 20px; font-size: 30px; font-weight: bold;">お問い合わせ</div>
 
-      <div style="padding: 20px 0 10px 0;">
-        <%= render 'layouts/error_messages', model: research %>
-      </div>
+<div style="padding: 20px 0 10px 0;">
+  <%= render 'layouts/error_messages', model: research %>
+</div>
 
-      <%= form_with model: research, url: estate_create_path(estate_id: estate.id), local: true do |f| %>
-        <div class="container">
-          <div class="row justify-content-center pb-2">
-            <%= f.text_area :title, placeholder: "お問い合わせタイトルを2文字以上でご入力ください。", :size=>"54" %>
-          </div>
-          <div class="row justify-content-center pb-3">
-            <%= f.text_area :body, placeholder: "お問い合わせ内容を10文字以上でご入力ください。", :size=>"54x10" %>
-          </div>
-          <div class="row pb-4 justify-content-center">
-            <%= f.submit "送信する", class: "modal-estate-submit" %>
-          </div>
-        </div>
-      <% end %>
+<%= form_with model: research, url: estate_create_path(estate_id: estate.id), remote: true do |f| %>
+  <div class="container">
+    <div class="row justify-content-center pb-2">
+      <%= f.text_area :title, placeholder: "お問い合わせタイトルを2文字以上でご入力ください。", :size=>"54" %>
+    </div>
+    <div class="row justify-content-center pb-3">
+      <%= f.text_area :body, placeholder: "お問い合わせ内容を10文字以上でご入力ください。", :size=>"54x10" %>
+    </div>
+    <div class="row pb-4 justify-content-center">
+      <%= f.submit "送信する", class: "modal-estate-submit", data: { confirm: "送信してよろしいですか？" } %>
     </div>
   </div>
-  <div style="text-align: center; position-top: 500px;">
-    <button type="button" class="btn btn-default" data-dismiss="modal" style="text-align: center; color: white; font-size: 50px;">
-      <i class="far fa-times-circle"></i>
-    </button>
-  </div>
-</div>
+<% end %>

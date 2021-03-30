@@ -1,9 +1,13 @@
 <div class="container">
   <div class="row">
-    <h2 style="padding: 30px 0; margin: 0 auto; font-weight: bold;">スケジュール編集</h2>
+    <h2 style="padding-top: 20px; margin: 0 auto; font-weight: bold;">スケジュール編集</h2>
   </div>
-  <%= form_with model: calendar, url: admins_calendars_path + "/" + calendar.id.to_s, local: true do |f| %>
-
+  
+  <div style="padding: 20px 0 10px 0;">
+    <%= render 'layouts/error_messages', model: calendar %>
+  </div>
+  
+  <%= form_with model: calendar, url: admins_calendars_path + "/" + calendar.id.to_s, remote: true do |f| %>
     <div class="row justify-content-center pb-3">
       <%= f.text_field :title, :size=> "54", placeholder: "スケジュール名" %>
     </div>

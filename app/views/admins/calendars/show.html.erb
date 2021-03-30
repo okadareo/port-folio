@@ -31,10 +31,13 @@
       <button type="button" id="edit-modal-button" class="modal-edit btn btn-outline-secondary" data-toggle="modal" data-target="#edit-Modal" onclick="edit_modal_button_onclick();">
         編集
       </button>
+      
       <div class="modal fade" id="edit-Modal" tabindex="-1" role="dialog" aria-labelledby="edit-ModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <%= render "edit", calendar: @calendar %>
+            <div id="edit_<%= @calendar.id %>">
+              <%= render "admins/calendars/edit", calendar: @calendar %>
+            </div>
           </div>
         </div>
         <div style="text-align: center;">

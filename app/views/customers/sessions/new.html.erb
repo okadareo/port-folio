@@ -1,8 +1,11 @@
 <%= render "customers/customers/header" %>
 
-<div class="text-center" style="padding: 150px 0 50px 0; font-size: 35px; font-weight: bold;">ログイン</div>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="container">
+<div class="container">
+  <div class="text-center" style="padding: 150px 0 50px 0; font-size: 35px; font-weight: bold;">
+    ログイン
+  </div>
+  
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="row pb-4">
       <div class="col-4 text-right">
         <%= f.label :メールアドレス %>
@@ -27,5 +30,5 @@
         <%= link_to "会員登録ページへ", new_customer_registration_path %>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

@@ -1,13 +1,15 @@
 <%= render "customers/customers/header" %>
 
-<div style="text-align: center; padding: 150px 0 30px 0; font-size: 35px; font-weight: bold;">会員登録</div>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-
-  <div style="text-align: center; color: red">
-    <%= render "customers/shared/error_messages", resource: resource %>
+<div class="container">
+  <div style="text-align: center; padding: 150px 0 30px 0; font-size: 35px; font-weight: bold;">
+    会員登録
   </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <div class="container">
+    <div style="text-align: center; color: red">
+      <%= render "customers/shared/error_messages", resource: resource %>
+    </div>
+
     <div class="row pb-4">
       <div class="col-4 text-right"><%= f.label :お名前 %></div>
       <div class="col-7"><%= f.text_field :name, autofocus: true, placeholder:"鈴木一郎", :size => "50" %></div>
@@ -40,5 +42,5 @@
         <%= link_to "ログインページへ", new_customer_session_path %>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
