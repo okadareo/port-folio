@@ -4,7 +4,7 @@
 
     <% if researches.present? %>
       <div style="text-align: left; font-size: 20px; font-weight: bold;">
-        <%= link_to "未対応のお問い合わせが #{researches.count} 件あります！！！", admins_researches_path, style: "text-decoration: none;" %>
+        <%= link_to "未対応のお問い合わせが #{ researches.count } 件あります！！！", admins_researches_path, style: "text-decoration: none;" %>
       </div>
     <% end %>
 

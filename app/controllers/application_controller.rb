@@ -28,16 +28,20 @@ class ApplicationController < ActionController::Base
   end
 
   def search_product
-    keywords = params[:q].delete(:keyword) if params[:q].present?
-    if keywords.present?
+    @keywords = params[:q].delete(:keyword) if params[:q].present?
+    #params[:q].delete(:keyword)でparams[:q]の中身から:keywordを分離させて(:keyword)を＠keywordsに代入させる
+    if @keywords.present?
       params[:q][:groupings] = []
-      keywords.split(/[ 　]/).each_with_index do |keyword, i|
-        params[:q][:groupings][i] = { name_or_info_or_address_or_floor_cont: keyword }
+      #params[:q]に新しいハッシュをgroupingsというkeyで作っている
+      @keywords.split(/[ 　]/).each_with_index do |keyword, i|
+      #.splitで[]の中身の半角、全角で区切られたワードを配列にしている
+      #each_with_indexで0から番号をつけ、keywordには検索ワードが１つずつ入ってきて、iには0から数字がつく
+      params[:q][:groupings][i] = { name_or_info_or_address_or_floor_cont: keyword }
+      #params[:q]には新しく作ったgroupingsのハッシュに配列でkeywordの数だけ入ってくる
       end
     end
     @q = Estate.ransack(params[:q])
     @estates = @q.result
-    @keywords = keywords
   end
 
   def current_location

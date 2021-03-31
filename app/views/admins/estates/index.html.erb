@@ -41,7 +41,7 @@
   <% if @estates.present? %>
     <% @estates.each do |estate| %>
       <div id="estate_<%= estate.id %>">
-        <%= render "admins/estates/index_estate", estate: estate %>
+        <%= render "admins/estates/index", estate: estate %>
       </div>
     <% end %>
   <% else %>
