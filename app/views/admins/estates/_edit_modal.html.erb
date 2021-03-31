@@ -1,11 +1,24 @@
-<div class="row pb-4" style="margin-right: 1px;">
-  <div class="col pt-5 text-center">
-    <%= f.label :背景画像 %>
-    <%= f.attachment_field :background_image %>
+<div class="row pt-4 pb-4">
+  <div class="col-6 text-center">
+    <div style="padding-bottom: 20px; font-weight: bold; font-size: 20px;">
+      <%= f.label :背景画像 %>
+    </div>
+    <div class="row">
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更前画像 %>
+        <button type="button" class="btn btn-white text-left" style="padding-top: 20px;" data-toggle="modal" data-target="#myModal-1">
+          <%= attachment_image_tag(@estate, :background_image, fallback: "no-image-estate.jpeg", size: "150x150") %>
+        </button>
+      </div>
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更後画像 %>
+        <div style="padding-top: 20px;">
+          <%= f.attachment_field :background_image, class: 'background-image', style: "display: none;" %>
+          <%= attachment_image_tag(@estate, :background_image, fallback: "no-image-estate.jpeg", onClick: "$('.background-image').click()", size: "150x150", class: 'image-background') %>
+        </div>
+      </div>
+    </div>
   </div>
-  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-1">
-    <%= attachment_image_tag estate, :background_image, size: "150x150" %>
-  </button>
   <div class="modal fade text-center m-3" id="myModal-1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <%= attachment_image_tag estate, :background_image, size: "1400x550" %>
     <div class="modal-dialog" role="document"></div>
@@ -13,14 +26,27 @@
       <i class="far fa-times-circle"></i>
     </button>
   </div>
-  
-  <div class="col pt-5 text-center">
-    <%= f.label :間取り図画像 %>
-    <%= f.attachment_field :floor_image %>
+
+  <div class="col-6 text-center">
+    <div style="padding-bottom: 20px; font-weight: bold; font-size: 20px;">
+      <%= f.label :間取り図画像 %>
+    </div>
+    <div class="row">
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更前画像 %>
+        <button type="button" class="btn btn-white text-left" style="padding-top: 20px;" data-toggle="modal" data-target="#myModal-2">
+          <%= attachment_image_tag(@estate, :floor_image, fallback: "no-image-estate.jpeg", size: "150x150") %>
+        </button>
+      </div>
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更後画像 %>
+        <div style="padding-top: 20px;">
+          <%= f.attachment_field :floor_image, class: 'floor-image', style: "display: none;" %>
+          <%= attachment_image_tag(@estate, :floor_image, fallback: "no-image-estate.jpeg", onClick: "$('.floor-image').click()", size: "150x150", class: 'image-floor') %>
+        </div>
+      </div>
+    </div>
   </div>
-  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-2">
-    <%= attachment_image_tag estate, :floor_image, size: "150x150" %>
-  </button>
   <div class="modal fade text-center m-3" id="myModal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <%= attachment_image_tag estate, :floor_image, size: "1400x550" %>
     <div class="modal-dialog" role="document"></div>
@@ -30,14 +56,27 @@
   </div>
 </div>
 
-<div class="row pb-4" style="margin-right: 1px">
-  <div class="col pt-5 text-center">
-    <%= f.label :物件画像１ %>
-    <%= f.attachment_field :property_image_a %>
+<div class="row pt-4 pb-4">
+  <div class="col-6 text-center">
+    <div style="padding-bottom: 20px; font-weight: bold; font-size: 20px;">
+      <%= f.label :物件画像１ %>
+    </div>
+    <div class="row">
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更前画像 %>
+        <button type="button" class="btn btn-white text-left" style="padding-top: 20px;" data-toggle="modal" data-target="#myModal-3">
+          <%= attachment_image_tag(@estate, :property_image_a, fallback: "no-image-estate.jpeg", size: "150x150") %>
+        </button>
+      </div>
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更後画像 %>
+        <div style="padding-top: 20px;">
+          <%= f.attachment_field :property_image_a, class: 'image-a', style: "display: none;" %>
+          <%= attachment_image_tag(@estate, :property_image_a, fallback: "no-image-estate.jpeg", onClick: "$('.image-a').click()", size: "150x150", class: 'a-image') %>
+        </div>
+      </div>
+    </div>
   </div>
-  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-3">
-    <%= attachment_image_tag estate, :property_image_a, size: "150x150" %>
-  </button>
   <div class="modal fade text-center m-3" id="myModal-3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <%= attachment_image_tag estate, :property_image_a, size: "1400x550" %>
     <div class="modal-dialog" role="document"></div>
@@ -45,14 +84,27 @@
       <i class="far fa-times-circle"></i>
     </button>
   </div>
-  
-  <div class="col pt-5 text-center">
-    <%= f.label :物件画像２ %>
-    <%= f.attachment_field :property_image_b %>
+
+  <div class="col-6 text-center">
+    <div style="padding-bottom: 20px; font-weight: bold; font-size: 20px;">
+      <%= f.label :物件画像２ %>
+    </div>
+    <div class="row">
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更前画像 %>
+        <button type="button" class="btn btn-white text-left" style="padding-top: 20px;" data-toggle="modal" data-target="#myModal-4">
+          <%= attachment_image_tag(@estate, :property_image_b, fallback: "no-image-estate.jpeg", size: "150x150") %>
+        </button>
+      </div>
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更後画像 %>
+        <div style="padding-top: 20px;">
+          <%= f.attachment_field :property_image_b, class: 'image-b', style: "display: none;" %>
+          <%= attachment_image_tag(@estate, :property_image_b, fallback: "no-image-estate.jpeg", onClick: "$('.image-b').click()", size: "150x150", class: 'b-image') %>
+        </div>
+      </div>
+    </div>
   </div>
-  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-4">
-    <%= attachment_image_tag estate, :property_image_b, size: "150x150" %>
-  </button>
   <div class="modal fade text-center m-3" id="myModal-4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <%= attachment_image_tag estate, :property_image_b, size: "1400x550" %>
     <div class="modal-dialog" role="document"></div>
@@ -62,14 +114,27 @@
   </div>
 </div>
 
-<div class="row pb-4" style="margin-right: 1px">
-  <div class="col pt-5 text-center">
-    <%= f.label :物件画像３ %>
-    <%= f.attachment_field :property_image_c %>
+<div class="row pt-4 pb-4">
+  <div class="col-6 text-center">
+    <div style="padding-bottom: 20px; font-weight: bold; font-size: 20px;">
+      <%= f.label :物件画像３ %>
+    </div>
+    <div class="row">
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更前画像 %>
+        <button type="button" class="btn btn-white text-left" style="padding-top: 20px;" data-toggle="modal" data-target="#myModal-5">
+          <%= attachment_image_tag(@estate, :property_image_c, fallback: "no-image-estate.jpeg", size: "150x150") %>
+        </button>
+      </div>
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更後画像 %>
+        <div style="padding-top: 20px;">
+          <%= f.attachment_field :property_image_c, class: 'image-c', style: "display: none;" %>
+          <%= attachment_image_tag(@estate, :property_image_c, fallback: "no-image-estate.jpeg", onClick: "$('.image-c').click()", size: "150x150", class: 'c-image') %>
+        </div>
+      </div>
+    </div>
   </div>
-  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-5">
-    <%= attachment_image_tag estate, :property_image_c, size: "150x150" %>
-  </button>
   <div class="modal fade text-center m-3" id="myModal-5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <%= attachment_image_tag estate, :property_image_c, size: "1400x550" %>
     <div class="modal-dialog" role="document"></div>
@@ -77,14 +142,27 @@
       <i class="far fa-times-circle"></i>
     </button>
   </div>
-  
-  <div class="col pt-5 text-center">
-    <%= f.label :物件画像４ %>
-    <%= f.attachment_field :property_image_d %>
+
+  <div class="col-6 text-center">
+    <div style="padding-bottom: 20px; font-weight: bold; font-size: 20px;">
+      <%= f.label :物件画像４ %>
+    </div>
+    <div class="row">
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更前画像 %>
+        <button type="button" class="btn btn-white text-left" style="padding-top: 20px;" data-toggle="modal" data-target="#myModal-6">
+          <%= attachment_image_tag(@estate, :property_image_d, fallback: "no-image-estate.jpeg", size: "150x150") %>
+        </button>
+      </div>
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更後画像 %>
+        <div style="padding-top: 20px;">
+          <%= f.attachment_field :property_image_d, class: 'image-d', style: "display: none;" %>
+          <%= attachment_image_tag(@estate, :property_image_d, fallback: "no-image-estate.jpeg", onClick: "$('.image-d').click()", size: "150x150", class: 'd-image') %>
+        </div>
+      </div>
+    </div>
   </div>
-  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-6">
-    <%= attachment_image_tag estate, :property_image_d, size: "150x150" %>
-  </button>
   <div class="modal fade text-center m-3" id="myModal-6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <%= attachment_image_tag estate, :property_image_d, size: "1400x550" %>
     <div class="modal-dialog" role="document"></div>
@@ -94,14 +172,27 @@
   </div>
 </div>
 
-<div class="row pb-4" style="margin-right: 1px">
-  <div class="col pt-5 text-center">
-    <%= f.label :物件画像５ %>
-    <%= f.attachment_field :property_image_e %>
+<div class="row pt-4 pb-4">
+  <div class="col-6 text-center">
+    <div style="padding-bottom: 20px; font-weight: bold; font-size: 20px;">
+      <%= f.label :物件画像５ %>
+    </div>
+    <div class="row">
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更前画像 %>
+        <button type="button" class="btn btn-white text-left" style="padding-top: 20px;" data-toggle="modal" data-target="#myModal-7">
+          <%= attachment_image_tag(@estate, :property_image_e, fallback: "no-image-estate.jpeg", size: "150x150") %>
+        </button>
+      </div>
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更後画像 %>
+        <div style="padding-top: 20px;">
+          <%= f.attachment_field :property_image_e, class: 'image-e', style: "display: none;" %>
+          <%= attachment_image_tag(@estate, :property_image_e, fallback: "no-image-estate.jpeg", onClick: "$('.image-e').click()", size: "150x150", class: 'e-image') %>
+        </div>
+      </div>
+    </div>
   </div>
-  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-7">
-    <%= attachment_image_tag estate, :property_image_e, size: "150x150" %>
-  </button>
   <div class="modal fade text-center m-3" id="myModal-7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <%= attachment_image_tag estate, :property_image_e, size: "1400x550" %>
     <div class="modal-dialog" role="document"></div>
@@ -109,14 +200,27 @@
       <i class="far fa-times-circle"></i>
     </button>
   </div>
-  
-  <div class="col pt-5 text-center">
-    <%= f.label :物件画像６ %>
-    <%= f.attachment_field :property_image_f %>
+
+  <div class="col-6 text-center">
+    <div style="padding-bottom: 20px; font-weight: bold; font-size: 20px;">
+      <%= f.label :物件画像６ %>
+    </div>
+    <div class="row">
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更前画像 %>
+        <button type="button" class="btn btn-white text-left" style="padding-top: 20px;" data-toggle="modal" data-target="#myModal-8">
+          <%= attachment_image_tag(@estate, :property_image_f, fallback: "no-image-estate.jpeg", size: "150x150") %>
+        </button>
+      </div>
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更後画像 %>
+        <div style="padding-top: 20px;">
+          <%= f.attachment_field :property_image_f, class: 'image-f', style: "display: none;" %>
+          <%= attachment_image_tag(@estate, :property_image_f, fallback: "no-image-estate.jpeg", onClick: "$('.image-f').click()", size: "150x150", class: 'f-image') %>
+        </div>
+      </div>
+    </div>
   </div>
-  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-8">
-    <%= attachment_image_tag estate, :property_image_f, size: "150x150" %>
-  </button>
   <div class="modal fade text-center m-3" id="myModal-8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <%= attachment_image_tag estate, :property_image_f, size: "1400x550" %>
     <div class="modal-dialog" role="document"></div>
@@ -126,14 +230,27 @@
   </div>
 </div>
 
-<div class="row pb-4" style="margin-right: 1px">
-  <div class="col pt-5 text-center">
-    <%= f.label :物件画像７ %>
-    <%= f.attachment_field :property_image_g %>
+<div class="row pt-4 pb-4">
+  <div class="col-6 text-center">
+    <div style="padding-bottom: 20px; font-weight: bold; font-size: 20px;">
+      <%= f.label :物件画像７ %>
+    </div>
+    <div class="row">
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更前画像 %>
+        <button type="button" class="btn btn-white text-left" style="padding-top: 20px;" data-toggle="modal" data-target="#myModal-9">
+          <%= attachment_image_tag(@estate, :property_image_g, fallback: "no-image-estate.jpeg", size: "150x150") %>
+        </button>
+      </div>
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更後画像 %>
+        <div style="padding-top: 20px;">
+          <%= f.attachment_field :property_image_g, class: 'image-g', style: "display: none;" %>
+          <%= attachment_image_tag(@estate, :property_image_g, fallback: "no-image-estate.jpeg", onClick: "$('.image-g').click()", size: "150x150", class: 'g-image') %>
+        </div>
+      </div>
+    </div>
   </div>
-  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-9">
-    <%= attachment_image_tag estate, :property_image_g, size: "150x150" %>
-  </button>
   <div class="modal fade text-center m-3" id="myModal-9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <%= attachment_image_tag estate, :property_image_g, size: "1400x550" %>
     <div class="modal-dialog" role="document"></div>
@@ -141,14 +258,27 @@
       <i class="far fa-times-circle"></i>
     </button>
   </div>
-  
-  <div class="col pt-5 text-center">
-    <%= f.label :物件画像８ %>
-    <%= f.attachment_field :property_image_h %>
+
+  <div class="col-6 text-center">
+    <div style="padding-bottom: 20px; font-weight: bold; font-size: 20px;">
+      <%= f.label :物件画像８ %>
+    </div>
+    <div class="row">
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更前画像 %>
+        <button type="button" class="btn btn-white text-left" style="padding-top: 20px;" data-toggle="modal" data-target="#myModal-10">
+          <%= attachment_image_tag(@estate, :property_image_h, fallback: "no-image-estate.jpeg", size: "150x150") %>
+        </button>
+      </div>
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更後画像 %>
+        <div style="padding-top: 20px;">
+          <%= f.attachment_field :property_image_h, class: 'image-h', style: "display: none;" %>
+          <%= attachment_image_tag(@estate, :property_image_h, fallback: "no-image-estate.jpeg", onClick: "$('.image-h').click()", size: "150x150", class: 'h-image') %>
+        </div>
+      </div>
+    </div>
   </div>
-  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-10">
-    <%= attachment_image_tag estate, :property_image_h, size: "150x150" %>
-  </button>
   <div class="modal fade text-center m-3" id="myModal-10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <%= attachment_image_tag estate, :property_image_h, size: "1400x550" %>
     <div class="modal-dialog" role="document"></div>
@@ -158,14 +288,27 @@
   </div>
 </div>
 
-<div class="row pb-4" style="margin-right: 1px">
-  <div class="col pt-5 text-center">
-    <%= f.label :物件画像９ %>
-    <%= f.attachment_field :property_image_i %>
+<div class="row pt-4 pb-4">
+  <div class="col-6 text-center">
+    <div style="padding-bottom: 20px; font-weight: bold; font-size: 20px;">
+      <%= f.label :物件画像９ %>
+    </div>
+    <div class="row">
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更前画像 %>
+        <button type="button" class="btn btn-white text-left" style="padding-top: 20px;" data-toggle="modal" data-target="#myModal-11">
+          <%= attachment_image_tag(@estate, :property_image_i, fallback: "no-image-estate.jpeg", size: "150x150") %>
+        </button>
+      </div>
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更後画像 %>
+        <div style="padding-top: 20px;">
+          <%= f.attachment_field :property_image_i, class: 'image-i', style: "display: none;" %>
+          <%= attachment_image_tag(@estate, :property_image_i, fallback: "no-image-estate.jpeg", onClick: "$('.image-i').click()", size: "150x150", class: 'i-image') %>
+        </div>
+      </div>
+    </div>
   </div>
-  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-11">
-    <%= attachment_image_tag estate, :property_image_i, size: "150x150" %>
-  </button>
   <div class="modal fade text-center m-3" id="myModal-11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <%= attachment_image_tag estate, :property_image_i, size: "1400x550" %>
     <div class="modal-dialog" role="document"></div>
@@ -173,14 +316,27 @@
       <i class="far fa-times-circle"></i>
     </button>
   </div>
-  
-  <div class="col pt-5 text-center">
-    <%= f.label :物件画像１０ %>
-    <%= f.attachment_field :property_image_j %>
+
+  <div class="col-6 text-center">
+    <div style="padding-bottom: 20px; font-weight: bold; font-size: 20px;">
+      <%= f.label :物件画像１０ %>
+    </div>
+    <div class="row">
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更前画像 %>
+        <button type="button" class="btn btn-white text-left" style="padding-top: 20px;" data-toggle="modal" data-target="#myModal-12">
+          <%= attachment_image_tag(@estate, :property_image_j, fallback: "no-image-estate.jpeg", size: "150x150") %>
+        </button>
+      </div>
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更後画像 %>
+        <div style="padding-top: 20px;">
+          <%= f.attachment_field :property_image_j, class: 'image-j', style: "display: none;" %>
+          <%= attachment_image_tag(@estate, :property_image_j, fallback: "no-image-estate.jpeg", onClick: "$('.image-j').click()", size: "150x150", class: 'j-image') %>
+        </div>
+      </div>
+    </div>
   </div>
-  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-12">
-    <%= attachment_image_tag estate, :property_image_j, size: "150x150" %>
-  </button>
   <div class="modal fade text-center m-3" id="myModal-12" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <%= attachment_image_tag estate, :property_image_j, size: "1400x550" %>
     <div class="modal-dialog" role="document"></div>
@@ -190,14 +346,27 @@
   </div>
 </div>
 
-<div class="row" style="margin-right: 1px">
-  <div class="col pt-5 text-center">
-    <%= f.label :物件画像１１ %>
-    <%= f.attachment_field :property_image_k %>
+<div class="row pt-4">
+  <div class="col-6 text-center">
+    <div style="padding-bottom: 20px; font-weight: bold; font-size: 20px;">
+      <%= f.label :物件画像１１ %>
+    </div>
+    <div class="row">
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更前画像 %>
+        <button type="button" class="btn btn-white text-left" style="padding-top: 20px;" data-toggle="modal" data-target="#myModal-13">
+          <%= attachment_image_tag(@estate, :property_image_k, fallback: "no-image-estate.jpeg", size: "150x150") %>
+        </button>
+      </div>
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更後画像 %>
+        <div style="padding-top: 20px;">
+          <%= f.attachment_field :property_image_k, class: 'image-k', style: "display: none;" %>
+          <%= attachment_image_tag(@estate, :property_image_k, fallback: "no-image-estate.jpeg", onClick: "$('.image-k').click()", size: "150x150", class: 'k-image') %>
+        </div>
+      </div>
+    </div>
   </div>
-  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-13">
-    <%= attachment_image_tag estate, :property_image_k, size: "150x150" %>
-  </button>
   <div class="modal fade text-center m-3" id="myModal-13" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <%= attachment_image_tag estate, :property_image_k, size: "1400x550" %>
     <div class="modal-dialog" role="document"></div>
@@ -205,14 +374,27 @@
       <i class="far fa-times-circle"></i>
     </button>
   </div>
-  
-  <div class="col pt-5 text-center">
-    <%= f.label :物件画像１２ %>
-    <%= f.attachment_field :property_image_l %>
+
+  <div class="col-6 text-center">
+    <div style="padding-bottom: 20px; font-weight: bold; font-size: 20px;">
+      <%= f.label :物件画像１２ %>
+    </div>
+    <div class="row">
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更前画像 %>
+        <button type="button" class="btn btn-white text-left" style="padding-top: 20px;" data-toggle="modal" data-target="#myModal-14">
+          <%= attachment_image_tag(@estate, :property_image_l, fallback: "no-image-estate.jpeg", size: "150x150") %>
+        </button>
+      </div>
+      <div class="col" style="padding-top: 20px;">
+        <%= f.label :変更後画像 %>
+        <div style="padding-top: 20px;">
+          <%= f.attachment_field :property_image_l, class: 'image-l', style: "display: none;" %>
+          <%= attachment_image_tag(@estate, :property_image_l, fallback: "no-image-estate.jpeg", onClick: "$('.image-l').click()", size: "150x150", class: 'l-image') %>
+        </div>
+      </div>
+    </div>
   </div>
-  <button type="button" class="btn btn-white text-left" data-toggle="modal" data-target="#myModal-14">
-    <%= attachment_image_tag estate, :property_image_l, size: "150x150" %>
-  </button>
   <div class="modal fade text-center m-3" id="myModal-14" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <%= attachment_image_tag estate, :property_image_l, size: "1400x550" %>
     <div class="modal-dialog" role="document"></div>

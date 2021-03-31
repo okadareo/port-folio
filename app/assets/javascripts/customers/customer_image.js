@@ -1,6 +1,6 @@
 $(function () {
   function readURL(input) {
-    if (input.files && input.files[0]) {
+    if (input.files) {
       var reader = new FileReader();
       reader.onload = function (e) {
         $('.image-top').attr('src', e.target.result);

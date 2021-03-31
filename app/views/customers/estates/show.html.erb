@@ -2,47 +2,53 @@
 
 <%= attachment_image_tag @estate, :background_image, width: "100%;", heigth: "10%;" %>
 <div class="container" style="margin-bottom: 50px;">
-  <div class="estate" style="text-align: center; padding: 80px 0 80px 0; font-size: 30px; font-weight: bold;">
-    <%= @estate.name %>　<%= @estate.room_number %>号室
+  <div style="text-align: center; word-break: break-all; overflow-wrap: break-word; padding: 80px 0 80px 0; font-size: 30px; font-weight: bold;">
+    <div style="text-align: left;">
+      <%= @estate.name %>　<%= @estate.room_number %>号室
+    </div>
   </div>
   <div class="row">
     <div class="col-6">
       <div class="row justify-content-start">
         <div class="estate col-12">
-          <%= @estate.info %><br><br>
+          <%= @estate.info %>
         </div>
-      </div>
+      </div><br>
       <div class="row justify-content-start">
-        <div class="col-2 address">住所</div>
-        <div class="estate col-10"><%= @estate.address %></div>
+        <div class="col-2" style="font-weight: bold;">住所</div>
+        <div class="col-10"><%= @estate.address %></div>
       </div><br>
-      <div>
-        間取り　<%= @estate.floor %>
-      </div><br>
-      <div>
-        賃料　¥<%= @estate.price.to_s(:delimited) %>
-      </div><br>
-
-      <% if customer_signed_in? %>
-        <div id="favorite_<%= @estate.id %>">
-          <%= render "customers/favorites/favorite", estate: @estate %>
-        </div><br>
-      <% else %>
-        <div style="font-size: 22px; padding-bottom: 20px;">
-          <i class="fas fa-building"></i><%= @estate.favorites.count %>
+      <div class="row">
+        <div class="col-3">
+          <% if customer_signed_in? %>
+          <div id="favorite_<%= @estate.id %>">
+            <%= render "customers/favorites/favorite", estate: @estate %>
+          </div>
+          <% else %>
+            <div style="font-size: 22px; padding-bottom: 20px;">
+              <i class="fas fa-building"></i><%= @estate.favorites.count %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-
-      <div>投稿日時　<%= @estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></div>
+        <div class="col-2 pt-1" style="font-weight: bold;">賃料</div>
+        <div class="col-3 pt-1">¥<%= @estate.price.to_s(:delimited) %></div>
+        <div class="col-2 pt-1" style="font-weight: bold;">間取り</div>
+        <div class="col-2 pt-1"><%= @estate.floor %></div>
+      </div><br>
+      <div class="row">
+        <div class="col-2" style="font-weight: bold;">投稿日時</div>
+        <div class="col-10"><%= @estate.created_at.strftime('%Y年%m月%d日 %H時%M分') %></div>
+      </div>
     </div>
-    <div class="col-1"></div>
+    <div class="col-1">
+    </div>
     <div class="col-5">
       <%= attachment_image_tag @estate, :floor_image, size: "475x475" %>
     </div>
   </div>
 
   <% if customer_signed_in? %>
-    <div style="text-align: center; padding: 50px 0 100px 0;">
+    <div style="text-align: center; padding: 100px 0 100px 0;">
       <button type="button" class="search_modal btn btn-outline-secondary" data-toggle="modal" data-target="#new-modal">
         お問い合わせする
       </button>
@@ -61,7 +67,7 @@
       </div>
     </div>
   <% else %>
-    <div style="text-align: center; padding: 50px 0 70px 0;">
+    <div style="text-align: center; padding: 100px 0 70px 0;">
       <%= link_to "お問い合わせする", new_customer_session_path, class: "search btn-sm btn-outline-secondary", style: "text-decoration: none; padding: 20px 60px;" %>
     </div>
   <% end %>
@@ -75,7 +81,7 @@
         <%= link_to "ログイン", new_customer_session_path, class: "edit btn-sm btn-outline-secondary", style: "font-size: 20px; text-decoration: none;" %>
       </div>
     </div>
-    <div class="row">
+    <div class="row pb-4">
       <div class="col-10" style="text-align: right; padding: 20px;">
         <p>お問い合せするには会員登録が必要です。<br/>会員登録をする方は会員登録へ→</p>
       </div>
@@ -84,8 +90,8 @@
       </div>
     </div>
   <% end %>
-  
+
   <%= render "show_modal", estate: @estate %>
-  
+
 </div>
 

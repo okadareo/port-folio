@@ -10,23 +10,23 @@
   <%= form_with model: @estate, url: admins_estates_path, local: true do |f| %>
     <div class="card shadow" style="margin-bottom: 120px;">
       <div class="row pt-5 pb-4">
-        <div class="col-2 text-center"><%= f.label :物件名 %></div>
+        <div class="col-2" style="text-align: center; font-weight: bold;"><%= f.label :物件名 %></div>
         <div class="col-9" style="padding-left: 1px;"><%= f.text_field :name, placeholder:"techroom", :size=>"108" %></div>
       </div>
       <div class="row pb-4">
-        <div class="col-2 text-center"><%= f.label :部屋番号 %></div>
+        <div class="col-2" style="text-align: center; font-weight: bold;"><%= f.label :部屋番号 %></div>
         <div class="col-2" style="padding-left: 1px;"><%= f.number_field :room_number.to_s, placeholder: "304 (半角数字のみ)" %></div>
-        <div class="col-1 mr-4 text-right"><%= f.label :賃料 %></div>
+        <div class="col-1 mr-4" style="text-align: right; font-weight: bold;"><%= f.label :賃料 %></div>
         <div class="col-2"><%= f.number_field :price, placeholder: "30000~(半角数字のみ)" %></div>
-        <div class="col-1 ml-5 mr-3 text-center"><%= f.label :間取り %></div>
+        <div class="col-1 ml-5 mr-3" style="text-align: center; font-weight: bold;"><%= f.label :間取り %></div>
         <div class="col-2 mr-4"><%= f.text_field :floor, placeholder: "2LDK(半角数字・全角英字)", :size=>"24" %></div>
       </div>
       <div class="row pb-4">
-        <div class="col-2 text-center"><%= f.label :住所 %></div>
+        <div class="col-2" style="text-align: center; font-weight: bold;"><%= f.label :住所 %></div>
         <div class="col" style="padding-left: 1px;"><%= f.text_field :address, placeholder: "東京都新宿区岡田町1-2-2", :size=>"108" %></div>
       </div>
-      <div class="row pb-4">
-        <div class="col-2 text-center"><%= f.label :物件概要 %></div>
+      <div class="row">
+        <div class="col-2" style="text-align: center; font-weight: bold;"><%= f.label :物件概要 %></div>
         <div class="col" style="padding-left: 1px;">
           <%= f.text_area :info, placeholder:
           "このお家の魅力は、何と言っても広々としたリビングです。LDKの広さは20帖もございます。
@@ -41,116 +41,110 @@
           :size=>"107x10" %>
         </div>
       </div>
-      <div class="row pb-4" style="margin-right: 20px;">
-        <div class="col pt-5 text-center">
+      <div class="row" style="padding: 60px 0 20px 0;">
+        <div class="col-3" style="text-align: center; font-weight: bold;">
           <%= f.label :背景画像 %>
-          <%= f.attachment_field :background_image, class: 'img_field' %>
+          <div style="padding-top: 20px;">
+            <%= f.attachment_field :background_image, class: 'background-image', style: "display: none;" %>
+            <%= attachment_image_tag(@estate, :background_image, fallback: "no-image-estate.jpeg", onClick: "$('.background-image').click()", size: "150x150", class: 'image-background') %>
+          </div>
         </div>
-        <div>
-          <%= attachment_image_tag(@estate, :background_image, onClick: "$('.img_field').click()", size: "150x150", class: 'image-top') %>
-        </div>
-        <div class="col pt-5 text-center">
+        <div class="col-3" style="text-align: center; font-weight: bold;">
           <%= f.label :間取り図画像 %>
-          <%= f.attachment_field :floor_image %>
+          <div style="padding-top: 20px;">
+            <%= f.attachment_field :floor_image, class: 'floor-image', style: "display: none;" %>
+            <%= attachment_image_tag(@estate, :floor_image, fallback: "no-image-estate.jpeg", onClick: "$('.floor-image').click()", size: "150x150", class: 'image-floor') %>
+          </div>
         </div>
-        <div>
-          <%= attachment_image_tag @estate, :floor_image, size: "150x150" %>
-        </div>
-      </div>
-      <div class="row pb-4" style="margin-right: 20px;">
-        <div class="col pt-5 text-center">
+        <div class="col-3" style="text-align: center; font-weight: bold;">
           <%= f.label :物件画像１ %>
-          <%= f.attachment_field :property_image_a %>
+          <div style="padding-top: 20px;">
+            <%= f.attachment_field :property_image_a, class: 'image-a', style: "display: none;" %>
+            <%= attachment_image_tag(@estate, :property_image_a, fallback: "no-image-estate.jpeg", onClick: "$('.image-a').click()", size: "150x150", class: 'a-image') %>
+          </div>
         </div>
-        <div>
-          <%= attachment_image_tag @estate, :property_image_a, size: "150x150" %>
-        </div>
-        <div class="col pt-5 text-center">
+        <div class="col-3" style="text-align: center; font-weight: bold;">
           <%= f.label :物件画像２ %>
-          <%= f.attachment_field :property_image_b %>
-        </div>
-        <div>
-          <%= attachment_image_tag @estate, :property_image_b, size: "150x150" %>
+          <div style="padding-top: 20px;">
+            <%= f.attachment_field :property_image_b, class: 'image-b', style: "display: none;" %>
+            <%= attachment_image_tag(@estate, :property_image_b, fallback: "no-image-estate.jpeg", onClick: "$('.image-b').click()", size: "150x150", class: 'b-image') %>
+          </div>
         </div>
       </div>
-      <div class="row pb-4" style="margin-right: 20px;">
-        <div class="col pt-5 text-center">
+      <div class="row" style="padding: 30px 0 20px 0;">
+        <div class="col-3" style="text-align: center; font-weight: bold;">
           <%= f.label :物件画像３ %>
-          <%= f.attachment_field :property_image_c %>
+          <div style="padding-top: 20px;">
+            <%= f.attachment_field :property_image_c, class: 'image-c', style: "display: none;" %>
+            <%= attachment_image_tag(@estate, :property_image_c, fallback: "no-image-estate.jpeg", onClick: "$('.image-c').click()", size: "150x150", class: 'c-image') %>
+          </div>
         </div>
-        <div>
-          <%= attachment_image_tag @estate, :property_image_c, size: "150x150" %>
-        </div>
-        <div class="col pt-5 text-center">
+        <div class="col-3" style="text-align: center; font-weight: bold;">
           <%= f.label :物件画像４ %>
-          <%= f.attachment_field :property_image_d %>
+          <div style="padding-top: 20px;">
+            <%= f.attachment_field :property_image_d, class: 'image-d', style: "display: none;" %>
+            <%= attachment_image_tag(@estate, :property_image_d, fallback: "no-image-estate.jpeg", onClick: "$('.image-d').click()", size: "150x150", class: 'd-image') %>
+          </div>
         </div>
-        <div>
-          <%= attachment_image_tag @estate, :property_image_d, size: "150x150" %>
-        </div>
-      </div>
-      <div class="row pb-4" style="margin-right: 20px;">
-        <div class="col text-center pt-5">
+        <div class="col-3" style="text-align: center; font-weight: bold;">
           <%= f.label :物件画像５ %>
-          <%= f.attachment_field :property_image_e %>
+          <div style="padding-top: 20px;">
+            <%= f.attachment_field :property_image_e, class: 'image-e', style: "display: none;" %>
+            <%= attachment_image_tag(@estate, :property_image_e, fallback: "no-image-estate.jpeg", onClick: "$('.image-e').click()", size: "150x150", class: 'e-image') %>
+          </div>
         </div>
-        <div>
-          <%= attachment_image_tag @estate, :property_image_e, size: "150x150" %>
-        </div>
-        <div class="col pt-5 text-center">
+        <div class="col-3" style="text-align: center; font-weight: bold;">
           <%= f.label :物件画像６ %>
-          <%= f.attachment_field :property_image_f %>
-        </div>
-        <div>
-          <%= attachment_image_tag @estate, :property_image_f, size: "150x150" %>
+          <div style="padding-top: 20px;">
+            <%= f.attachment_field :property_image_f, class: 'image-f', style: "display: none;" %>
+            <%= attachment_image_tag(@estate, :property_image_f, fallback: "no-image-estate.jpeg", onClick: "$('.image-f').click()", size: "150x150", class: 'f-image') %>
+          </div>
         </div>
       </div>
-      <div class="row pb-4" style="margin-right: 20px;">
-        <div class="col pt-5 text-center">
+      <div class="row" style="padding: 30px 0 20px 0;">
+        <div class="col-3" style="text-align: center; font-weight: bold;">
           <%= f.label :物件画像７ %>
-          <%= f.attachment_field :property_image_g %>
+          <div style="padding-top: 20px;">
+            <%= f.attachment_field :property_image_g, class: 'image-g', style: "display: none;" %>
+            <%= attachment_image_tag(@estate, :property_image_g, fallback: "no-image-estate.jpeg", onClick: "$('.image-g').click()", size: "150x150", class: 'g-image') %>
+          </div>
         </div>
-        <div>
-          <%= attachment_image_tag @estate, :property_image_g, size: "150x150" %>
-        </div>
-        <div class="col pt-5 text-center">
+        <div class="col-3" style="text-align: center; font-weight: bold;">
           <%= f.label :物件画像８ %>
-          <%= f.attachment_field :property_image_h %>
+          <div style="padding-top: 20px;">
+            <%= f.attachment_field :property_image_h, class: 'image-h', style: "display: none;" %>
+            <%= attachment_image_tag(@estate, :property_image_h, fallback: "no-image-estate.jpeg", onClick: "$('.image-h').click()", size: "150x150", class: 'h-image') %>
+          </div>
         </div>
-        <div>
-          <%= attachment_image_tag @estate, :property_image_h, size: "150x150" %>
-        </div>
-      </div>
-      <div class="row pb-4" style="margin-right: 20px;">
-        <div class="col pt-5 text-center">
+        <div class="col-3" style="text-align: center; font-weight: bold;">
           <%= f.label :物件画像９ %>
-          <%= f.attachment_field :property_image_i %>
+          <div style="padding-top: 20px;">
+            <%= f.attachment_field :property_image_i, class: 'image-i', style: "display: none;" %>
+            <%= attachment_image_tag(@estate, :property_image_i, fallback: "no-image-estate.jpeg", onClick: "$('.image-i').click()", size: "150x150", class: 'i-image') %>
+          </div>
         </div>
-        <div>
-          <%= attachment_image_tag @estate, :property_image_i, size: "150x150" %>
-        </div>
-        <div class="col pt-5 text-center">
+        <div class="col-3" style="text-align: center; font-weight: bold;">
           <%= f.label :物件画像１０ %>
-          <%= f.attachment_field :property_image_j %>
-        </div>
-        <div>
-          <%= attachment_image_tag @estate, :property_image_j, size: "150x150" %>
+          <div style="padding-top: 20px;">
+            <%= f.attachment_field :property_image_j, class: 'image-j', style: "display: none;" %>
+            <%= attachment_image_tag(@estate, :property_image_j, fallback: "no-image-estate.jpeg", onClick: "$('.image-j').click()", size: "150x150", class: 'j-image') %>
+          </div>
         </div>
       </div>
-      <div class="row pb-4" style="margin-right: 20px;">
-        <div class="col pt-5 text-center">
+      <div class="row" style="padding: 30px 0 20px 0;">
+        <div class="col-3" style="text-align: center; font-weight: bold;">
           <%= f.label :物件画像１１ %>
-          <%= f.attachment_field :property_image_k %>
+          <div style="padding-top: 20px;">
+            <%= f.attachment_field :property_image_k, class: 'image-k', style: "display: none;" %>
+            <%= attachment_image_tag(@estate, :property_image_k, fallback: "no-image-estate.jpeg", onClick: "$('.image-k').click()", size: "150x150", class: 'k-image') %>
+          </div>
         </div>
-        <div>
-          <%= attachment_image_tag @estate, :property_image_k, size: "150x150" %>
-        </div>
-        <div class="col pt-5 text-center">
+        <div class="col-3" style="text-align: center; font-weight: bold;">
           <%= f.label :物件画像１２ %>
-          <%= f.attachment_field :property_image_l %>
-        </div>
-        <div>
-          <%= attachment_image_tag @estate, :property_image_l, size: "150x150" %>
+          <div style="padding-top: 20px;">
+            <%= f.attachment_field :property_image_l, class: 'image-l', style: "display: none;" %>
+            <%= attachment_image_tag(@estate, :property_image_l, fallback: "no-image-estate.jpeg", onClick: "$('.image-l').click()", size: "150x150", class: 'l-image') %>
+          </div>
         </div>
       </div>
       <div class="row justify-content-center" style="padding: 60px 0;">
