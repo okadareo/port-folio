@@ -5,7 +5,6 @@ ja:
       last: <i class="fas fa-angle-double-right"></i>
       previous: <i class="fas fa-angle-left"></i>
       next: <i class="fas fa-angle-right"></i>
-
   activerecord:
     attributes:
       customer:
@@ -35,3 +34,4 @@ ja:
   simple_calendar:
       previous: "<<"
       next: ">>"
+
