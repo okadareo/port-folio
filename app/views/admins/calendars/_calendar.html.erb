@@ -2,10 +2,29 @@
   <%= date.day %>
   <% calendars.each.with_index(1) do |calendar, i| %>
     <% if i > 8 %>
-      <% i = i - 8 %>
       <div style="font-size: 13px;">
-        <%= calendar.start_time.strftime('%H:%M') %> <%= link_to truncate("#{calendar.title}", length:13), admins_calendar_path(calendar) %>
-        <%= link_to "+ #{ i }件の予定がございます" %>
+        <% if i == 1..8 %>
+          <%= calendar.start_time.strftime('%H:%M') %> <%= link_to truncate("#{calendar.title}", length:13), admins_calendar_path(calendar) %>
+        <% end %>
+      </div>
+      <% i = i - 8 %>
+      <button type="button" class="btn btn-primary" style="font-size: 13px;" data-toggle="modal" data-target="#exampleModalLong">
+        <%= "+ #{ i }件の予定がございます" %>
+      </button>
+      <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"><%= date.strftime('%Y年 %m月%d日(%a)') %></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= calendar.start_time.strftime('%H:%M') %> <%= link_to truncate("#{calendar.title}", length:13), admins_calendar_path(calendar) %>
+            </div>
+          </div>
+        </div>
       </div>
     <% else %>
       <div style="font-size: 13px;">
