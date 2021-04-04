@@ -9,11 +9,11 @@
   
   <%= form_with model: @estate, url: admins_estate_path, local: true do |f| %>
     <div class="card shadow" style="margin-bottom: 120px;">
-      <div class="row pt-5 pb-4">
+      <div class="row" style="padding: 50px 0 30px 0;">
         <div class="col-2" style="text-align: center; font-weight: bold;"><%= f.label :物件名 %></div>
         <div class="col-9" style="padding-left: 1px;"><%= f.text_field :name, placeholder: "techroom", :size=>"108" %></div>
       </div>
-      <div class="row pb-4">
+      <div class="row" style="padding-bottom: 30px;">
         <div class="col-2" style="text-align: center; font-weight: bold;"><%= f.label :部屋番号 %></div>
         <div class="col-2" style="padding-left: 1px;"><%= f.number_field :room_number.to_s, placeholder: "304 (半角数字のみ)" %></div>
         <div class="col-1 mr-4" style="text-align: right; font-weight: bold;"><%= f.label :賃料 %></div>
@@ -21,11 +21,11 @@
         <div class="col-1 ml-5 mr-3" style="text-align: center; font-weight: bold;"><%= f.label :間取り %></div>
         <div class="col-2 mr-4"><%= f.text_field :floor, placeholder: "2LDK(半角数字・全角英字)", :size=>"24" %></div>
       </div>
-      <div class="row pb-4">
+      <div class="row" style="padding-bottom: 30px;">
         <div class="col-2" style="text-align: center; font-weight: bold;"><%= f.label :住所 %></div>
         <div class="col" style="padding-left: 1px;"><%= f.text_field :address, placeholder: "東京都新宿区岡田町1-2-2", :size=>"108" %></div>
       </div>
-      <div class="row pb-4">
+      <div class="row" style="padding-bottom: 30px;">
         <div class="col-2" style="text-align: center; font-weight: bold;"><%= f.label :物件概要 %></div>
         <div class="col" style="padding-left: 1px;"><%= f.text_area :info, :size=>"107x10" %></div>
       </div>
