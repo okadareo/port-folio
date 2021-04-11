@@ -12,7 +12,7 @@ class Customers::CustomersController < ApplicationController
     customer = current_customer
     if customer.update(status: "無効") #updateでstatusをfalseに変更
       reset_session
-      flash[:notice] = "退会処理が完了されました。"
+      flash[:notice] = "退会処理が完了しました"
       redirect_to root_path
     end
   end
@@ -23,7 +23,7 @@ class Customers::CustomersController < ApplicationController
   #   customer.status = "無効"
   #   if customer.save #saveでstatusをfalseに変更
   #     reset_session
-  #     flash[:notice] = "退会処理が完了されました。"
+  #     flash[:notice] = "退会処理が完了しました"
   #     redirect_to root_path
   #   end
   # end
