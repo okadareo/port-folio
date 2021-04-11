@@ -1,8 +1,8 @@
 <%= month_calendar events: calendars do |date, calendars| %>
   <%= date.day %>
   <% calendars.each do |calendar| %>
-    <div style="font-size: 13px;">
-      <%= calendar.start_time.strftime('%H:%M') %> <%= link_to truncate("#{calendar.title}", length:13), admins_calendar_path(calendar) %>
+    <div style="font-size: 12px;">
+      <%= calendar.start_time.strftime('%H:%M') %> <%= link_to truncate("#{calendar.title}", length:14), admins_calendar_path(calendar) %>
     </div>
   <% end %>
 <% end %>
