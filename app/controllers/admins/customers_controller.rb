@@ -34,7 +34,7 @@ class Admins::CustomersController < ApplicationController
   def withdraw
     customer = Customer.find(params[:customer_id])
     if customer.update(customer_params) #updateでstatusをviewからきたストロングパラメータの内容に変更
-      flash[:status] = "ステータスの変更が完了しました。"
+      flash[:status] = "ステータスの変更が完了しました"
       redirect_to admins_customers_path
     end
   end
