@@ -8,7 +8,7 @@
   <%= render "layouts/error_messages", model: @estate %>
   
   <%= form_with model: @estate, url: admins_estate_path, local: true do |f| %>
-    <div class="card shadow" style="margin-bottom: 120px;">
+    <div class="card shadow" style="margin-bottom: 100px;">
       <div class="row" style="padding: 50px 0 30px 0;">
         <div class="col-2" style="text-align: center; font-weight: bold;"><%= f.label :物件名 %></div>
         <div class="col-9" style="padding-left: 1px;"><%= f.text_field :name, placeholder: "techroom", :size=>"108" %></div>
